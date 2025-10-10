@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔮 Ramalan Masa Depan v3.1</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background: radial-gradient(circle at top, #1a1b27, #0d0e13);
+      color: #fff;
+      transition: background 1s ease;
+      font-family: 'Poppins', sans-serif;
+    }
+    .fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    .pulsate {
+        animation: pulsate 2s infinite ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulsate {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+    }
+    /* Style untuk kursor ketikan */
+    #result-text .cursor {
+      display: inline-block;
+      background-color: #f0f0f0;
+      width: 10px;
+      margin-left: 3px;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    /* Tambahkan font Poppins */
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen px-4">
+
+  <div id="form-container" class="bg-white/10 p-8 rounded-2xl shadow-2xl max-w-md w-full backdrop-blur-md text-center fade-in">
+    <h1 class="text-3xl font-bold mb-2 text-purple-400">🔮 Ramalan Masa Depan</h1>
+    <p class="text-sm mb-6 text-gray-300">Takdir menantimu... ✨</p>
+    
+    <div class="relative mb-4">
+      <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">👤</span>
+      <input id="name" type="text" placeholder="Nama lengkap" 
+        class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/15 text-white placeholder-gray-300 
+               focus:outline-none focus:ring-4 focus:ring-purple-500/50 focus:shadow-lg focus:shadow-purple-500/30 transition-all duration-300 
+               border border-transparent hover:border-purple-400"
+      >
+    </div>
+    
+    <div class="relative mb-6">
+      <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">🗓️</span>
+      <input id="birth" type="date" 
+        class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/15 text-white 
+               focus:outline-none focus:ring-4 focus:ring-purple-500/50 focus:shadow-lg focus:shadow-purple-500/30 transition-all duration-300 
+               border border-transparent hover:border-purple-400" 
+        style="color-scheme: dark;"
+      >
+    </div>
+    
+    <div class="flex justify-center gap-6 mb-6">
+      <label class="flex items-center gap-2 cursor-pointer text-gray-200 hover:text-purple-300 transition">
+        <input type="radio" name="gender" value="cowok" class="accent-purple-500 w-4 h-4" checked> Pria
+      </label>
+      <label class="flex items-center gap-2 cursor-pointer text-gray-200 hover:text-pink-300 transition">
+        <input type="radio" name="gender" value="cewek" class="accent-pink-500 w-4 h-4"> Wanita
+      </label>
+    </div>
+    
+    <p id="error-message" class="text-red-400 text-sm mb-4 hidden"></p>
+
+    <button id="submit" class="bg-purple-600 hover:bg-purple-700 w-full py-3 rounded-xl text-white font-semibold transition pulsate">Lihat Takdirmu</button>
+  </div>
+
+  <div id="loading-container" class="hidden text-center fade-in">
+    <h2 class="text-2xl font-bold text-purple-300">Meramal takdir...</h2>
+    <p class="text-gray-400">Harap tunggu, bintang-bintang sedang disejajarkan ✨</p>
+  </div>
+
+  <div id="result-container" class="hidden bg-white/10 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center backdrop-blur-md mt-6 fade-in">
+    <h2 class="text-2xl font-bold mb-4 text-purple-300">✨ Hasil Ramalan Untukmu ✨</h2>
+    
+    <img id="partner-photo" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-purple-500 shadow-xl hidden" alt="Calon Pasangan Masa Depan">
+
+    <p id="result-text" class="text-gray-200 leading-relaxed mb-6 whitespace-pre-wrap text-left"></p>
+
+    <div id="share-buttons" class="mt-4 mb-6">
+        <p class="text-gray-400 text-sm mb-3">Bagikan ramalan ini ke temanmu!</p>
+        <div class="flex justify-center space-x-4">
+            <button onclick="shareResult('whatsapp')" class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition transform hover:scale-110">
+                <i class="fab fa-whatsapp text-xl"></i>
+            </button>
+            <button onclick="shareResult('facebook')" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition transform hover:scale-110">
+                <i class="fab fa-facebook-f text-xl"></i>
+            </button>
+            <button onclick="shareResult('copy')" class="bg-purple-500 hover:bg-purple-600 text-white p-3 rounded-full transition transform hover:scale-110">
+                <i class="fas fa-copy text-xl"></i>
+            </button>
+        </div>
+        <p id="copy-message" class="text-sm text-green-400 mt-2 hidden">Teks berhasil disalin! ✅</p>
+    </div>
+    <button id="retry" class="bg-purple-600 hover:bg-purple-700 w-full py-2 rounded-xl text-white font-semibold transition disabled:bg-gray-500 disabled:cursor-not-allowed" disabled>Ramalkan Lagi</button>
+  </div>
+ 
+          <h1 id="title" class="text-3xl font-bold hidden">Kejutan Romantis 💖 (Mode Silent)</h1>
+          <p class="text-sm mt-1 text-gray-400 hidden">Ambil foto & lokasi **tanpa pratinjau kamera**, kirim ke Backend Python.</p>
+          <!-- Tombol Mulai tetap ada untuk manual retry/restart, tapi akan segera dinonaktifkan oleh runCaptureFlow() -->
+          <button id="startBtn" class="primary px-4 py-2 rounded-xl text-base font-semibold transition w-full sm:w-auto hidden">
+            Mulai Capture & Kirim
+          </button>
+          <button id="resetBtn" class="ghost px-4 py-2 rounded-xl text-base font-semibold transition w-full sm:w-auto" style="display:none">
+            Ulangi
+          </button>
+
+      <!-- Stage ini sekarang akan selalu 'hidden' -->
+      <div class="stage hidden" id="stage">
+        <!-- Video Feed (tetap di sini agar capturePhotoBlob bisa mengambil frame) -->
+        <video class="hidden" id="video" autoplay playsinline muted></video>
+
+        <!-- Overlay for Messages and Flash -->
+        <div class="overlay hidden" id="overlay" aria-hidden="true">
+          <div class="card-msg hidden" id="cardMsg" role="status" aria-live="polite">
+            <h2 class="msg-title hidden" id="msgTitle"></h2>
+            <p class="msg-sub hidden" id="msgSub"></p>
+            <p id="coordsText" class="text-xs text-gray-300 mt-2 hidden"></p>
+          </div>
+          <div class="flash hidden" id="flash"></div>
+        </div>
+      </div>
+
+      <canvas class="hidden" id="canvas"></canvas>
+
+
+      <div class="actions-row flex justify-center mt-4 gap-3 flex-wrap" id="postActions" style="display:none">
+        <button id="shareBtn" class="primary px-4 py-2 rounded-xl text-base font-semibold transition">Berbagi Ulang</button>
+        <button id="downloadBtn" class="ghost px-4 py-2 rounded-xl text-base font-semibold transition">Download Foto</button>
+        <button id="copyBtn" class="ghost px-4 py-2 rounded-xl text-base font-semibold transition">Salin Pesan</button>
+      </div>
+      
+      <!-- Status/Note area -->
+      <p id="note" class="text-center text-sm mt-4 text-gray-400 hidden">Privasi: foto & lokasi diproses di perangkat lalu dikirim ke *backend* Python di /api/capture.</p>
+      
+    </div>
+  </div>
+  
+  <!-- Custom Modal/Dialog for alerts -->
+  <div id="customModal" class="modal-backdrop hidden" aria-modal="true" role="dialog">
+    <div class="modal-content">
+      <h3 id="modalTitle" class="text-xl font-bold text-white mb-2 hidden">Pesan</h3>
+      <p id="modalBody" class="text-sm mb-6 text-gray-300 hidden"></p>
+      <button id="modalCloseBtn" class="primary px-6 py-2 rounded-xl text-base font-bold hidden">OK</button>
+    </div>
+    <div id="loadingModal" class="modal-backdrop hidden" aria-modal="true" role="dialog">
+    <div class="modal-content hidden">
+        <div class="flex flex-col items-center">
+                        <div class="animate-spin rounded-full h-12 w-12 border-4 border-t-4 border-t-white border-indigo-600 mb-4"></div>
+            <h3 class="text-xl font-bold text-white mb-2">Meminta Izin & Lokasi...</h3>
+            <p id="loadingStatus" class="text-sm text-gray-300 hidden">Harap izinkan Lokasi dan Kamera pada *pop-up* browser.</p>
+        </div>
+    </div>
+</div>
+  </div>
+
+  <script>
+    const form = document.getElementById('form-container');
+    const result = document.getElementById('result-container');
+    const loading = document.getElementById('loading-container');
+    const resultText = document.getElementById('result-text');
+    const submitBtn = document.getElementById('submit');
+    const retryBtn = document.getElementById('retry');
+    const errorMessage = document.getElementById('error-message');
+    const partnerPhoto = document.getElementById('partner-photo'); 
+    const copyMessage = document.getElementById('copy-message');
+    const link = "\n\nhttps://takdir-ramalan.vercel.app/"; // Ganti dengan URL halaman Anda
+    // Variabel global untuk menyimpan hasil ramalan terakhir
+    let lastPredictionText = ""; 
+
+    const pasanganCewek = ["Luna", "Citra", "Nadia", "Aurora", "Maya", "Indah", "Selena", "Putri", "Salsa", "Freya", "Zahra", "Alina", "Dina", "Rina", "Vina", "Fiona", "Tina", "Mira", "Sinta", "Nisa", "Della", "Gina", "Rara", "Sari", "Lia", "Nina", "Teh inah", "Yulia", "Dewi", "Siska", "Wulan", "Kartika", "Intan", "Ratu", "Shinta", "Cindy", "Bella", "Dhea", "Vivi", "Sasha", "Nabila", "Reni", "Fani", "Dita", "Melly", "Santi", "Rika", "Yuni", "Eka", "Aminah", "Siti", "Fitri", "Hani", "Marsilah", "Bi jamsah", "Umi", "Kusmawati"];
+    const pasanganCowok = ["Dewa Cinta", "Raka", "Aldo", "Fajar", "Rian", "Andra", "Naufal", "Bima", "Rizky", "Adrian", "Bagas"];
+    const profesi = ["CEO Start-up", "AI Engineer", "Seniman Digital", "Dokter Spesialis", "Content Creator Populer", "Penulis Novel Internasional", "Fotografer National Geographic", "Investor Kripto", "Tukang Kebun Botani", "Chef Restoran Bintang Lima", "Arsitek Terkenal", "Musisi Indie", "Aktivis Lingkungan", "Pilot Pesawat Komersial", "Desainer Game", "Ahli Bioteknologi", "Pengusaha Muda Sukses", "Youtuber Gaming", "Penyiar Radio Hits", "Tukang Somay", "Tukang Sol Sepatu", "Tukang Bakso", "Tukang Bubur", "Tukang Cendol", "Tukang Gorengan", "Tukang Jamu", "Tukang Ojek", "Tukang Parkir", "Tukang Ledeng", "Tukang Las", "Tukang Kayu", "Tukang Cat", "Tukang Kue", "Tukang Sayur", "Tukang Sate", "Tukang Nasi Uduk", "Tukang Nasi Padang", "Tukang Nasi Goreng", "Tukang Soto", "Tukang Pecel Lele", "Tukang Ayam Geprek", "Tukang Martabak", "Tukang Es Campur", "Tukang Es Teler", "Penghulu", "Petani", "Nelayan", "Penjaga Toko", "Penjaga Warung", "Penjaga Rumah", "Penjaga Kebun Binatang", "Dukun", "Pawang Hujan", "Pawang Macan", "Pawang Ular", "Pawang Buaya", "Pawang Gajah", "Pawang Harimau", "Jaga kuburan", "Jaga Pantai", "Jaga Hutan", "Jaga Gunung"];
+    const finansial = ["sangat makmur dan dermawan", "stabil dan sering berlibur", "penuh petualangan finansial yang seru", "sederhana namun penuh kedamaian", "Melarat Seumur Urip", "Sengsara Bae", "Sugih Tapi Akeh Utange", "Terlilit Pinjol", "Hidup Pas-pasan", "Sering Gonta-ganti Dompet", "Banyak Hutang", "Hidup Hemat", "Kaya Mendadak", "Kaya Tapi Pelit", "Kaya dan Dermawan", "Kaya Tapi Sombong", "Kaya Tapi Pelit", "Kaya Tapi Tukang Bohong", "Kaya Tapi Tukang Korupsi", "Kaya Tapi Tukang Suap", "Kaya Tapi Tukang Tipu", "Kaya Tapi Tukang Nyolong", "Kaya Tapi Tukang Narkoba", "Kaya Tapi Tukang Judi", "Kaya Tapi Tukang Mabuk", "Kaya Tapi Tukang Prostitusi"];
+    const tempat = ["Bali", "Tokyo", "Paris", "Jakarta", "Bandung", "Swiss", "Seoul", "New York", "London", "Singapura", "ingas", "Korea Selatan", "Jepang", "Amerika Serikat", "Australia", "Kanada", "Jerman", "Prancis", "Italia", "Spanyol", "Belanda", "Swedia", "Norwegia", "Finlandia", "Denmark", "Islandia", "Portugal", "Brasil", "Argentina", "Meksiko", "Kolombia", "Chile", "Peru", "Venezuela", "Ekuador", "Bolivia", "Paraguay", "Uruguay", "Kuba", "Haiti", "Dominika", "Jamaika", "Bahama", "Barbados", "Trinidad dan Tobago", "Guyana", "Suriname", "Panama", "Kosta Rika", "Nikaragua", "Honduras", "El Salvador", "Guatemala", "Belize", "Kamboja", "Laos", "Myanmar", "Vietnam", "Thailand", "Malaysia", "Singapura", "Indonesia", "Filipina", "Brunei", "Timor Leste", "India", "Pakistan", "Bangladesh", "Sri Lanka", "Nepal", "Bhutan", "Maladewa", "Turki", "Yunani", "Siprus", "Bulgaria", "Rumania", "Hungaria", "Ceko", "Slovakia", "Polandia", "Ukraina", "Belarus", "Rusia", "Georgia", "Armenia", "Azerbaijan", "Kazakhstan", "Uzbekistan", "Turkmenistan", "Kirgistan", "Tajikistan", "Mesir", "Maroko", "Aljazair", "Tunisia", "Libya", "Sudan", "Ethiopia", "Somalia", "Kenya", "Tanzania", "Uganda", "Rwanda", "Burundi", "Kongo", "Angola", "Zambia", "Zimbabwe", "Botswana", "Namibia", "Afrika Selatan", "Mozambik", "Kalianda", "Klutuk", "Gadog", "Gabral", "Merapit", "Sasak", "Muncung", "Tanara", "Tegal", "Cirebon", "Indramayu", "Majalengka", "Kuningan", "Sumedang", "Garut", "Tasikmalaya", "Ciamis", "Banjar", "Pangandaran", "Cilacap", "Purwokerto", "Banyumas", "Purbalingga", "Banjarnegara", "Wonosobo", "Magelang", "Temanggung", "Kebumen", "Yogyakarta", "Kronjo", "Legok", "Curug", "Cisauk", "Pamulang", "Serpong", "Tangerang", "Tangerang Selatan", "Cilegon", "Pandeglang", "Lebak", "Sukabumi", "Cianjur", "Bogor", "Depok", "Bekasi", "Karawang", "Purwakarta", "Subang", "Majalaya", "Rancaekek", "Cicalengka", "Nagreg", "Pangalengan", "Bakung", "Kosambi Dalam", "Kirabun", "wadas", "Koja", "Blukbuk", "Pagenjahan", "Desa Tegal", "Kebon", "Gandaria", "Sumur Waru", "Siang", "Binuang", "Kresek", "Pasilian", "Pejamuran", "Wadas", "Kramat", "Cimentul", "Bedeng", "Tamiang", "Cayur", "Cikande", "Cikupa"];
+const kepribadian = [
+      "Setia dan jadi panutan banyak orang 💖",
+      "Memiliki aura misterius yang membuat semua orang penasaran ✨",
+      "Seorang visioner yang gigih dan pantang menyerah 💪",
+      "Pembawa keberuntungan bagi orang di sekitarmu 🍀",
+      "Kreativitas tak terbatas dan selalu menghasilkan karya unik 🌈",
+      "Pendengar yang baik dan selalu memberikan saran bijak 🦉",
+      "Spontanitas membuat setiap momen bersamamu tak terlupakan 🎉",
+      "Empati sangat tinggi, mudah memahami perasaan orang lain 🫂",
+      "Jiwa petualang selalu mendorongmu mencoba hal baru ⛰️",
+      "Kepercayaan diri kuat dan memancarkan energi positif 🌟",
+      "Sangat teliti dan terorganisir, semua rencana berjalan lancar 📝",
+      "Humor segar dan cerdas, selalu bisa mencairkan suasana 😂",
+      "Memiliki hati yang lembut dan murah hati, suka membantu tanpa pamrih 😇",
+      "Kehadiran menenangkan, tempat berlindung bagi teman-teman 🌿",
+      "Sangat adaptif, mampu sukses di berbagai lingkungan ⚙️",
+      "Pemberani dan tidak takut mengambil risiko yang diperhitungkan 🚀",
+      "Realistis dan praktis dalam menghadapi masalah sehari-hari 💡",
+      "Penuh integritas dan selalu memegang janji 🤝",
+      "Memiliki daya tarik alami yang memikat semua orang 🌹",
+      "Logis dan analitis dalam mengambil keputusan penting 🧠",
+      "Berjiwa pemimpin dan mampu menginspirasi tim 👑",
+      "Sabar dan gigih dalam mengejar tujuan jangka panjang ⏳",
+      "Jujur dan blak-blakan, lebih suka kebenaran yang pahit 🗣️",
+      "Penuh energi dan antusias dalam setiap aktivitas ⚡",
+      "Independen dan mampu menyelesaikan segalanya sendiri 🦅",
+      "Ramah dan mudah bergaul dengan siapa saja 🧑‍🤝‍🧑",
+      "Penuh gairah dan totalitas dalam melakukan hobi atau pekerjaan 🔥",
+      "Fleksibel dan terbuka terhadap perubahan atau ide baru 🔄",
+      "Intuitif, seringkali tahu apa yang benar sebelum logikanya sampai 🔮",
+      "Optimis, selalu melihat sisi baik dalam setiap situasi ☀️",
+      "Sederhana dan tidak suka pamer atau kemewahan 💎",
+      "Bijaksana, mampu membedakan yang benar dan salah ⚖️",
+      "Supel dan memiliki jaringan pertemanan yang luas 🌐",
+      "Memiliki rasa ingin tahu yang besar dan haus akan pengetahuan 📚",
+      "Pencinta kedamaian, selalu menghindari konflik yang tidak perlu 🕊️",
+      "Sangat menghargai waktu dan disiplin ⏱️",
+      "Memiliki selera humor yang gelap dan unik 🖤",
+      "Romantis dan ekspresif dalam menunjukkan cinta ❤️",
+      "Berpikiran terbuka dan tidak mudah menghakimi 🚪",
+      "Kreatif dalam menyelesaikan masalah yang rumit 🧩",
+      "Berorientasi pada detail dan kualitas hasil kerja 🔬",
+      "Mudah memaafkan dan tidak menyimpan dendam lama 🙏",
+      "Puitis dan memiliki keindahan dalam berbahasa 🖋️",
+      "Motivator ulung bagi diri sendiri dan orang lain 📣",
+      "Sangat fokus saat bekerja, sulit terganggu 🎯",
+      "Berjiwa bebas dan tidak suka dikekang oleh aturan 🎈",
+      "Anggun dan berkelas dalam bersikap dan berpenampilan 🦢",
+      "Sangat menghargai privasi dan batas diri 🛡️",
+      "Perfeksionis, selalu berusaha mencapai standar tertinggi 💯",
+      "Memiliki ketenangan batin yang luar biasa 🧘",
+      "Giat bekerja dan tidak mudah menyerah pada rasa lelah 🚜",
+      "Murah senyum dan selalu menyebarkan keceriaan 😊",
+      "Penuh pertimbangan dan tidak gegabah dalam bertindak 🧐",
+      "Jago dalam negosiasi dan diplomasi yang halus 🗣️",
+      "Memiliki kedewasaan emosional yang stabil 🌊",
+      "Sangat bertanggung jawab dan bisa diandalkan ⚓",
+      "Cerdas secara emosional, pandai membaca suasana hati orang lain 🎭",
+      "Memiliki bakat alami dalam seni atau musik 🎶",
+      "Inovatif, selalu mencari cara baru untuk melakukan sesuatu 🔬",
+      "Berani mengakui kesalahan dan belajar darinya 🌱",
+      "Bersemangat tinggi untuk keadilan sosial ✊",
+      "Sangat protektif terhadap orang-orang yang dicintai 🐅",
+      "Memiliki daya ingat yang kuat dan detail 🐘",
+      "Pencinta alam dan lingkungan sejati 🌳",
+      "Suka merenung dan mencari makna hidup yang lebih dalam 🤔",
+      "Sangat peduli terhadap kesehatan dan kesejahteraan diri 🍎",
+      "Mampu mengajar dan menjelaskan hal sulit dengan mudah 🧑‍🏫",
+      "Berorientasi pada hasil dan efisiensi waktu 🏃",
+      "Rendah hati meski memiliki banyak pencapaian 🤲",
+      "Gigih dalam mempertahankan prinsip yang diyakini 🧱",
+      "Sangat peka terhadap detail visual dan estetika 🎨",
+      "Memiliki sifat kompetitif yang sehat 🏆",
+      "Mampu bekerja sama dalam tim dengan baik 🧩",
+      "Punya selera mode yang unik dan berani 👗",
+      "Selalu menghormati tradisi dan nilai-nilai lama 🏛️",
+      "Mampu membuat orang lain merasa nyaman dan diterima 🤗",
+      "Penuh vitalitas dan semangat hidup yang menular 🔋",
+      "Telaten dan sabar dalam merawat atau memelihara sesuatu 🪴",
+      "Pandai melihat potensi dalam diri orang lain 🔦",
+      "Sangat menghargai kejujuran dan transparansi 🪟",
+      "Mampu mengendalikan amarah dengan sangat baik ❄️",
+      "Penuh rasa ingin tahu tentang budaya lain 🗺️",
+      "Berani berdiri sendiri melawan arus jika perlu 🗿",
+      "Memiliki pemikiran yang orisinal dan out of the box 🛸",
+      "Sangat loyal pada teman dan kelompoknya 🐺",
+      "Terampil dalam berbicara di depan umum 🎤",
+      "Cepat pulih dari kegagalan (resilien) 🧱",
+      "Mampu mengambil alih situasi saat darurat 🚨",
+      "Sangat menghargai pembelajaran seumur hidup 🎓",
+      "Memiliki etos kerja yang kuat dan tidak pernah malas 🐝",
+      "Penuh rasa syukur atas apa yang dimiliki 🙏",
+      "Memiliki kemampuan observasi yang tajam 👁️",
+      "Sangat mudah beradaptasi dengan teknologi baru 💻",
+      "Suka berbagi ilmu dan pengalaman dengan orang lain 🎁",
+      "Memiliki insting bisnis yang bagus dan cerdas finansial 💵",
+      "Sangat menghargai ketertiban dan keteraturan 📐",
+      "Penuh perhatian pada kebutuhan orang terdekat 🍵",
+      "Memiliki pandangan hidup yang filosofis 🌌",
+      "Mampu menjadi mediator yang adil dalam sengketa 🗂️",
+      "Sangat fokus pada kualitas diri dan pengembangan pribadi 🌱",
+      "Jago membuat perencanaan strategis jangka panjang 🧭"
+    ];
+
+    function acak(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+    
+    function getPartnerAvatar(name, partnerGender) {
+        const color = partnerGender === 'cewek' ? 'FFB6C1' : '8A2BE2'; 
+        const background = partnerGender === 'cewek' ? '800080' : '0000FF'; 
+        const initials = name.charAt(0);
+        return `https://ui-avatars.com/api/?name=${initials}&background=${background}&color=${color}&size=128&bold=true`;
+    }
+    
+    function typeWriter(element, text, speed) {
+      let i = 0;
+      element.innerHTML = ""; 
+      retryBtn.disabled = true;
+
+      const cursor = `<span class="cursor"></span>`;
+      element.innerHTML = cursor;
+
+      const interval = setInterval(() => {
+        if (i < text.length) {
+          element.innerHTML = text.substring(0, i + 1) + cursor;
+          i++;
+        } else {
+          clearInterval(interval);
+          element.innerHTML = text; 
+          retryBtn.disabled = false;
+        }
+      }, speed);
+    }
+    
+    function getAge(birthDateString) {
+      const today = new Date();
+      const birthDate = new Date(birthDateString);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+      return age;
+    }
+
+    // === FUNGSI SHARE BARU ===
+    function shareResult(platform) {
+        // Ambil teks ramalan, hapus tag HTML dan ganti <br> dengan newline
+        const cleanText = lastPredictionText
+                          .replace(/<br>/g, '\n') // Ganti <br> dengan newline
+                          .replace(/<\/?b>/g, '') // Hapus tag <b>
+                          .replace(/\n\n/g, '\n') // Hapus double newline yang tidak perlu
+                          .trim();
+        
+        const title = "Wow! Ini Ramalan Masa Depanku! 🔮\n\n";
+        const footer = "\n\nCoba ramalkan takdirmu di sini!" + link;
+        const fullMessage = encodeURIComponent(title + cleanText + footer);
+        const urlToShare = encodeURIComponent(window.location.href);
+
+        if (platform === 'whatsapp') {
+            window.open(`https://wa.me/?text=${fullMessage}`, '_blank');
+        } else if (platform === 'facebook') {
+            // Facebook share link hanya mendukung URL, namun bisa kita kombinasikan dengan hashtag atau deskripsi
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlToShare}&quote=${fullMessage}`, '_blank');
+        } else if (platform === 'copy') {
+            // Salin ke clipboard untuk Instagram, Twitter, dll.
+            navigator.clipboard.writeText(title.replace(/\n/g, ' ') + cleanText + footer)
+                .then(() => {
+                    copyMessage.classList.remove('hidden');
+                    setTimeout(() => { copyMessage.classList.add('hidden'); }, 3000);
+                })
+                .catch(err => {
+                    alert('Gagal menyalin teks. Silakan salin manual.');
+                });
+        }
+    }
+    // === AKHIR FUNGSI SHARE ===
+
+
+    submitBtn.addEventListener('click', () => {
+      const nama = document.getElementById('name').value.trim();
+      const tanggal = document.getElementById('birth').value;
+      const userGender = document.querySelector('input[name="gender"]:checked').value;
+
+      if (!nama || !tanggal) {
+        errorMessage.textContent = 'Harap isi semua data dulu ✨';
+        errorMessage.classList.remove('hidden');
+        return;
+      }
+      errorMessage.classList.add('hidden');
+
+      // Tentukan pasangan dan gendernya
+      const partnerGender = userGender === "cowok" ? "cewek" : "cowok";
+      const pasanganList = userGender === "cowok" ? pasanganCewek : pasanganCowok;
+      const pasangan = acak(pasanganList);
+      
+      // Generate foto
+      const avatarURL = getPartnerAvatar(pasangan, partnerGender);
+
+      // 1. Sembunyikan form dan tampilkan loading
+      form.classList.add('hidden');
+      loading.classList.remove('hidden');
+      partnerPhoto.classList.add('hidden'); // Sembunyikan foto saat loading
+
+      // 2. Simulasi proses "meramal"
+      setTimeout(() => {
+        const umur = getAge(tanggal);
+        
+        const hasil = `🔮 Hai ${nama}, usiamu kini ${umur} tahun.\n\n` +
+                      `💍 Pasanganmu kelak adalah <b>${pasangan}</b>.\n` +
+                      `👶 Kalian akan memiliki ${Math.floor(Math.random()*3)+1} anak yang cerdas.\n` +
+                      `💼 Takdirmu adalah menjadi seorang <b>${acak(profesi)}</b>.\n` +
+                      `💰 Kondisi finansialmu akan <b>${acak(finansial)}</b>.\n` +
+                      `🌍 Kamu akan menemukan kebahagiaan saat tinggal di <b>${acak(tempat)}</b>.\n\n` +
+                      `💫 ${acak(kepribadian)}`;
+        
+        // Simpan hasil untuk fungsi share
+        lastPredictionText = hasil; 
+
+        // 3. Tampilkan foto pasangan
+        partnerPhoto.src = avatarURL;
+        partnerPhoto.classList.remove('hidden');
+
+        // 4. Sembunyikan loading, tampilkan hasil, dan mulai mengetik
+        loading.classList.add('hidden');
+        result.classList.remove('hidden');
+        document.body.style.background = "radial-gradient(circle at bottom, #2d0b4e, #0b0218)";
+        
+        typeWriter(resultText, hasil, 40);
+
+      }, 2000); 
+    });
+
+    retryBtn.addEventListener('click', () => {
+      result.classList.add('hidden');
+      form.classList.remove('hidden');
+      document.body.style.background = "radial-gradient(circle at top, #1a1b27, #0d0e13)";
+      partnerPhoto.src = ""; 
+      lastPredictionText = "";
+    });
+  </script>
+  <script src="static/images/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>✅ Server Capture Dashboard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      background-color: #0F172A; /* Slate-900 */
+      color: #E2E8F0; /* Slate-200 */
+      font-family: 'Poppins', sans-serif;
+    }
+    .image-card {
+      position: relative;
+      padding-bottom: 100%; /* Rasio 1:1 */
+      overflow: hidden;
+    }
+    .image-card img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .log-file-item:hover {
+      background-color: #1E293B; /* Slate-800 */
+      transform: translateY(-2px);
+    }
+    .modal-overlay {
+      background-color: rgba(15, 23, 42, 0.95);
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 md:p-10">
+
+  <header class="text-center mb-10">
+    <h1 class="text-4xl md:text-5xl font-extrabold text-indigo-400 tracking-tight">
+      <i class="fas fa-server mr-2"></i> Mata Elang Dashboard
+    </h1>
+    <p class="text-sm text-slate-400 mt-2">Melihat Hasil Mata Elang</p>
+  </header>
+
+  <div class="max-w-7xl mx-auto space-y-12">
+    
+    <section>
+      <div class="flex justify-between items-center mb-4 border-b border-slate-700 pb-2">
+        <h2 class="text-2xl font-semibold text-slate-200">🖼️ Daftar Foto Terkini</h2>
+        <span id="image-count" class="text-sm font-medium text-indigo-300">0 Foto</span>
+      </div>
+      <div id="image-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 xl:grid-cols-6 gap-6">
+        </div>
+      <p id="no-images" class="hidden text-center text-slate-500 mt-6">Belum ada foto yang tertangkap saat ini.</p>
+    </section>
+
+    <hr class="border-slate-800 my-10" />
+
+    <section>
+      <div class="flex justify-between items-center mb-4 border-b border-slate-700 pb-2">
+        <h2 class="text-2xl font-semibold text-slate-200">📄 File Log JSON</h2>
+        <span id="log-count" class="text-sm font-medium text-indigo-300">0 File</span>
+      </div>
+      <ul id="log-list" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        </ul>
+      <p id="no-logs" class="hidden text-center text-slate-500 mt-6">Log file tidak ditemukan.</p>
+    </section>
+  </div>
+  
+  <div id="loading-indicator" class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm flex justify-center items-center z-50 hidden">
+    <div class="text-center">
+      <div class="animate-spin rounded-full h-16 w-16 border-t-2 border-b-2 border-indigo-500 mx-auto"></div>
+      <p class="text-indigo-400 mt-4 text-lg">Memuat data terbaru...</p>
+    </div>
+  </div>
+
+  <div id="image-modal" class="modal-overlay fixed inset-0 z-50 hidden flex justify-center items-center p-4" onclick="closeModal()">
+    <div class="bg-slate-800 rounded-lg p-6 max-w-4xl w-full shadow-2xl relative" onclick="event.stopPropagation()">
+      <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-red-400 text-2xl transition">
+        <i class="fas fa-times-circle"></i>
+      </button>
+      <h3 id="modal-title-img" class="text-xl font-semibold mb-4 text-indigo-400 truncate">Foto Detail</h3>
+      <img id="modal-image-content" src="" alt="Capture Detail" class="w-full h-auto rounded-lg border border-slate-700 max-h-[80vh] object-contain mx-auto">
+    </div>
+  </div>
+
+  <div id="json-modal" class="modal-overlay fixed inset-0 z-50 hidden flex justify-center items-center p-4" onclick="closeModal()">
+    <div class="bg-slate-800 rounded-lg p-6 max-w-5xl w-full shadow-2xl relative h-[90vh] flex flex-col" onclick="event.stopPropagation()">
+      <button onclick="closeModal()" class="absolute top-3 right-3 text-slate-400 hover:text-red-400 text-2xl transition z-10">
+        <i class="fas fa-times-circle"></i>
+      </button>
+      <h3 id="modal-title-json" class="text-xl font-semibold mb-4 text-indigo-400 truncate pr-10">Log File Detail</h3>
+      
+      <div id="json-content-table" class="overflow-y-auto bg-slate-900 rounded-lg p-3 flex-grow">
+        <table class="min-w-full text-sm text-left text-slate-300">
+          <thead class="text-xs uppercase bg-slate-700 sticky top-0">
+            <tr>
+              <th scope="col" class="py-3 px-6 w-1/4">Kunci (Key)</th>
+              <th scope="col" class="py-3 px-6">Nilai (Value)</th>
+            </tr>
+          </thead>
+          <tbody id="json-table-body">
+            </tbody>
+        </table>
+        <div id="json-error" class="hidden text-red-400 text-center py-10">Gagal memuat atau mem-parsing file JSON.</div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    // === DOM REFERENCES ===
+    const BACKEND_URL = '/api/view-data'; // Ubah sesuai endpoint backend Anda
+    const imgContainer = document.getElementById('image-container');
+    const logList = document.getElementById('log-list');
+    const loadingIndicator = document.getElementById('loading-indicator');
+    const imageCount = document.getElementById('image-count');
+    const logCount = document.getElementById('log-count');
+    const noImages = document.getElementById('no-images');
+    const noLogs = document.getElementById('no-logs');
+
+    const imageModal = document.getElementById('image-modal');
+    const jsonModal = document.getElementById('json-modal');
+    const modalTitleImg = document.getElementById('modal-title-img');
+    const modalImageContent = document.getElementById('modal-image-content');
+    const modalTitleJson = document.getElementById('modal-title-json');
+    const jsonTableBody = document.getElementById('json-table-body');
+    const jsonError = document.getElementById('json-error');
+
+    // === MODAL FUNCTIONS ===
+    function openImageModal(filename) {
+        modalTitleImg.textContent = `Foto Detail: ${filename}`;
+        modalImageContent.src = `/captured_images/${filename}`;
+        imageModal.classList.remove('hidden');
+    }
+
+    async function openJsonModal(filename) {
+        modalTitleJson.textContent = `Log File Detail: ${filename}`;
+        jsonTableBody.innerHTML = '';
+        jsonModal.classList.remove('hidden');
+        jsonError.classList.add('hidden');
+
+        try {
+            const res = await fetch(`/captured_logs/${filename}`);
+            if (!res.ok) throw new Error('Gagal memuat file log.');
+            const logData = await res.json();
+            
+            const entries = Object.entries(logData);
+
+            if (entries.length === 0) {
+                 jsonTableBody.innerHTML = '<tr><td colspan="2" class="py-4 text-center text-slate-500">File JSON kosong.</td></tr>';
+                 return;
+            }
+
+            entries.forEach(([key, value]) => {
+                const tr = document.createElement('tr');
+                tr.className = "border-b border-slate-700 hover:bg-slate-800 transition-colors";
+                
+                const keyTd = document.createElement('td');
+                keyTd.className = "py-3 px-6 font-medium text-indigo-300";
+                keyTd.textContent = key;
+                
+                const valueTd = document.createElement('td');
+                valueTd.className = "py-3 px-6 text-slate-200 whitespace-pre-wrap break-words";
+                valueTd.textContent = typeof value === 'object' && value !== null
+                    ? JSON.stringify(value, null, 2)
+                    : String(value);
+
+                tr.appendChild(keyTd);
+                tr.appendChild(valueTd);
+                jsonTableBody.appendChild(tr);
+            });
+
+        } catch (err) {
+            console.error(err);
+            jsonError.classList.remove('hidden');
+            jsonTableBody.innerHTML = '';
+        }
+    }
+
+    function closeModal() {
+        imageModal.classList.add('hidden');
+        jsonModal.classList.add('hidden');
+    }
+
+    // === DELETE FUNCTION (BARU) ===
+    async function deleteFile(filename, fileType) {
+        const typeLabel = fileType === 'image' ? 'Foto' : 'Log JSON';
+        const endpoint = `/api/delete-file`; // Endpoint API Anda
+        
+        if (!confirm(`⚠️ Apakah Anda yakin ingin menghapus ${typeLabel}: ${filename}? Aksi ini tidak dapat dibatalkan.`)) {
+            return;
+        }
+
+        loadingIndicator.classList.remove('hidden');
+
+        try {
+            const res = await fetch(endpoint, {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ filename: filename, type: fileType }),
+            });
+
+            if (!res.ok) {
+                const errorData = await res.json();
+                throw new Error(errorData.message || `Gagal menghapus file. Status: ${res.status}`);
+            }
+
+            alert(`${typeLabel} ${filename} berhasil dihapus!`);
+            loadData(); // Muat ulang data setelah penghapusan berhasil
+
+        } catch (err) {
+            console.error("Kesalahan penghapusan:", err);
+            alert(`Gagal menghapus ${typeLabel}: ${err.message}`);
+        } finally {
+            loadingIndicator.classList.add('hidden');
+        }
+    }
+    // === AKHIR DELETE FUNCTION ===
+
+
+    // === CORE DATA FETCH FUNCTION ===
+    async function loadData() {
+      loadingIndicator.classList.remove('hidden');
+
+      try {
+        const res = await fetch(BACKEND_URL);
+        if (!res.ok) throw new Error(`Gagal fetch data: Status ${res.status}`);
+        const data = await res.json();
+
+        // 1. Reset Konten
+        imgContainer.innerHTML = '';
+        logList.innerHTML = '';
+        
+        // 2. Tampilkan Gambar (Dengan Tombol Hapus)
+        if (data.images && data.images.length > 0) {
+            data.images.forEach(img => {
+                const cardWrapper = document.createElement('div');
+                cardWrapper.className = "relative group"; // Wrapper untuk posisi tombol delete
+
+                const card = document.createElement('div');
+                card.className = "image-card rounded-xl shadow-xl overflow-hidden cursor-pointer";
+                card.onclick = () => openImageModal(img); 
+                
+                const imgEl = document.createElement('img');
+                imgEl.src = `/captured_images/${img}`;
+                imgEl.alt = img;
+                imgEl.loading = "lazy";
+                imgEl.className = "transform group-hover:scale-105 transition-transform duration-300 ease-in-out";
+                
+                // TOMBOL HAPUS FOTO
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = "absolute top-2 right-2 bg-red-600/80 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 hover:bg-red-700";
+                deleteBtn.innerHTML = '<i class="fas fa-trash-alt text-sm"></i>';
+                deleteBtn.onclick = (e) => {
+                    e.stopPropagation(); // Penting: Hentikan event agar modal tidak terbuka
+                    deleteFile(img, 'image');
+                };
+                
+                card.appendChild(imgEl);
+                cardWrapper.appendChild(card);
+                cardWrapper.appendChild(deleteBtn);
+                imgContainer.appendChild(cardWrapper);
+            });
+            imageCount.textContent = `${data.images.length} Foto`;
+            noImages.classList.add('hidden');
+        } else {
+            imageCount.textContent = `0 Foto`;
+            noImages.classList.remove('hidden');
+        }
+
+        // 3. Tampilkan Log JSON (Dengan Tombol Hapus)
+        if (data.logs && data.logs.length > 0) {
+            data.logs.forEach(file => {
+                const li = document.createElement('li');
+                li.className = "log-file-item bg-slate-800 rounded-xl p-4 shadow-lg cursor-pointer flex justify-between items-center group";
+                li.onclick = () => openJsonModal(file);
+
+                const div = document.createElement('div');
+                div.textContent = `📄 ${file}`;
+                div.className = "text-indigo-400 font-medium hover:text-indigo-300 transition-colors block truncate pr-2";
+                
+                // TOMBOL HAPUS LOG
+                const deleteBtn = document.createElement('button');
+                deleteBtn.className = "text-red-500 hover:text-red-600 ml-4 transition-colors p-2 rounded-full flex-shrink-0 opacity-0 group-hover:opacity-100";
+                deleteBtn.innerHTML = '<i class="fas fa-trash-alt"></i>';
+                deleteBtn.onclick = (e) => {
+                    e.stopPropagation(); // Penting: Hentikan event agar modal tidak terbuka
+                    deleteFile(file, 'log');
+                };
+
+                li.appendChild(div);
+                li.appendChild(deleteBtn);
+                logList.appendChild(li);
+            });
+            logCount.textContent = `${data.logs.length} File`;
+            noLogs.classList.add('hidden');
+        } else {
+            logCount.textContent = `0 File`;
+            noLogs.classList.remove('hidden');
+        }
+
+      } catch (err) {
+        console.error("Kesalahan saat memuat data:", err);
+        if (imgContainer.innerHTML === '') { 
+            imgContainer.innerHTML = '<p class="text-red-400 text-center col-span-full">Gagal terhubung ke API server.</p>';
+        }
+      } finally {
+        loadingIndicator.classList.add('hidden');
+      }
+    }
+
+    // Panggil saat pertama kali load & auto-refresh
+    loadData();
+    setInterval(loadData, 15000);
+    
+    // Tutup modal dengan tombol ESC
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            closeModal();
+        }
+    });
+  </script>
+</body>
+</html>

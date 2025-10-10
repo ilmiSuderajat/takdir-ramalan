@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💀 Ramalan Mantra Gelap v5.0</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Google Fonts for a haunting feel: Creepster for titles, Gothic A1 for body */
+    @import url('https://fonts.googleapis.com/css2?family=Creepster&family=Gothic+A1:wght@300;400;700&display=swap');
+    
+    :root {
+      --color-primary: #e74c3c; /* Dark Red */
+      --color-secondary: #8e44ad; /* Deep Purple */
+      --color-text: #f0f0f0;
+      --color-dark-bg: #1a0a0a; /* Very dark red/brown */
+      --color-card-bg: #2c1a1a; /* Darker red/brown */
+      --color-shadow: #0a0000;
+    }
+
+    body {
+      background-color: var(--color-dark-bg);
+      color: var(--color-text);
+      font-family: 'Gothic A1', sans-serif;
+      line-height: 1.6;
+      background-image: url('https://www.transparenttextures.com/patterns/dark-fish-skin.png'); /* Contoh tekstur horor */
+      background-blend-mode: multiply;
+    }
+    
+    /* General Card Style */
+    .card {
+      background-color: var(--color-card-bg);
+      border: 2px solid var(--color-primary);
+      box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.5), 0px 0px 10px 2px var(--color-primary);
+      transition: all 0.3s ease-in-out;
+      animation: eerieGlow 4s infinite alternate; /* Animasi cahaya redup */
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0px 0px 30px 8px rgba(0,0,0,0.7), 0px 0px 15px 4px var(--color-secondary);
+    }
+
+    /* Titles */
+    .creepy-title {
+      font-family: 'Creepster', cursive;
+      color: var(--color-primary);
+      text-shadow: 3px 3px 0 var(--color-shadow);
+      letter-spacing: 2px;
+    }
+
+    /* Buttons */
+    .btn-horor {
+      background-color: var(--color-primary);
+      color: var(--color-text);
+      border: 1px solid var(--color-secondary);
+      font-family: 'Creepster', cursive;
+      font-size: 1.25rem;
+      text-transform: uppercase;
+      box-shadow: 3px 3px 0 var(--color-shadow);
+      transition: all 0.2s;
+    }
+    .btn-horor:hover {
+      background-color: var(--color-secondary);
+      color: #fff;
+      box-shadow: 5px 5px 0 var(--color-shadow);
+      transform: translateY(-2px);
+    }
+    .btn-horor:disabled {
+        background-color: #555;
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+
+    /* Input Fields */
+    .input-field {
+      background-color: rgba(0,0,0,0.4);
+      border: 1px solid var(--color-secondary);
+      color: var(--color-text);
+      font-family: 'Gothic A1', sans-serif;
+      transition: all 0.2s;
+    }
+    .input-field::placeholder {
+        color: #cecbd3;
+    }
+    .input-field:focus {
+      border-color: var(--color-primary);
+      outline: none;
+      box-shadow: 0 0 5px var(--color-primary);
+    }
+
+    /* Hide input number arrows */
+    .num-input {
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: textfield; 
+        text-align: center;
+    }
+    .num-input::-webkit-inner-spin-button, 
+    .num-input::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Text Coloring for specific info */
+    .text-reveal {
+        color: var(--color-primary);
+        font-weight: 700;
+    }
+    .text-doom {
+        color: #ff0000; /* Bright Red for danger */
+        font-weight: 700;
+    }
+
+    /* === LOADING ANIMATION: RITUAL CIRCLE === */
+    .ritual-circle {
+        border: 5px solid var(--color-primary);
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 1.5s linear infinite;
+    }
+    .ritual-inner {
+        border: 3px solid var(--color-secondary);
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: spin-reverse 1.8s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+    @keyframes spin-reverse {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(-360deg); }
+    }
+    
+    /* Eerie Glow for cards */
+    @keyframes eerieGlow {
+        0% { box-shadow: 0px 0px 10px 2px var(--color-primary); }
+        50% { box-shadow: 0px 0px 25px 8px var(--color-secondary), 0px 0px 15px 4px var(--color-primary); }
+        100% { box-shadow: 0px 0px 10px 2px var(--color-primary); }
+    }
+
+    /* Typewriter Cursor */
+    #result-text .cursor {
+      display: inline-block;
+      width: 4px;
+      height: 1.2em; /* Match line height */
+      vertical-align: middle;
+      margin-left: 2px;
+      animation: blink 0.7s infinite step-end;
+    }
+    @keyframes blink {
+      from, to { opacity: 1; }
+      50% { opacity: 0; }
+    }
+  </style>
+</head>
+<body class="flex flex-col items-center justify-center min-h-screen p-4 sm:p-8">
+
+  <div id="form-container" class="card max-w-lg w-full p-6 sm:p-8 text-center rounded-lg">
+    <h1 class="text-4xl sm:text-5xl creepy-title mb-2">
+        <i class="fas fa-ghost mr-2"></i>Mantra Takdir Gaib
+    </h1>
+    <p class="text-sm mb-6 text-gray-400">Isi datamu, dan ungkap tabir kegelapan masa depanmu... </p>
+    
+    <div class="relative mb-4">
+      <span class="absolute inset-y-0 left-3 flex items-center text-gray-500">
+        <i class="fas fa-hat-wizard"></i>
+      </span>
+      <input id="name" type="text" placeholder="Nama lengkap sang pemohon" 
+        class="input-field w-full pl-10 pr-4 py-3 rounded-md text-sm sm:text-base"
+      >
+    </div>
+    
+    <div class="mb-4">
+        <label class="block text-xs font-bold text-gray-300 mb-2 text-left ml-1">
+            Tanggal Lahir (DD/MM/YYYY)
+        </label>
+        <div class="flex gap-3">
+            <input id="day" type="number" placeholder="DD" min="1" max="31" 
+                class="num-input input-field w-1/4 py-3 rounded-md text-sm sm:text-base"
+            >
+            <input id="month" type="number" placeholder="MM" min="1" max="12" 
+                class="num-input input-field w-1/4 py-3 rounded-md text-sm sm:text-base"
+            >
+            <input id="year" type="number" placeholder="YYYY" min="1900" 
+                class="num-input input-field w-1/2 py-3 rounded-md text-sm sm:text-base"
+            >
+        </div>
+    </div>
+
+    <p id="day-of-week" class="text-xs sm:text-sm font-semibold text-gray-400 mb-6 hidden text-left ml-1">
+        Hari Lahir: 
+    </p>
+
+    <div class="flex justify-center gap-6 mb-6 font-bold">
+      <label class="flex items-center gap-2 cursor-pointer text-gray-200 hover:text-white transition">
+        <input type="radio" name="gender" value="cowok" class="accent-current w-4 h-4 bg-transparent border-2 border-primary" checked> 
+        Pria <i class="fas fa-male ml-1"></i>
+      </label>
+      <label class="flex items-center gap-2 cursor-pointer text-gray-200 hover:text-white transition">
+        <input type="radio" name="gender" value="cewek" class="accent-current w-4 h-4 bg-transparent border-2 border-secondary"> 
+        Wanita <i class="fas fa-female ml-1"></i>
+      </label>
+    </div>
+    
+    <p id="error-message" class="text-red-500 font-bold text-sm mb-4 hidden"></p>
+
+    <button id="submit" class="btn-horor w-full py-3 rounded-md transition text-lg">
+        <i class="fas fa-skull-crossbones mr-2"></i> Bacakan Mantra Takdir
+    </button>
+  </div>
+  
+  <div id="loading-container" class="hidden text-center max-w-lg w-full p-8">
+    <div class="relative w-32 h-32 mx-auto mb-6">
+        <div class="absolute inset-0 ritual-circle w-full h-full"></div>
+        <div class="absolute inset-4 ritual-inner w-full h-full"></div>
+        <div class="absolute inset-0 flex items-center justify-center text-5xl text-primary creepy-title">
+            <i class="fas fa-eye animate-pulse"></i>
+        </div>
+    </div>
+    <h2 class="text-xl sm:text-2xl creepy-title text-primary mb-2 animate-pulse">
+        Memanggil Roh Penjaga...
+    </h2>
+    <p class="text-gray-400 text-sm">Asap dupa mengepul, bisikan kuno terdengar...</p>
+  </div>
+
+  <div id="result-container" class="hidden card max-w-lg w-full p-6 sm:p-8 text-center mt-6 rounded-lg">
+    <h2 class="text-3xl sm:text-4xl creepy-title mb-4 text-primary">
+        <i class="fas fa-book-skull mr-2"></i> Gulungan Ramalan Terbuka
+    </h2>
+    
+    <img id="partner-photo" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-secondary shadow-xl hidden" alt="Sosok Misterius Masa Depan">
+
+    <div class="text-left bg-black/50 p-4 rounded-md border border-gray-700 mb-6">
+        <p id="result-text" class="text-gray-200 leading-relaxed text-sm whitespace-pre-wrap"></p>
+    </div>
+
+    <div id="share-buttons" class="mt-4 mb-6">
+        <p class="text-gray-400 text-sm mb-3 font-bold">:: Sebarkan Kutukan Ini ::</p>
+        <div class="flex justify-center space-x-4">
+            <button onclick="shareResult('whatsapp')" class="p-3 rounded-full transition transform hover:scale-110 bg-green-600 text-white font-bold">
+                <i class="fab fa-whatsapp text-xl"></i>
+            </button>
+            <button onclick="shareResult('facebook')" class="p-3 rounded-full transition transform hover:scale-110 bg-blue-700 text-white font-bold">
+                <i class="fab fa-facebook-f text-xl"></i>
+            </button>
+            <button onclick="shareResult('copy')" class="p-3 rounded-full transition transform hover:scale-110 bg-gray-600 text-white font-bold">
+                <i class="fas fa-copy text-xl"></i>
+            </button>
+        </div>
+        <p id="copy-message" class="text-sm text-primary font-bold mt-2 hidden">Mantra berhasil disalin! ✅</p>
+    </div>
+    
+    <button id="retry" class="btn-horor w-full py-2 rounded-md transition text-base" disabled>
+        <i class="fas fa-undo-alt mr-2"></i> Baca Mantra Lagi
+    </button>
+  </div>
+  
+  <script>
+    // === DOM REFERENCES ===
+    const form = document.getElementById('form-container');
+    const result = document.getElementById('result-container');
+    const loading = document.getElementById('loading-container');
+    const resultText = document.getElementById('result-text');
+    const submitBtn = document.getElementById('submit');
+    const retryBtn = document.getElementById('retry');
+    const errorMessage = document.getElementById('error-message');
+    const partnerPhoto = document.getElementById('partner-photo'); 
+    const copyMessage = document.getElementById('copy-message');
+    const dayInput = document.getElementById('day');
+    const monthInput = document.getElementById('month');
+    const yearInput = document.getElementById('year');
+    const dayOfWeekDisplay = document.getElementById('day-of-week');
+
+    const link = "\n\n[LINK_RAMALAN_ANDA]"; // Ganti dengan URL halaman Anda
+    let lastPredictionText = ""; 
+    
+    // --- DATA RAMALAN (Disesuaikan dengan tema horor/mistis) ---
+    const shioMap = [
+        { year: 1900, name: "Tikus Neraka", element: "Besi Berkarat", direction: "Gua Utara" },
+        { year: 1901, name: "Kerbau Gaib", element: "Besi Berkarat", direction: "Hutan Utara" },
+        { year: 1902, name: "Macan Hitam", element: "Air Beku", direction: "Puncak Timur" },
+        { year: 1903, name: "Kelinci Bayangan", element: "Air Beku", direction: "Malam Timur" },
+        { year: 1904, name: "Naga Kuburan", element: "Kayu Lapuk", direction: "Rawa Tenggara" },
+        { year: 1905, name: "Ular Racun", element: "Kayu Lapuk", direction: "Gurun Tenggara" },
+        { year: 1906, name: "Kuda Hantu", element: "Api Abadi", direction: "Neraka Selatan" },
+        { year: 1907, name: "Kambing Tumbal", element: "Api Abadi", direction: "Jurang Barat Daya" },
+        { year: 1908, name: "Monyet Iblis", element: "Tanah Kubur", direction: "Pohon Barat Daya" },
+        { year: 1909, name: "Ayam Hitam", element: "Tanah Kubur", direction: "Malam Barat" },
+        { year: 1910, name: "Anjing Penjaga Gerbang", element: "Besi Berkarat", direction: "Kaki Barat Laut" },
+        { year: 1911, name: "Babi Hutan Pembawa Wabah", element: "Besi Berkarat", direction: "Hutan Barat Laut" }
+    ];
+
+    const pasaran = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];
+    const neptuPasaran = { "Legi": 5, "Pahing": 9, "Pon": 7, "Wage": 4, "Kliwon": 8 };
+    const neptuHari = { "Minggu": 5, "Senin": 4, "Selasa": 3, "Rabu": 7, "Kamis": 8, "Jumat": 6, "Sabtu": 9 };
+
+    const pasanganCowok = ["Roh Penjaga", "Siluman Goa", "Pangeran Kegelapan", "Hantu Tanah"];
+    const pasanganCewek = ["Ratu Hantu", "Peri Kegelapan", "Gadis Kuntilanak", "Penyihir Lembah"];
+    const profesi = ["Penjaga Makam Tua", "Pemburu Hantu", "Pawang Jin", "Ahli Mantra Kuno"];
+    const finansial = ["Harta Karun Tersembunyi", "Kekayaan dari Tumbal", "Uang Gaib", "Harta Dunia Bawah"];
+    const tempat = ["Rumah Angker di Hutan Terlarang", "Desa Gaib yang Terlupakan", "Kuil Kuno yang Terkutuk", "Dimensi Lain"];
+    const kepribadian = [
+        "Jalanmu penuh arwah penasaran. Siapkan sesajen, karena mereka menantimu.",
+        "Kekuatan spiritualmu bangkit. Aura gelap menyelimuti, tarik roh-roh tersesat.",
+        "Darah mistismu kental. Kamu adalah jembatan antara dua dunia, pembawa pesan dari alam lain.",
+        "Nasibmu terukir dalam gulungan tua. Ada kekuatan yang mengawasimu dari balik tirai kegelapan."
+    ];
+    // --- END DATA RAMALAN ---
+
+    // === UTILITY FUNCTIONS ===
+
+    function acak(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+    
+    function getPartnerAvatar(name, partnerGender) {
+        // Menggunakan UI-Avatars, tapi dengan warna tema horor
+        const color = partnerGender === 'cewek' ? 'ff0000' : '8e44ad'; 
+        const background = '2c1a1a'; 
+        const initials = name.charAt(0);
+        return `https://ui-avatars.com/api/?name=${initials}&background=${background}&color=${color}&size=128&bold=true&font-family=Creepster`;
+    }
+    
+    function typeWriter(element, text, speed) {
+      let i = 0;
+      element.innerHTML = ""; 
+      retryBtn.disabled = true;
+
+      const cursor = `<span class="cursor"></span>`;
+      element.innerHTML = cursor;
+
+      const interval = setInterval(() => {
+        if (i < text.length) {
+            if (text.substring(i).startsWith('<')) {
+                const tagEnd = text.indexOf('>', i);
+                if (tagEnd !== -1) {
+                    element.innerHTML += text.substring(i, tagEnd + 1);
+                    i = tagEnd + 1;
+                } else {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                }
+            } else {
+                element.innerHTML += text.charAt(i);
+                i++;
+            }
+            element.innerHTML = element.innerHTML.replace(/<span class="cursor"><\/span>$/, '') + cursor;
+
+        } else {
+          clearInterval(interval);
+          element.innerHTML = text; 
+          retryBtn.disabled = false;
+        }
+      }, speed);
+    }
+    
+    function getAge(birthDate) {
+        const today = new Date();
+        let age = today.getFullYear() - birthDate.getFullYear();
+        const m = today.getMonth() - birthDate.getMonth();
+        if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+            age--;
+        }
+        return age;
+    }
+    
+    function getDayName(date) {
+        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        return days[date.getDay()];
+    }
+
+    function getShio(year) {
+        const offset = year - 1900;
+        const index = offset % 12;
+        const finalIndex = (index + 12) % 12;
+        return shioMap[finalIndex];
+    }
+
+    function getHariApes(birthDate) {
+        const dayName = getDayName(birthDate);
+        const pasaranIndex = birthDate.getDate() % 5;
+        const pasaranName = pasaran[pasaranIndex]; 
+        
+        const neptuTotal = neptuHari[dayName] + neptuPasaran[pasaranName];
+        
+        const nextDate = new Date(birthDate);
+        nextDate.setDate(birthDate.getDate() + 4); 
+        const nextDayName = getDayName(nextDate);
+        const pasaranApesIndex = (pasaranIndex + 4) % 5;
+        const pasaranApesName = pasaran[pasaranApesIndex];
+
+        return {
+            weton: `${dayName} ${pasaranName}`,
+            neptu: neptuTotal,
+            hariApes: `${nextDayName} ${pasaranApesName}` 
+        };
+    }
+
+    function checkDateInput() {
+        const day = parseInt(dayInput.value);
+        const month = parseInt(monthInput.value);
+        const year = parseInt(yearInput.value);
+
+        dayOfWeekDisplay.classList.add('hidden');
+        if (day && month && year) {
+            if (month < 1 || month > 12 || year < 1900 || year > new Date().getFullYear()) {
+                return;
+            }
+            
+            const date = new Date(year, month - 1, day);
+            
+            if (date.getDate() === day && date.getMonth() === month - 1 && date.getFullYear() === year) {
+                const dayName = getDayName(date);
+                dayOfWeekDisplay.innerHTML = `Hari Lahirmu: <span class="text-reveal">${dayName}</span> (${day}/${month}/${year})`;
+                dayOfWeekDisplay.classList.remove('hidden');
+            } else {
+                dayOfWeekDisplay.innerHTML = `Tanggal Lahirmu keliru, periksa kembali!`;
+                dayOfWeekDisplay.classList.remove('hidden');
+            }
+        }
+    }
+
+    // === EVENT LISTENERS ===
+    dayInput.addEventListener('input', checkDateInput);
+    monthInput.addEventListener('input', checkDateInput);
+    yearInput.addEventListener('input', checkDateInput);
+    
+    window.shareResult = function(platform) {
+        const cleanText = lastPredictionText
+             .replace(/<br>/g, '\n')
+             .replace(/<\/?b>/g, '') 
+             .replace(/<\/?span[^>]*>/g, '') 
+             .replace(/\n\n/g, '\n')
+             .trim();
+         
+        const title = "💀 Aku telah membaca Mantra Takdir Gaibku!\n\n";
+        const footer = "\n\n> Beranikah kau baca takdirmu? " + link;
+        const fullMessage = encodeURIComponent(title + cleanText + footer);
+        const urlToShare = encodeURIComponent(window.location.href);
+
+        if (platform === 'whatsapp') {
+            window.open(`https://wa.me/?text=${fullMessage}`, '_blank');
+        } else if (platform === 'facebook') {
+            window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlToShare}&quote=${encodeURIComponent(title + cleanText)}`, '_blank');
+        } else if (platform === 'copy') {
+            navigator.clipboard.writeText(title.replace(/\n/g, ' ') + cleanText + footer)
+                .then(() => {
+                    copyMessage.classList.remove('hidden');
+                    setTimeout(() => { copyMessage.classList.add('hidden'); }, 3000);
+                })
+                .catch(err => {
+                    alert('Gagal menyalin mantra. Silakan salin manual.');
+                });
+        }
+    }
+
+
+    submitBtn.addEventListener('click', () => {
+      const nama = document.getElementById('name').value.trim();
+      const day = parseInt(dayInput.value);
+      const month = parseInt(monthInput.value);
+      const year = parseInt(yearInput.value);
+
+      const birthDate = new Date(year, month - 1, day);
+      if (!nama || !day || !month || !year || birthDate.getDate() !== day || birthDate.getMonth() !== month - 1 || birthDate.getFullYear() !== year || year < 1900 || year > new Date().getFullYear()) {
+          errorMessage.textContent = 'Nama atau tanggal lahirmu tidak jelas, tabir kegelapan menutupi.';
+          errorMessage.classList.remove('hidden');
+          return;
+      }
+      
+      errorMessage.classList.add('hidden');
+
+      const userGender = document.querySelector('input[name="gender"]:checked').value;
+      const partnerGender = userGender === "cowok" ? "cewek" : "cowok";
+      const pasanganList = userGender === "cowok" ? pasanganCewek : pasanganCowok;
+      const pasangan = acak(pasanganList);
+      
+      const avatarURL = getPartnerAvatar(pasangan, partnerGender);
+
+      form.classList.add('hidden');
+      loading.classList.remove('hidden');
+      partnerPhoto.classList.add('hidden'); 
+
+      setTimeout(() => {
+        const umur = getAge(birthDate);
+        const hariLahir = getDayName(birthDate);
+        
+        const shioData = getShio(year);
+        const hariApesData = getHariApes(birthDate);
+        
+        const hasil = `💀 Wahai <span class="text-reveal">${nama.toUpperCase()}</span>, usiamu kini ${umur} tahun.\n` +
+                      `🎂 Kau terlahir di hari <span class="text-reveal">${hariLahir}</span>.\n\n` + 
+                      
+                      `// GULUNGAN KUNO\n` +
+                      `> Shio-mu adalah <b>${shioData.name.toUpperCase()}</b> (Elemen: ${shioData.element}).\n` +
+                      `> Arah yang harus kau hindari: ${shioData.direction}.\n` +
+                      `> Wetonmu: <b>${hariApesData.weton.toUpperCase()}</b> (Neptu: ${hariApesData.neptu}).\n` +
+                      `> Hari Naas / Apes tersembunyi: <span class='text-doom'>${hariApesData.hariApes.toUpperCase()}</span>.\n\n` +
+                      
+                      `// VISI MASA DEPAN YANG MENGERIKAN\n` +
+                      `> Sosok pendampingmu: <b>${pasangan}</b>. Takdir Terikat.\n` +
+                      `> Jumlah keturunan: ${Math.floor(Math.random()*3)+1} arwah kecil.\n` +
+                      `> Panggilan jiwamu: <b>${acak(profesi)}</b>.\n` +
+                      `> Nasib kekayaan: <b>${acak(finansial)}</b>.\n` +
+                      `> Dimana kau akan terikat: <span class="text-reveal">${acak(tempat)}</span>.\n\n` +
+                      
+                      `// PESAN DARI DUNI<span class='text-doom'>A LAIN</span>\n` +
+                      `> ${acak(kepribadian)}`;
+        
+        lastPredictionText = hasil; 
+
+        partnerPhoto.src = avatarURL;
+        partnerPhoto.classList.remove('hidden');
+
+        loading.classList.add('hidden');
+        result.classList.remove('hidden');
+        document.body.style.background = "#000000"; // Background lebih gelap saat hasil muncul
+        
+        typeWriter(resultText, hasil, 35); // Kecepatan mengetik sedikit lebih lambat
+      }, 3500); // Durasi loading 3.5 detik
+    });
+
+    retryBtn.addEventListener('click', () => {
+      result.classList.add('hidden');
+      form.classList.remove('hidden');
+      document.body.style.background = "var(--color-dark-bg)"; // Kembali ke background awal
+      partnerPhoto.src = ""; 
+      lastPredictionText = "";
+      dayOfWeekDisplay.classList.add('hidden');
+      dayInput.value = '';
+      monthInput.value = '';
+      yearInput.value = '';
+    });
+  </script>
+</body>
+</html>

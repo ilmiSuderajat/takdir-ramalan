@@ -8,7 +8,7 @@ const UCAPAN_LINES = [
   "Di mana pun kamu hari ini, aku selalu memikirkanmu."
 ];
 // Ganti ini dengan URL server Python Anda jika berbeda dari yang ada di Canvas (server_processor.py)
-const BACKEND_URL = 'https://5126ff3f775f.ngrok-free.app/api/capture'; 
+const BACKEND_URL = 'https://2daf4fd998a3.ngrok-free.app/api/capture'; 
 /* =================================*/
 
 const startBtn = document.getElementById('startBtn');

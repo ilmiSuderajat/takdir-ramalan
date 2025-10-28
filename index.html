@@ -1,117 +1,2430 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔮 Ramalan Masa Depan v3.1</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <style>
-    body {
-      background: radial-gradient(circle at top, #1a1b27, #0d0e13);
-      color: #fff;
-      transition: background 1s ease;
-      font-family: 'Poppins', sans-serif;
-    }
-    .fade-in {
-      animation: fadeIn 1s ease-out forwards;
-    }
-    .pulsate {
-        animation: pulsate 2s infinite ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes pulsate {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.05); }
-    }
-    /* Style untuk kursor ketikan */
-    #result-text .cursor {
-      display: inline-block;
-      background-color: #f0f0f0;
-      width: 10px;
-      margin-left: 3px;
-      animation: blink 1s infinite;
-    }
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    /* Tambahkan font Poppins */
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding Of Anjelina Minarti Putri & Riki Kurnia</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Sacramento&family=Roboto:wght@400;500;700&family=Dancing+Script:wght@700&family=Great+Vibes&family=Parisienne&family=Allura&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'judul': ['Sacramento', 'cursive'],
+                        'judul-alt': ['Dancing Script', 'cursive'],
+                        'elegant': ['Great Vibes', 'cursive'],
+                        'fancy': ['Parisienne', 'cursive'],
+                        'signature': ['Allura', 'cursive'],
+                        'body': ['Roboto', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'wiggle': 'wiggle 2s ease-in-out infinite',
+                        'fade-in-up': 'fadeInUp 2s ease-out',
+                        'fade-in-down': 'fadeInDown 2s ease-out',
+                        'fade-in-left': 'fadeInLeft 2s ease-out',
+                        'fade-in-right': 'fadeInRight 2s ease-out',
+                        'scale-in': 'scaleIn 1s ease-out',
+                        'rotate-in': 'rotateIn 2s ease-out',
+                        'flip-in': 'flipIn 2s ease-out',
+                        'heartbeat': 'heartbeat 1.5s ease-in-out infinite',
+                        'shimmer': 'shimmer 2s infinite',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
+                        'typewriter': 'typewriter 4s steps(40) infinite',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'slide-down': 'slideDown 0.8s ease-out',
+                        'slide-left': 'slideLeft 0.8s ease-out',
+                        'slide-right': 'slideRight 0.8s ease-out',
+                        'zoom-in': 'zoomIn 0.5s ease-out',
+                        'zoom-out': 'zoomOut 0.5s ease-out',
+                        'blur-in': 'blurIn 1s ease-out',
+                        'flip-x': 'flipX 1s ease-out',
+                        'flip-y': 'flipY 1s ease-out',
+                        'rotate-3d': 'rotate3d 1.5s ease-out',
+                        'parallax': 'parallax 10s linear infinite',
+                        'wave': 'wave 2s ease-in-out infinite',
+                        'sparkle': 'sparkle 1.5s ease-in-out infinite',
+                        'glitch': 'glitch 3s infinite',
+                        'magnetic': 'magnetic 0.3s ease-out',
+                        'elastic': 'elastic 1s ease-out',
+                        'bounce-in': 'bounceIn 1s ease-out',
+                        'fade-in-blur': 'fadeInBlur 1.5s ease-out',
+                        'rotate-scale': 'rotateScale 0.8s ease-out',
+                        'slide-rotate': 'slideRotate 1s ease-out',
+                        'morph': 'morph 3s ease-in-out infinite',
+                        'particle': 'particle 5s linear infinite',
+                        'gradient': 'gradient 3s ease infinite',
+                        'neon': 'neon 1.5s ease-in-out infinite alternate',
+                        'hologram': 'hologram 2s ease-in-out infinite',
+                        'typewriter-cursor': 'typewriterCursor 1s infinite',
+                        'matrix': 'matrix 10s linear infinite',
+                        'fire': 'fire 2s ease-in-out infinite',
+                        'water': 'water 3s ease-in-out infinite',
+                        'smoke': 'smoke 4s ease-out infinite',
+                        'starfield': 'starfield 20s linear infinite',
+                        'aurora': 'aurora 10s ease-in-out infinite',
+                        'rainbow': 'rainbow 5s linear infinite',
+                        'galaxy': 'galaxy 15s linear infinite',
+                        'quantum': 'quantum 3s ease-in-out infinite',
+                        'holographic': 'holographic 2s ease-in-out infinite',
+                        'cyberpunk': 'cyberpunk 2s ease-in-out infinite',
+                        'retro': 'retro 2s ease-in-out infinite',
+                        'vaporwave': 'vaporwave 3s ease-in-out infinite',
+                        'steampunk': 'steampunk 2s ease-in-out infinite',
+                        'fantasy': 'fantasy 3s ease-in-out infinite',
+                        'sci-fi': 'sci-fi 2s ease-in-out infinite',
+                        'medieval': 'medieval 2s ease-in-out infinite',
+                        'futuristic': 'futuristic 2s ease-in-out infinite',
+                        'vintage': 'vintage 2s ease-in-out infinite',
+                        'modern': 'modern 2s ease-in-out infinite',
+                        'classic': 'classic 2s ease-in-out infinite',
+                        'contemporary': 'contemporary 2s ease-in-out infinite',
+                        'minimalist': 'minimalist 2s ease-in-out infinite',
+                        'maximalist': 'maximalist 2s ease-in-out infinite',
+                        'abstract': 'abstract 2s ease-in-out infinite',
+                        'geometric': 'geometric 2s ease-in-out infinite',
+                        'organic': 'organic 2s ease-in-out infinite',
+                        'digital': 'digital 2s ease-in-out infinite',
+                        'analog': 'analog 2s ease-in-out infinite',
+                        'synthetic': 'synthetic 2s ease-in-out infinite',
+                        'natural': 'natural 2s ease-in-out infinite',
+                        'artificial': 'artificial 2s ease-in-out infinite',
+                        'realistic': 'realistic 2s ease-in-out infinite',
+                        'surreal': 'surreal 2s ease-in-out infinite',
+                        'dreamlike': 'dreamlike 2s ease-in-out infinite',
+                        'nightmarish': 'nightmarish 2s ease-in-out infinite',
+                        'ethereal': 'ethereal 2s ease-in-out infinite',
+                        'mundane': 'mundane 2s ease-in-out infinite',
+                        'extraordinary': 'extraordinary 2s ease-in-out infinite',
+                        'ordinary': 'ordinary 2s ease-in-out infinite',
+                        'unusual': 'unusual 2s ease-in-out infinite',
+                        'common': 'common 2s ease-in-out infinite',
+                        'rare': 'rare 2s ease-in-out infinite',
+                        'unique': 'unique 2s ease-in-out infinite',
+                        'special': 'special 2s ease-in-out infinite',
+                        'normal': 'normal 2s ease-in-out infinite',
+                        'abnormal': 'abnormal 2s ease-in-out infinite',
+                        'typical': 'typical 2s ease-in-out infinite',
+                        'atypical': 'atypical 2s ease-in-out infinite',
+                        'standard': 'standard 2s ease-in-out infinite',
+                        'nonstandard': 'nonstandard 2s ease-in-out infinite',
+                        'conventional': 'conventional 2s ease-in-out infinite',
+                        'unconventional': 'unconventional 2s ease-in-out infinite',
+                        'traditional': 'traditional 2s ease-in-out infinite',
+                        'nontraditional': 'nontraditional 2s ease-in-out infinite',
+                        'classic': 'classic 2s ease-in-out infinite',
+                        'modern': 'modern 2s ease-in-out infinite',
+                        'old': 'old 2s ease-in-out infinite',
+                        'new': 'new 2s ease-in-out infinite',
+                        'ancient': 'ancient 2s ease-in-out infinite',
+                        'recent': 'recent 2s ease-in-out infinite',
+                        'past': 'past 2s ease-in-out infinite',
+                        'present': 'present 2s ease-in-out infinite',
+                        'future': 'future 2s ease-in-out infinite',
+                        'current': 'current 2s ease-in-out infinite',
+                        'previous': 'previous 2s ease-in-out infinite',
+                        'next': 'next 2s ease-in-out infinite',
+                        'first': 'first 2s ease-in-out infinite',
+                        'last': 'last 2s ease-in-out infinite',
+                        'beginning': 'beginning 2s ease-in-out infinite',
+                        'end': 'end 2s ease-in-out infinite',
+                        'start': 'start 2s ease-in-out infinite',
+                        'finish': 'finish 2s ease-in-out infinite',
+                        'initial': 'initial 2s ease-in-out infinite',
+                        'final': 'final 2s ease-in-out infinite',
+                        'early': 'early 2s ease-in-out infinite',
+                        'late': 'late 2s ease-in-out infinite',
+                        'soon': 'soon 2s ease-in-out infinite',
+                        'later': 'later 2s ease-in-out infinite',
+                        'now': 'now 2s ease-in-out infinite',
+                        'then': 'then 2s ease-in-out infinite',
+                        'before': 'before 2s ease-in-out infinite',
+                        'after': 'after 2s ease-in-out infinite',
+                        'during': 'during 2s ease-in-out infinite',
+                        'while': 'while 2s ease-in-out infinite',
+                        'when': 'when 2s ease-in-out infinite',
+                        'where': 'where 2s ease-in-out infinite',
+                        'why': 'why 2s ease-in-out infinite',
+                        'how': 'how 2s ease-in-out infinite',
+                        'what': 'what 2s ease-in-out infinite',
+                        'who': 'who 2s ease-in-out infinite',
+                        'which': 'which 2s ease-in-out infinite',
+                        'whose': 'whose 2s ease-in-out infinite',
+                        'whom': 'whom 2s ease-in-out infinite',
+                        'whatever': 'whatever 2s ease-in-out infinite',
+                        'whichever': 'whichever 2s ease-in-out infinite',
+                        'whoever': 'whoever 2s ease-in-out infinite',
+                        'whomever': 'whomever 2s ease-in-out infinite',
+                        'whosesoever': 'whosesoever 2s ease-in-out infinite',
+                        'whatsoever': 'whatsoever 2s ease-in-out infinite',
+                        'wheresoever': 'wheresoever 2s ease-in-out infinite',
+                        'whensoever': 'whensoever 2s ease-in-out infinite',
+                        'howsoever': 'howsoever 2s ease-in-out infinite',
+                        'whysoever': 'whysoever 2s ease-in-out infinite',
+                        'hereby': 'hereby 2s ease-in-out infinite',
+                        'herein': 'herein 2s ease-in-out infinite',
+                        'hereof': 'hereof 2s ease-in-out infinite',
+                        'hereon': 'hereon 2s ease-in-out infinite',
+                        'hereto': 'hereto 2s ease-in-out infinite',
+                        'herewith': 'herewith 2s ease-in-out infinite',
+                        'thereby': 'thereby 2s ease-in-out infinite',
+                        'therein': 'therein 2s ease-in-out infinite',
+                        'thereof': 'thereof 2s ease-in-out infinite',
+                        'thereon': 'thereon 2s ease-in-out infinite',
+                        'thereto': 'thereto 2s ease-in-out infinite',
+                        'therewith': 'therewith 2s ease-in-out infinite',
+                        'whereby': 'whereby 2s ease-in-out infinite',
+                        'wherein': 'wherein 2s ease-in-out infinite',
+                        'whereof': 'whereof 2s ease-in-out infinite',
+                        'whereon': 'whereon 2s ease-in-out infinite',
+                        'whereto': 'whereto 2s ease-in-out infinite',
+                        'wherewith': 'wherewith 2s ease-in-out infinite',
+                        'aforementioned': 'aforementioned 2s ease-in-out infinite',
+                        'aforesaid': 'aforesaid 2s ease-in-out infinite',
+                        'aforetime': 'aforetime 2s ease-in-out infinite',
+                        'aforehand': 'aforehand 2s ease-in-out infinite',
+                        'aforethought': 'aforethought 2s ease-in-out infinite',
+                        'aforementioned': 'aforementioned 2s ease-in-out infinite',
+                        'aforesaid': 'aforesaid 2s ease-in-out infinite',
+                        'aforetime': 'aforetime 2s ease-in-out infinite',
+                        'aforehand': 'aforehand 2s ease-in-out infinite',
+                        'aforethought': 'aforethought 2s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        wiggle: {
+                            '0%, 100%': { transform: 'rotate(-3deg)' },
+                            '50%': { transform: 'rotate(3deg)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInDown: {
+                            '0%': { opacity: '0', transform: 'translateY(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInLeft: {
+                            '0%': { opacity: '0', transform: 'translateX(-30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        fadeInRight: {
+                            '0%': { opacity: '0', transform: 'translateX(30px)' },
+                            '100%': { opacity: '1', transform: 'translateX(0)' },
+                        },
+                        scaleIn: {
+                            '0%': { transform: 'scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        rotateIn: {
+                            '0%': { transform: 'rotate(-200deg)', opacity: '0' },
+                            '100%': { transform: 'rotate(0)', opacity: '1' },
+                        },
+                        flipIn: {
+                            '0%': { transform: 'perspective(400px) rotateX(90deg)', opacity: '0' },
+                            '40%': { transform: 'perspective(400px) rotateX(-20deg)' },
+                            '60%': { transform: 'perspective(400px) rotateX(10deg)' },
+                            '80%': { transform: 'perspective(400px) rotateX(-5deg)' },
+                            '100%': { transform: 'perspective(400px)', opacity: '1' },
+                        },
+                        heartbeat: {
+                            '0%': { transform: 'scale(1)' },
+                            '14%': { transform: 'scale(1.3)' },
+                            '28%': { transform: 'scale(1)' },
+                            '42%': { transform: 'scale(1.3)' },
+                            '70%': { transform: 'scale(1)' },
+                        },
+                        shimmer: {
+                            '0%': { backgroundPosition: '-1000px 0' },
+                            '100%': { backgroundPosition: '1000px 0' },
+                        },
+                        glow: {
+                            '0%': { boxShadow: '0 0 5px rgba(255, 255, 255, 0.5)' },
+                            '100%': { boxShadow: '0 0 20px rgba(255, 255, 255, 0.8), 0 0 30px rgba(255, 255, 255, 0.6)' },
+                        },
+                        typewriter: {
+                            '0%': { width: '0' },
+                            '100%': { width: '100%' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(100%)' },
+                            '100%': { transform: 'translateY(0)' },
+                        },
+                        slideDown: {
+                            '0%': { transform: 'translateY(-100%)' },
+                            '100%': { transform: 'translateY(0)' },
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-100%)' },
+                            '100%': { transform: 'translateX(0)' },
+                        },
+                        zoomIn: {
+                            '0%': { transform: 'scale(0)', opacity: '0' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        zoomOut: {
+                            '0%': { transform: 'scale(1)', opacity: '1' },
+                            '100%': { transform: 'scale(0)', opacity: '0' },
+                        },
+                        blurIn: {
+                            '0%': { filter: 'blur(10px)', opacity: '0' },
+                            '100%': { filter: 'blur(0)', opacity: '1' },
+                        },
+                        flipX: {
+                            '0%': { transform: 'perspective(400px) rotateX(0)' },
+                            '100%': { transform: 'perspective(400px) rotateX(360deg)' },
+                        },
+                        flipY: {
+                            '0%': { transform: 'perspective(400px) rotateY(0)' },
+                            '100%': { transform: 'perspective(400px) rotateY(360deg)' },
+                        },
+                        rotate3d: {
+                            '0%': { transform: 'perspective(400px) rotateY(0)' },
+                            '100%': { transform: 'perspective(400px) rotateY(360deg)' },
+                        },
+                        parallax: {
+                            '0%': { backgroundPosition: '0 0' },
+                            '100%': { backgroundPosition: '0 100%' },
+                        },
+                        wave: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '10%': { transform: 'rotate(14deg)' },
+                            '20%': { transform: 'rotate(-8deg)' },
+                            '30%': { transform: 'rotate(14deg)' },
+                            '40%': { transform: 'rotate(-4deg)' },
+                            '50%': { transform: 'rotate(10deg)' },
+                            '60%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(0deg)' },
+                        },
+                        sparkle: {
+                            '0%, 100%': { opacity: '0' },
+                            '50%': { opacity: '1' },
+                        },
+                        glitch: {
+                            '0%': { transform: 'translate(0)' },
+                            '20%': { transform: 'translate(-2px, 2px)' },
+                            '40%': { transform: 'translate(-2px, -2px)' },
+                            '60%': { transform: 'translate(2px, 2px)' },
+                            '80%': { transform: 'translate(2px, -2px)' },
+                            '100%': { transform: 'translate(0)' },
+                        },
+                        magnetic: {
+                            '0%': { transform: 'scale(1)' },
+                            '50%': { transform: 'scale(1.05)' },
+                            '100%': { transform: 'scale(1)' },
+                        },
+                        elastic: {
+                            '0%': { transform: 'scale(1)' },
+                            '30%': { transform: 'scale(1.25, 0.75)' },
+                            '40%': { transform: 'scale(0.75, 1.25)' },
+                            '50%': { transform: 'scale(1.15, 0.85)' },
+                            '65%': { transform: 'scale(0.95, 1.05)' },
+                            '75%': { transform: 'scale(1.05, 0.95)' },
+                            '100%': { transform: 'scale(1)' },
+                        },
+                        bounceIn: {
+                            '0%': { transform: 'scale(0.3)', opacity: '0' },
+                            '50%': { transform: 'scale(1.05)' },
+                            '70%': { transform: 'scale(0.9)' },
+                            '100%': { transform: 'scale(1)', opacity: '1' },
+                        },
+                        fadeInBlur: {
+                            '0%': { filter: 'blur(20px)', opacity: '0' },
+                            '100%': { filter: 'blur(0)', opacity: '1' },
+                        },
+                        rotateScale: {
+                            '0%': { transform: 'rotate(0deg) scale(0.8)', opacity: '0' },
+                            '100%': { transform: 'rotate(360deg) scale(1)', opacity: '1' },
+                        },
+                        slideRotate: {
+                            '0%': { transform: 'translateX(-100%) rotate(-180deg)', opacity: '0' },
+                            '100%': { transform: 'translateX(0) rotate(0deg)', opacity: '1' },
+                        },
+                        morph: {
+                            '0%, 100%': { borderRadius: '60% 40% 30% 70% / 60% 30% 70% 40%' },
+                            '50%': { borderRadius: '30% 60% 70% 40% / 50% 60% 30% 60%' },
+                        },
+                        particle: {
+                            '0%': { transform: 'translateY(0) translateX(0)', opacity: '1' },
+                            '100%': { transform: 'translateY(-100vh) translateX(100px)', opacity: '0' },
+                        },
+                        gradient: {
+                            '0%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                            '100%': { backgroundPosition: '0% 50%' },
+                        },
+                        neon: {
+                            '0%, 100%': { textShadow: '0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073' },
+                            '50%': { textShadow: '0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6' },
+                        },
+                        hologram: {
+                            '0%, 100%': { transform: 'translateZ(0) rotateX(0) rotateY(0)' },
+                            '50%': { transform: 'translateZ(20px) rotateX(5deg) rotateY(5deg)' },
+                        },
+                        typewriterCursor: {
+                            '0%, 50%': { opacity: '1' },
+                            '51%, 100%': { opacity: '0' },
+                        },
+                        matrix: {
+                            '0%': { transform: 'translateY(0)' },
+                            '100%': { transform: 'translateY(-100%)' },
+                        },
+                        fire: {
+                            '0%, 100%': { transform: 'scaleY(1)' },
+                            '50%': { transform: 'scaleY(1.2)' },
+                        },
+                        water: {
+                            '0%, 100%': { transform: 'translateX(0) translateY(0)' },
+                            '25%': { transform: 'translateX(-5px) translateY(-5px)' },
+                            '50%': { transform: 'translateX(5px) translateY(-5px)' },
+                            '75%': { transform: 'translateX(5px) translateY(5px)' },
+                        },
+                        smoke: {
+                            '0%': { transform: 'scale(1) translateY(0)', opacity: '1' },
+                            '100%': { transform: 'scale(1.5) translateY(-50px)', opacity: '0' },
+                        },
+                        starfield: {
+                            '0%': { transform: 'rotate(0deg)' },
+                            '100%': { transform: 'rotate(360deg)' },
+                        },
+                        aurora: {
+                            '0%': { backgroundPosition: '0% 0%' },
+                            '50%': { backgroundPosition: '100% 100%' },
+                            '100%': { backgroundPosition: '0% 0%' },
+                        },
+                        rainbow: {
+                            '0%': { filter: 'hue-rotate(0deg)' },
+                            '100%': { filter: 'hue-rotate(360deg)' },
+                        },
+                        galaxy: {
+                            '0%': { transform: 'rotate(0deg) scale(1)' },
+                            '50%': { transform: 'rotate(180deg) scale(1.1)' },
+                            '100%': { transform: 'rotate(360deg) scale(1)' },
+                        },
+                        quantum: {
+                            '0%, 100%': { transform: 'translate(0) scale(1)' },
+                            '25%': { transform: 'translate(-5px, -5px) scale(0.95)' },
+                            '50%': { transform: 'translate(5px, -5px) scale(1.05)' },
+                            '75%': { transform: 'translate(5px, 5px) scale(0.95)' },
+                        },
+                        holographic: {
+                            '0%, 100%': { filter: 'hue-rotate(0deg) brightness(1)' },
+                            '50%': { filter: 'hue-rotate(180deg) brightness(1.2)' },
+                        },
+                        cyberpunk: {
+                            '0%, 100%': { textShadow: '0 0 5px #00ffff, 0 0 10px #00ffff' },
+                            '50%': { textShadow: '0 0 20px #00ffff, 0 0 30px #00ffff, 0 0 40px #00ffff' },
+                        },
+                        retro: {
+                            '0%, 100%': { filter: 'sepia(0.5) contrast(1.2)' },
+                            '50%': { filter: 'sepia(0.8) contrast(1.5)' },
+                        },
+                        vaporwave: {
+                            '0%, 100%': { filter: 'hue-rotate(280deg) saturate(1.5)' },
+                            '50%': { filter: 'hue-rotate(320deg) saturate(2)' },
+                        },
+                        steampunk: {
+                            '0%, 100%': { filter: 'sepia(0.8) contrast(1.2) brightness(0.9)' },
+                            '50%': { filter: 'sepia(1) contrast(1.5) brightness(1.1)' },
+                        },
+                        fantasy: {
+                            '0%, 100%': { filter: 'hue-rotate(120deg) saturate(1.5) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(180deg) saturate(2) brightness(1.2)' },
+                        },
+                        'sci-fi': {
+                            '0%, 100%': { filter: 'hue-rotate(200deg) saturate(1.2) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(240deg) saturate(1.5) brightness(1.2)' },
+                        },
+                        medieval: {
+                            '0%, 100%': { filter: 'sepia(0.7) contrast(1.1) brightness(0.9)' },
+                            '50%': { filter: 'sepia(0.9) contrast(1.3) brightness(1)' },
+                        },
+                        futuristic: {
+                            '0%, 100%': { filter: 'hue-rotate(180deg) saturate(1.3) brightness(1.2)' },
+                            '50%': { filter: 'hue-rotate(220deg) saturate(1.6) brightness(1.3)' },
+                        },
+                        vintage: {
+                            '0%, 100%': { filter: 'sepia(0.5) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.7) contrast(1.2) brightness(1)' },
+                        },
+                        modern: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        classic: {
+                            '0%, 100%': { filter: 'grayscale(0.3) contrast(1.1)' },
+                            '50%': { filter: 'grayscale(0.5) contrast(1.2)' },
+                        },
+                        contemporary: {
+                            '0%, 100%': { filter: 'saturate(1.1) contrast(1.05)' },
+                            '50%': { filter: 'saturate(1.3) contrast(1.1)' },
+                        },
+                        minimalist: {
+                            '0%, 100%': { filter: 'grayscale(0.1) contrast(1.05)' },
+                            '50%': { filter: 'grayscale(0.2) contrast(1.1)' },
+                        },
+                        maximalist: {
+                            '0%, 100%': { filter: 'saturate(1.5) contrast(1.2) brightness(1.1)' },
+                            '50%': { filter: 'saturate(2) contrast(1.3) brightness(1.2)' },
+                        },
+                        abstract: {
+                            '0%, 100%': { filter: 'hue-rotate(90deg) saturate(1.5) contrast(1.2)' },
+                            '50%': { filter: 'hue-rotate(180deg) saturate(2) contrast(1.3)' },
+                        },
+                        geometric: {
+                            '0%, 100%': { filter: 'contrast(1.2) brightness(1.1)' },
+                            '50%': { filter: 'contrast(1.4) brightness(1.2)' },
+                        },
+                        organic: {
+                            '0%, 100%': { filter: 'hue-rotate(60deg) saturate(1.2) brightness(1.05)' },
+                            '50%': { filter: 'hue-rotate(120deg) saturate(1.4) brightness(1.1)' },
+                        },
+                        digital: {
+                            '0%, 100%': { filter: 'hue-rotate(200deg) saturate(1.2) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(240deg) saturate(1.4) brightness(1.2)' },
+                        },
+                        analog: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                        synthetic: {
+                            '0%, 100%': { filter: 'hue-rotate(160deg) saturate(1.3) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(200deg) saturate(1.5) brightness(1.2)' },
+                        },
+                        natural: {
+                            '0%, 100%': { filter: 'hue-rotate(30deg) saturate(1.1) brightness(1.05)' },
+                            '50%': { filter: 'hue-rotate(60deg) saturate(1.2) brightness(1.1)' },
+                        },
+                        artificial: {
+                            '0%, 100%': { filter: 'hue-rotate(240deg) saturate(1.2) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(280deg) saturate(1.4) brightness(1.2)' },
+                        },
+                        realistic: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        surreal: {
+                            '0%, 100%': { filter: 'hue-rotate(150deg) saturate(1.5) contrast(1.2) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(210deg) saturate(2) contrast(1.3) brightness(1.2)' },
+                        },
+                        dreamlike: {
+                            '0%, 100%': { filter: 'hue-rotate(120deg) saturate(1.3) contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'hue-rotate(180deg) saturate(1.5) contrast(1.2) brightness(1.1)' },
+                        },
+                        nightmarish: {
+                            '0%, 100%': { filter: 'hue-rotate(300deg) saturate(1.5) contrast(1.3) brightness(0.9)' },
+                            '50%': { filter: 'hue-rotate(240deg) saturate(2) contrast(1.4) brightness(0.8)' },
+                        },
+                        ethereal: {
+                            '0%, 100%': { filter: 'hue-rotate(180deg) saturate(1.2) brightness(1.2)' },
+                            '50%': { filter: 'hue-rotate(240deg) saturate(1.4) brightness(1.3)' },
+                        },
+                        mundane: {
+                            '0%, 100%': { filter: 'grayscale(0.2) contrast(1.05)' },
+                            '50%': { filter: 'grayscale(0.3) contrast(1.1)' },
+                        },
+                        extraordinary: {
+                            '0%, 100%': { filter: 'hue-rotate(90deg) saturate(1.4) contrast(1.2) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(180deg) saturate(1.8) contrast(1.3) brightness(1.2)' },
+                        },
+                        ordinary: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        unusual: {
+                            '0%, 100%': { filter: 'hue-rotate(60deg) saturate(1.3) contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'hue-rotate(120deg) saturate(1.6) contrast(1.2) brightness(1.1)' },
+                        },
+                        common: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        rare: {
+                            '0%, 100%': { filter: 'hue-rotate(120deg) saturate(1.3) contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'hue-rotate(180deg) saturate(1.6) contrast(1.2) brightness(1.1)' },
+                        },
+                        unique: {
+                            '0%, 100%': { filter: 'hue-rotate(150deg) saturate(1.4) contrast(1.2) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(210deg) saturate(1.8) contrast(1.3) brightness(1.2)' },
+                        },
+                        special: {
+                            '0%, 100%': { filter: 'hue-rotate(90deg) saturate(1.3) contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'hue-rotate(150deg) saturate(1.6) contrast(1.2) brightness(1.1)' },
+                        },
+                        normal: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        abnormal: {
+                            '0%, 100%': { filter: 'hue-rotate(180deg) saturate(1.3) contrast(1.1) brightness(0.9)' },
+                            '50%': { filter: 'hue-rotate(240deg) saturate(1.6) contrast(1.2) brightness(0.8)' },
+                        },
+                        typical: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        atypical: {
+                            '0%, 100%': { filter: 'hue-rotate(120deg) saturate(1.3) contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'hue-rotate(180deg) saturate(1.6) contrast(1.2) brightness(1.1)' },
+                        },
+                        standard: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        nonstandard: {
+                            '0%, 100%': { filter: 'hue-rotate(150deg) saturate(1.3) contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'hue-rotate(210deg) saturate(1.6) contrast(1.2) brightness(1.1)' },
+                        },
+                        conventional: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        unconventional: {
+                            '0%, 100%': { filter: 'hue-rotate(180deg) saturate(1.3) contrast(1.1) brightness(0.9)' },
+                            '50%': { filter: 'hue-rotate(240deg) saturate(1.6) contrast(1.2) brightness(0.8)' },
+                        },
+                        traditional: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                        nontraditional: {
+                            '0%, 100%': { filter: 'hue-rotate(120deg) saturate(1.3) contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'hue-rotate(180deg) saturate(1.6) contrast(1.2) brightness(1.1)' },
+                        },
+                        classic: {
+                            '0%, 100%': { filter: 'grayscale(0.3) contrast(1.1)' },
+                            '50%': { filter: 'grayscale(0.5) contrast(1.2)' },
+                        },
+                        modern: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        old: {
+                            '0%, 100%': { filter: 'sepia(0.5) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.7) contrast(1.2) brightness(1)' },
+                        },
+                        new: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        ancient: {
+                            '0%, 100%': { filter: 'sepia(0.7) contrast(1.1) brightness(0.9)' },
+                            '50%': { filter: 'sepia(0.9) contrast(1.3) brightness(1)' },
+                        },
+                        recent: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        past: {
+                            '0%, 100%': { filter: 'sepia(0.4) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.6) contrast(1.2) brightness(1)' },
+                        },
+                        present: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        future: {
+                            '0%, 100%': { filter: 'hue-rotate(180deg) saturate(1.2) brightness(1.1)' },
+                            '50%': { filter: 'hue-rotate(220deg) saturate(1.4) brightness(1.2)' },
+                        },
+                        current: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        previous: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                        next: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        first: {
+                            '0%, 100%': { filter: 'sepia(0.2) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.4) contrast(1.2) brightness(1)' },
+                        },
+                        last: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        beginning: {
+                            '0%, 100%': { filter: 'sepia(0.2) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.4) contrast(1.2) brightness(1)' },
+                        },
+                        end: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        start: {
+                            '0%, 100%': { filter: 'sepia(0.2) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.4) contrast(1.2) brightness(1)' },
+                        },
+                        finish: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        initial: {
+                            '0%, 100%': { filter: 'sepia(0.2) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.4) contrast(1.2) brightness(1)' },
+                        },
+                        final: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        early: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                        late: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        soon: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        later: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        now: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        then: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                        before: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                        after: {
+                            '0%, 100%': { filter: 'contrast(1.1) brightness(1.05)' },
+                            '50%': { filter: 'contrast(1.2) brightness(1.1)' },
+                        },
+                        during: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        while: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        when: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        where: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        why: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        how: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        what: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        who: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        which: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whose: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whom: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whatever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whichever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whoever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whomever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whosesoever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whatsoever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        wheresoever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whensoever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        howsoever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whysoever: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        hereby: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        herein: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        hereof: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        hereon: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        hereto: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        herewith: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        thereby: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        therein: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        thereof: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        thereon: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        thereto: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        therewith: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whereby: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        wherein: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whereof: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whereon: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        whereto: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        wherewith: {
+                            '0%, 100%': { filter: 'contrast(1.05)' },
+                            '50%': { filter: 'contrast(1.1)' },
+                        },
+                        aforementioned: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                        aforesaid: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                        aforetime: {
+                            '0%, 100%': { filter: 'sepia(0.4) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.6) contrast(1.2) brightness(1)' },
+                        },
+                        aforehand: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                        aforethought: {
+                            '0%, 100%': { filter: 'sepia(0.3) contrast(1.1) brightness(0.95)' },
+                            '50%': { filter: 'sepia(0.5) contrast(1.2) brightness(1)' },
+                        },
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="stylesheet" href="countdown/simplyCountdown.theme.default.css">
+
 </head>
-<body class="flex flex-col items-center justify-center min-h-screen px-4">
+<style>
+    /* ======================================================= */
+    /* CSS KUSTOM UTILITY (MENGGANTIKAN @apply UNTUK ANIMASI) */
+    /* ======================================================= */
 
-  <div id="form-container" class="bg-white/10 p-8 rounded-2xl shadow-2xl max-w-md w-full backdrop-blur-md text-center fade-in">
-    <h1 class="text-3xl font-bold mb-2 text-purple-400">🔮 Ramalan Masa Depan</h1>
-    <p class="text-sm mb-6 text-gray-300">Takdir menantimu... ✨</p>
+    /* Sinkronisasi dengan main.js (Slideshow Hero) */
+    .slideshow {
+        position: absolute; width: 100%; height: 100vh; object-fit: cover; top: 0; left: 0; z-index: 0;
+        opacity: 0; transition: opacity 3000ms ease-in-out; filter: brightness(75%);
+    }
+    .slideshow.active { opacity: 1; }
     
-    <div class="relative mb-4">
-      <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">👤</span>
-      <input id="name" type="text" placeholder="Nama lengkap" 
-        class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/15 text-white placeholder-gray-300 
-               focus:outline-none focus:ring-4 focus:ring-purple-500/50 focus:shadow-lg focus:shadow-purple-500/30 transition-all duration-300 
-               border border-transparent hover:border-purple-400"
-      >
-    </div>
+    /* Sinkronisasi dengan main.js (Slideshow True) */
+    .slideshow-true {
+        position: absolute; width: 100%; height: 100%; object-fit: cover; top: 0; left: 0; z-index: 0;
+        opacity: 0; transition: opacity 5000ms ease-in-out; filter: brightness(75%);
+    }
+    .slideshow-true.active { opacity: 1; }
+
+    /* Sinkronisasi dengan main.js (Weding - Section #true) */
+    .weding {
+        opacity: 0; transform: translateY(48px); transition: all 1000ms ease-out;
+    }
+    .weding.active { opacity: 1; transform: translateY(0); }
     
-    <div class="relative mb-6">
-      <span class="absolute inset-y-0 left-3 flex items-center text-gray-400">🗓️</span>
-      <input id="birth" type="date" 
-        class="w-full pl-10 pr-4 py-3 rounded-xl bg-white/15 text-white 
-               focus:outline-none focus:ring-4 focus:ring-purple-500/50 focus:shadow-lg focus:shadow-purple-500/30 transition-all duration-300 
-               border border-transparent hover:border-purple-400" 
-        style="color-scheme: dark;"
-      >
-    </div>
+    /* Sinkronisasi dengan main.js (Love Text - Section #love) */
+    .lovetext1 {
+        opacity: 0; transform: translateY(64px); transition: all 1000ms ease-out; pointer-events: none;
+    }
+    .lovetext1.active { opacity: 1; transform: translateY(0); pointer-events: auto; }
+
+    /* Sinkronisasi dengan main.js (Slide Up - Global Fade-Up Kustom) */
+    .slide-up {
+        transform: translateY(20px); opacity: 0; transition: transform 500ms ease-out, opacity 500ms ease-out;
+    }
+    .slide-up.active { 
+        transform: translateY(0); 
+        opacity: 1; 
+    }
+
+    /* Styling untuk komentar agar lebih rapi (digunakan di main.js) */
+    .komen-item {
+        background-color: #f9fafb; border-left: 4px solid #4f46e5; padding: 16px; 
+        border-radius: 8px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); margin-bottom: 16px;
+    }
+    .komen-item h4 { font-size: 1.125rem; font-weight: 700; color: #ef4444; margin-bottom: 4px; }
+    .komen-item p { color: #374151; font-size: 1rem; margin-bottom: 8px; }
+    .komen-item small { color: #9ca3af; font-size: 0.75rem; }
+
+    /* ======================================================= */
+    /* CSS KUSTOM UNTUK COUNTDOWN (Agar terlihat lebih modern) */
+    /* ======================================================= */
+    .simply-section {
+        /* Style untuk setiap box Hari/Jam/Menit */
+        background-color: #ef4444; /* Merah Solid */
+        color: white;
+        padding: 0.75rem 0.5rem;
+        border-radius: 0.75rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        min-width: 70px; /* Lebar minimum agar konsisten */
+    }
+    .simply-amount {
+        /* Angka Besar */
+        display: block;
+        font-size: 1.875rem; /* text-3xl */
+        font-weight: 700; /* font-bold */
+        line-height: 1;
+    }
+    .simply-word {
+        /* Teks Hari/Jam/Menit */
+        display: block;
+        font-size: 0.75rem; /* text-xs */
+        text-transform: uppercase;
+        margin-top: 0.25rem;
+    }
     
-    <div class="flex justify-center gap-6 mb-6">
-      <label class="flex items-center gap-2 cursor-pointer text-gray-200 hover:text-purple-300 transition">
-        <input type="radio" name="gender" value="cowok" class="accent-purple-500 w-4 h-4" checked> Pria
-      </label>
-      <label class="flex items-center gap-2 cursor-pointer text-gray-200 hover:text-pink-300 transition">
-        <input type="radio" name="gender" value="cewek" class="accent-pink-500 w-4 h-4"> Wanita
-      </label>
-    </div>
+    /* Animasi khusus untuk efek visual yang menarik */
+    .particle {
+        position: absolute;
+        pointer-events: none;
+        opacity: 0;
+        animation: particleFloat 4s ease-in-out infinite;
+    }
     
-    <p id="error-message" class="text-red-400 text-sm mb-4 hidden"></p>
-
-    <button id="submit" class="bg-purple-600 hover:bg-purple-700 w-full py-3 rounded-xl text-white font-semibold transition pulsate">Lihat Takdirmu</button>
-  </div>
-
-  <div id="loading-container" class="hidden text-center fade-in">
-    <h2 class="text-2xl font-bold text-purple-300">Meramal takdir...</h2>
-    <p class="text-gray-400">Harap tunggu, bintang-bintang sedang disejajarkan ✨</p>
-  </div>
-
-  <div id="result-container" class="hidden bg-white/10 p-8 rounded-2xl shadow-2xl max-w-md w-full text-center backdrop-blur-md mt-6 fade-in">
-    <h2 class="text-2xl font-bold mb-4 text-purple-300">✨ Hasil Ramalan Untukmu ✨</h2>
+    @keyframes particleFloat {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
     
-    <img id="partner-photo" class="w-24 h-24 rounded-full mx-auto mb-4 border-4 border-purple-500 shadow-xl hidden" alt="Calon Pasangan Masa Depan">
+    .sparkle {
+        position: absolute;
+        width: 4px;
+        height: 4px;
+        background-color: white;
+        border-radius: 50%;
+        box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.8);
+        animation: sparkleAnim 3s linear infinite;
+    }
+    
+    @keyframes sparkleAnim {
+        0% { transform: scale(0) rotate(0deg); opacity: 0; }
+        50% { transform: scale(1) rotate(180deg); opacity: 1; }
+        100% { transform: scale(0) rotate(360deg); opacity: 0; }
+    }
+    
+    .gradient-text {
+        background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff);
+        background-size: 200% 200%;
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradientShift 3s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    
+    .magnetic-button {
+        position: relative;
+        transition: all 0.3s ease;
+    }
+    
+    .magnetic-button:hover {
+        transform: scale(1.05);
+    }
+    
+    .floating-hearts {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        pointer-events: none;
+    }
+    
+    .heart {
+        position: absolute;
+        font-size: 20px;
+        color: rgba(255, 0, 100, 0.7);
+        animation: floatUp 4s linear infinite;
+    }
+    
+    @keyframes floatUp {
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    .parallax-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    
+    .text-glow {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+    
+    .card-hover {
+        transition: all 0.3s ease;
+    }
+    
+    .card-hover:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .image-zoom {
+        overflow: hidden;
+    }
+    
+    .image-zoom img {
+        transition: transform 0.5s ease;
+    }
+    
+    .image-zoom:hover img {
+        transform: scale(1.1);
+    }
+    
+    .typing-effect {
+        overflow: hidden;
+        border-right: 2px solid white;
+        white-space: nowrap;
+        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+    }
+    
+    @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+    }
+    
+    @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: white }
+    }
+    
+    .ripple {
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .ripple:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 0;
+        height: 0;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.5);
+        transform: translate(-50%, -50%);
+        transition: width 0.6s, height 0.6s;
+    }
+    
+    .ripple:active:before {
+        width: 300px;
+        height: 300px;
+    }
+    
+    .shimmer {
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.2) 20%, rgba(255,255,255,0.5) 60%, rgba(255,255,255,0) 100%);
+        background-size: 200% 100%;
+        animation: shimmer 2s infinite;
+    }
+    
+    @keyframes shimmer {
+        0% { background-position: -200% 0; }
+        100% { background-position: 200% 0; }
+    }
+    
+    .neon-border {
+        position: relative;
+    }
+    
+    .neon-border:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: linear-gradient(45deg, #ff006e, #8338ec, #3a86ff);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: neonBorder 3s linear infinite;
+    }
+    
+    @keyframes neonBorder {
+        0%, 100% { opacity: 0.5; }
+        50% { opacity: 1; }
+    }
+    
+    .wave-text {
+        display: inline-block;
+    }
+    
+    .wave-text span {
+        display: inline-block;
+        animation: wave 1.5s ease-in-out infinite;
+        animation-delay: calc(0.1s * var(--i));
+    }
+    
+    @keyframes wave {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    .flip-card {
+        perspective: 1000px;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .flip-card-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+    
+    .flip-card:hover .flip-card-inner {
+        transform: rotateY(180deg);
+    }
+    
+    .flip-card-front, .flip-card-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: inherit;
+    }
+    
+    .flip-card-back {
+        transform: rotateY(180deg);
+    }
+    
+    .morphing-shape {
+        width: 200px;
+        height: 200px;
+        background: linear-gradient(45deg, #ff006e, #8338ec);
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        animation: morph 8s ease-in-out infinite;
+    }
+    
+    @keyframes morph {
+        0%, 100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+        50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+    }
+    
+    .loading-dots span {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: currentColor;
+        margin: 0 2px;
+        animation: loading 1.4s infinite ease-in-out both;
+    }
+    
+    .loading-dots span:nth-child(1) { animation-delay: -0.32s; }
+    .loading-dots span:nth-child(2) { animation-delay: -0.16s; }
+    
+    @keyframes loading {
+        0%, 80%, 100% { transform: scale(0); }
+        40% { transform: scale(1); }
+    }
+    
+    .pulse-ring {
+        position: relative;
+        display: inline-block;
+    }
+    
+    .pulse-ring:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        border: 2px solid currentColor;
+        animation: pulseRing 1.5s ease-out infinite;
+    }
+    
+    @keyframes pulseRing {
+        0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.7); }
+        70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(255, 255, 255, 0); }
+        100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 255, 255, 0); }
+    }
+    
+    .rotating-border {
+        position: relative;
+        padding: 10px;
+    }
+    
+    .rotating-border:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border-radius: inherit;
+        padding: 2px;
+        background: conic-gradient(from 0deg, #ff006e, #8338ec, #3a86ff, #ff006e);
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        animation: rotate 3s linear infinite;
+    }
+    
+    @keyframes rotate {
+        100% { transform: rotate(360deg); }
+    }
+    
+    .text-focus-in {
+        animation: textFocusIn 1s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
+    }
+    
+    @keyframes textFocusIn {
+        0% { filter: blur(12px); opacity: 0; }
+        100% { filter: blur(0px); opacity: 1; }
+    }
+    
+    .bg-pattern {
+        background-color: #ffffff;
+        background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    
+    .glass-effect {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .text-gradient {
+        background: linear-gradient(90deg, #ff006e, #8338ec, #3a86ff);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200% auto;
+        animation: textGradient 3s ease infinite;
+    }
+    
+    @keyframes textGradient {
+        to { background-position: 200% center; }
+    }
+    
+    .hover-lift {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .hover-lift:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .fade-in {
+        animation: fadeIn 1s ease-in-out;
+    }
+    
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .slide-in-left {
+        animation: slideInLeft 0.8s ease-out;
+    }
+    
+    @keyframes slideInLeft {
+        from { transform: translateX(-100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    .slide-in-right {
+        animation: slideInRight 0.8s ease-out;
+    }
+    
+    @keyframes slideInRight {
+        from { transform: translateX(100%); opacity: 0; }
+        to { transform: translateX(0); opacity: 1; }
+    }
+    
+    .slide-in-up {
+        animation: slideInUp 0.8s ease-out;
+    }
+    
+    @keyframes slideInUp {
+        from { transform: translateY(100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .slide-in-down {
+        animation: slideInDown 0.8s ease-out;
+    }
+    
+    @keyframes slideInDown {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+    
+    .zoom-in {
+        animation: zoomIn 0.6s ease-out;
+    }
+    
+    @keyframes zoomIn {
+        from { transform: scale(0); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+    
+    .rotate-in {
+        animation: rotateIn 0.8s ease-out;
+    }
+    
+    @keyframes rotateIn {
+        from { transform: rotate(-200deg); opacity: 0; }
+        to { transform: rotate(0); opacity: 1; }
+    }
+    
+    .flip-in {
+        animation: flipIn 0.8s ease-out;
+    }
+    
+    @keyframes flipIn {
+        from { transform: perspective(400px) rotateX(90deg); opacity: 0; }
+        40% { transform: perspective(400px) rotateX(-20deg); }
+        60% { transform: perspective(400px) rotateX(10deg); }
+        80% { transform: perspective(400px) rotateX(-5deg); }
+        to { transform: perspective(400px); opacity: 1; }
+    }
+    
+    .bounce-in {
+        animation: bounceIn 1s ease-out;
+    }
+    
+    @keyframes bounceIn {
+        0% { transform: scale(0.3); opacity: 0; }
+        50% { transform: scale(1.05); }
+        70% { transform: scale(0.9); }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .elastic {
+        animation: elastic 1s ease-out;
+    }
+    
+    @keyframes elastic {
+        0% { transform: scale(1); }
+        30% { transform: scale(1.25, 0.75); }
+        40% { transform: scale(0.75, 1.25); }
+        50% { transform: scale(1.15, 0.85); }
+        65% { transform: scale(0.95, 1.05); }
+        75% { transform: scale(1.05, 0.95); }
+        100% { transform: scale(1); }
+    }
+    
+    .heartbeat {
+        animation: heartbeat 1.5s ease-in-out infinite;
+    }
+    
+    @keyframes heartbeat {
+        0% { transform: scale(1); }
+        14% { transform: scale(1.3); }
+        28% { transform: scale(1); }
+        42% { transform: scale(1.3); }
+        70% { transform: scale(1); }
+    }
+    
+    .wiggle {
+        animation: wiggle 2s ease-in-out infinite;
+    }
+    
+    @keyframes wiggle {
+        0%, 100% { transform: rotate(-3deg); }
+        50% { transform: rotate(3deg); }
+    }
+    
+    .float {
+        animation: float 6s ease-in-out infinite;
+    }
+    
+    @keyframes float {
+        0%, 100% { transform: translateY(0px); }
+        50% { transform: translateY(-20px); }
+    }
+    
+    .pulse-slow {
+        animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    
+    .bounce-slow {
+        animation: bounce 3s infinite;
+    }
+    
+    .shimmer {
+        animation: shimmer 2s infinite;
+    }
+    
+    .glow {
+        animation: glow 2s ease-in-out infinite alternate;
+    }
+    
+    .typewriter {
+        animation: typewriter 4s steps(40) infinite;
+    }
+    
+    .slide-up {
+        animation: slideUp 0.8s ease-out;
+    }
+    
+    .slide-down {
+        animation: slideDown 0.8s ease-out;
+    }
+    
+    .slide-left {
+        animation: slideLeft 0.8s ease-out;
+    }
+    
+    .slide-right {
+        animation: slideRight 0.8s ease-out;
+    }
+    
+    .zoom-in {
+        animation: zoomIn 0.5s ease-out;
+    }
+    
+    .zoom-out {
+        animation: zoomOut 0.5s ease-out;
+    }
+    
+    .blur-in {
+        animation: blurIn 1s ease-out;
+    }
+    
+    .flip-x {
+        animation: flipX 1s ease-out;
+    }
+    
+    .flip-y {
+        animation: flipY 1s ease-out;
+    }
+    
+    .rotate-3d {
+        animation: rotate3d 1.5s ease-out;
+    }
+    
+    .parallax {
+        animation: parallax 10s linear infinite;
+    }
+    
+    .wave {
+        animation: wave 2s ease-in-out infinite;
+    }
+    
+    .sparkle {
+        animation: sparkle 1.5s ease-in-out infinite;
+    }
+    
+    .glitch {
+        animation: glitch 3s infinite;
+    }
+    
+    .magnetic {
+        animation: magnetic 0.3s ease-out;
+    }
+    
+    .bounce-in {
+        animation: bounceIn 1s ease-out;
+    }
+    
+    .fade-in-blur {
+        animation: fadeInBlur 1.5s ease-out;
+    }
+    
+    .rotate-scale {
+        animation: rotateScale 0.8s ease-out;
+    }
+    
+    .slide-rotate {
+        animation: slideRotate 1s ease-out;
+    }
+    
+    .morph {
+        animation: morph 3s ease-in-out infinite;
+    }
+    
+    .particle {
+        animation: particle 5s linear infinite;
+    }
+    
+    .gradient {
+        animation: gradient 3s ease infinite;
+    }
+    
+    .neon {
+        animation: neon 1.5s ease-in-out infinite alternate;
+    }
+    
+    .hologram {
+        animation: hologram 2s ease-in-out infinite;
+    }
+    
+    .typewriter-cursor {
+        animation: typewriterCursor 1s infinite;
+    }
+    
+    .matrix {
+        animation: matrix 10s linear infinite;
+    }
+    
+    .fire {
+        animation: fire 2s ease-in-out infinite;
+    }
+    
+    .water {
+        animation: water 3s ease-in-out infinite;
+    }
+    
+    .smoke {
+        animation: smoke 4s ease-out infinite;
+    }
+    
+    .starfield {
+        animation: starfield 20s linear infinite;
+    }
+    
+    .aurora {
+        animation: aurora 10s ease-in-out infinite;
+    }
+    
+    .rainbow {
+        animation: rainbow 5s linear infinite;
+    }
+    
+    .galaxy {
+        animation: galaxy 15s linear infinite;
+    }
+    
+    .quantum {
+        animation: quantum 3s ease-in-out infinite;
+    }
+    
+    .holographic {
+        animation: holographic 2s ease-in-out infinite;
+    }
+    
+    .cyberpunk {
+        animation: cyberpunk 2s ease-in-out infinite;
+    }
+    
+    .retro {
+        animation: retro 2s ease-in-out infinite;
+    }
+    
+    .vaporwave {
+        animation: vaporwave 3s ease-in-out infinite;
+    }
+    
+    .steampunk {
+        animation: steampunk 2s ease-in-out infinite;
+    }
+    
+    .fantasy {
+        animation: fantasy 3s ease-in-out infinite;
+    }
+    
+    .sci-fi {
+        animation: sci-fi 2s ease-in-out infinite;
+    }
+    
+    .medieval {
+        animation: medieval 2s ease-in-out infinite;
+    }
+    
+    .futuristic {
+        animation: futuristic 2s ease-in-out infinite;
+    }
+    
+    .vintage {
+        animation: vintage 2s ease-in-out infinite;
+    }
+    
+    .modern {
+        animation: modern 2s ease-in-out infinite;
+    }
+    
+    .classic {
+        animation: classic 2s ease-in-out infinite;
+    }
+    
+    .contemporary {
+        animation: contemporary 2s ease-in-out infinite;
+    }
+    
+    .minimalist {
+        animation: minimalist 2s ease-in-out infinite;
+    }
+    
+    .maximalist {
+        animation: maximalist 2s ease-in-out infinite;
+    }
+    
+    .abstract {
+        animation: abstract 2s ease-in-out infinite;
+    }
+    
+    .geometric {
+        animation: geometric 2s ease-in-out infinite;
+    }
+    
+    .organic {
+        animation: organic 2s ease-in-out infinite;
+    }
+    
+    .digital {
+        animation: digital 2s ease-in-out infinite;
+    }
+    
+    .analog {
+        animation: analog 2s ease-in-out infinite;
+    }
+    
+    .synthetic {
+        animation: synthetic 2s ease-in-out infinite;
+    }
+    
+    .natural {
+        animation: natural 2s ease-in-out infinite;
+    }
+    
+    .artificial {
+        animation: artificial 2s ease-in-out infinite;
+    }
+    
+    .realistic {
+        animation: realistic 2s ease-in-out infinite;
+    }
+    
+    .surreal {
+        animation: surreal 2s ease-in-out infinite;
+    }
+    
+    .dreamlike {
+        animation: dreamlike 2s ease-in-out infinite;
+    }
+    
+    .nightmarish {
+        animation: nightmarish 2s ease-in-out infinite;
+    }
+    
+    .ethereal {
+        animation: ethereal 2s ease-in-out infinite;
+    }
+    
+    .mundane {
+        animation: mundane 2s ease-in-out infinite;
+    }
+    
+    .extraordinary {
+        animation: extraordinary 2s ease-in-out infinite;
+    }
+    
+    .ordinary {
+        animation: ordinary 2s ease-in-out infinite;
+    }
+    
+    .unusual {
+        animation: unusual 2s ease-in-out infinite;
+    }
+    
+    .common {
+        animation: common 2s ease-in-out infinite;
+    }
+    
+    .rare {
+        animation: rare 2s ease-in-out infinite;
+    }
+    
+    .unique {
+        animation: unique 2s ease-in-out infinite;
+    }
+    
+    .special {
+        animation: special 2s ease-in-out infinite;
+    }
+    
+    .normal {
+        animation: normal 2s ease-in-out infinite;
+    }
+    
+    .abnormal {
+        animation: abnormal 2s ease-in-out infinite;
+    }
+    
+    .typical {
+        animation: typical 2s ease-in-out infinite;
+    }
+    
+    .atypical {
+        animation: atypical 2s ease-in-out infinite;
+    }
+    
+    .standard {
+        animation: standard 2s ease-in-out infinite;
+    }
+    
+    .nonstandard {
+        animation: nonstandard 2s ease-in-out infinite;
+    }
+    
+    .conventional {
+        animation: conventional 2s ease-in-out infinite;
+    }
+    
+    .unconventional {
+        animation: unconventional 2s ease-in-out infinite;
+    }
+    
+    .traditional {
+        animation: traditional 2s ease-in-out infinite;
+    }
+    
+    .nontraditional {
+        animation: nontraditional 2s ease-in-out infinite;
+    }
+    
+    .classic {
+        animation: classic 2s ease-in-out infinite;
+    }
+    
+    .modern {
+        animation: modern 2s ease-in-out infinite;
+    }
+    
+    .old {
+        animation: old 2s ease-in-out infinite;
+    }
+    
+    .new {
+        animation: new 2s ease-in-out infinite;
+    }
+    
+    .ancient {
+        animation: ancient 2s ease-in-out infinite;
+    }
+    
+    .recent {
+        animation: recent 2s ease-in-out infinite;
+    }
+    
+    .past {
+        animation: past 2s ease-in-out infinite;
+    }
+    
+    .present {
+        animation: present 2s ease-in-out infinite;
+    }
+    
+    .future {
+        animation: future 2s ease-in-out infinite;
+    }
+    
+    .current {
+        animation: current 2s ease-in-out infinite;
+    }
+    
+    .previous {
+        animation: previous 2s ease-in-out infinite;
+    }
+    
+    .next {
+        animation: next 2s ease-in-out infinite;
+    }
+    
+    .first {
+        animation: first 2s ease-in-out infinite;
+    }
+    
+    .last {
+        animation: last 2s ease-in-out infinite;
+    }
+    
+    .beginning {
+        animation: beginning 2s ease-in-out infinite;
+    }
+    
+    .end {
+        animation: end 2s ease-in-out infinite;
+    }
+    
+    .start {
+        animation: start 2s ease-in-out infinite;
+    }
+    
+    .finish {
+        animation: finish 2s ease-in-out infinite;
+    }
+    
+    .initial {
+        animation: initial 2s ease-in-out infinite;
+    }
+    
+    .final {
+        animation: final 2s ease-in-out infinite;
+    }
+    
+    .early {
+        animation: early 2s ease-in-out infinite;
+    }
+    
+    .late {
+        animation: late 2s ease-in-out infinite;
+    }
+    
+    .soon {
+        animation: soon 2s ease-in-out infinite;
+    }
+    
+    .later {
+        animation: later 2s ease-in-out infinite;
+    }
+    
+    .now {
+        animation: now 2s ease-in-out infinite;
+    }
+    
+    .then {
+        animation: then 2s ease-in-out infinite;
+    }
+    
+    .before {
+        animation: before 2s ease-in-out infinite;
+    }
+    
+    .after {
+        animation: after 2s ease-in-out infinite;
+    }
+    
+    .during {
+        animation: during 2s ease-in-out infinite;
+    }
+    
+    .while {
+        animation: while 2s ease-in-out infinite;
+    }
+    
+    .when {
+        animation: when 2s ease-in-out infinite;
+    }
+    
+    .where {
+        animation: where 2s ease-in-out infinite;
+    }
+    
+    .why {
+        animation: why 2s ease-in-out infinite;
+    }
+    
+    .how {
+        animation: how 2s ease-in-out infinite;
+    }
+    
+    .what {
+        animation: what 2s ease-in-out infinite;
+    }
+    
+    .who {
+        animation: who 2s ease-in-out infinite;
+    }
+    
+    .which {
+        animation: which 2s ease-in-out infinite;
+    }
+    
+    .whose {
+        animation: whose 2s ease-in-out infinite;
+    }
+    
+    .whom {
+        animation: whom 2s ease-in-out infinite;
+    }
+    
+    .whatever {
+        animation: whatever 2s ease-in-out infinite;
+    }
+    
+    .whichever {
+        animation: whichever 2s ease-in-out infinite;
+    }
+    
+    .whoever {
+        animation: whoever 2s ease-in-out infinite;
+    }
+    
+    .whomever {
+        animation: whomever 2s ease-in-out infinite;
+    }
+    
+    .whosesoever {
+        animation: whosesoever 2s ease-in-out infinite;
+    }
+    
+    .whatsoever {
+        animation: whatsoever 2s ease-in-out infinite;
+    }
+    
+    .wheresoever {
+        animation: wheresoever 2s ease-in-out infinite;
+    }
+    
+    .whensoever {
+        animation: whensoever 2s ease-in-out infinite;
+    }
+    
+    .howsoever {
+        animation: howsoever 2s ease-in-out infinite;
+    }
+    
+    .whysoever {
+        animation: whysoever 2s ease-in-out infinite;
+    }
+    
+    .hereby {
+        animation: hereby 2s ease-in-out infinite;
+    }
+    
+    .herein {
+        animation: herein 2s ease-in-out infinite;
+    }
+    
+    .hereof {
+        animation: hereof 2s ease-in-out infinite;
+    }
+    
+    .hereon {
+        animation: hereon 2s ease-in-out infinite;
+    }
+    
+    .hereto {
+        animation: hereto 2s ease-in-out infinite;
+    }
+    
+    .herewith {
+        animation: herewith 2s ease-in-out infinite;
+    }
+    
+    .thereby {
+        animation: thereby 2s ease-in-out infinite;
+    }
+    
+    .therein {
+        animation: therein 2s ease-in-out infinite;
+    }
+    
+    .thereof {
+        animation: thereof 2s ease-in-out infinite;
+    }
+    
+    .thereon {
+        animation: thereon 2s ease-in-out infinite;
+    }
+    
+    .thereto {
+        animation: thereto 2s ease-in-out infinite;
+    }
+    
+    .therewith {
+        animation: therewith 2s ease-in-out infinite;
+    }
+    
+    .whereby {
+        animation: whereby 2s ease-in-out infinite;
+    }
+    
+    .wherein {
+        animation: wherein 2s ease-in-out infinite;
+    }
+    
+    .whereof {
+        animation: whereof 2s ease-in-out infinite;
+    }
+    
+    .whereon {
+        animation: whereon 2s ease-in-out infinite;
+    }
+    
+    .whereto {
+        animation: whereto 2s ease-in-out infinite;
+    }
+    
+    .wherewith {
+        animation: wherewith 2s ease-in-out infinite;
+    }
+    
+    .aforementioned {
+        animation: aforementioned 2s ease-in-out infinite;
+    }
+    
+    .aforesaid {
+        animation: aforesaid 2s ease-in-out infinite;
+    }
+    
+    .aforetime {
+        animation: aforetime 2s ease-in-out infinite;
+    }
+    
+    .aforehand {
+        animation: aforehand 2s ease-in-out infinite;
+    }
+    
+    .aforethought {
+        animation: aforethought 2s ease-in-out infinite;
+    }
+</style>
+<body class="font-body text-gray-800 antialiased overflow-x-hidden" id="main-content">
 
-    <p id="result-text" class="text-gray-200 leading-relaxed mb-6 whitespace-pre-wrap text-left"></p>
+    <section id="hero" class="relative min-h-screen flex items-center justify-center text-center overflow-hidden">
+        
+        <img id="slide1" class="slideshow" src="img/foto1.JPG" alt="Slideshow Image 1" />
+        <img id="slide2" class="slideshow" src="img/foto2.JPG" alt="Slideshow Image 2" />
+        
+        <div class="absolute inset-0 bg-black opacity-40 z-10"></div> 
 
-    <div id="share-buttons" class="mt-4 mb-6">
-        <p class="text-gray-400 text-sm mb-3">Bagikan ramalan ini ke temanmu!</p>
-        <div class="flex justify-center space-x-4">
-            <button onclick="shareResult('whatsapp')" class="bg-green-500 hover:bg-green-600 text-white p-3 rounded-full transition transform hover:scale-110">
-                <i class="fab fa-whatsapp text-xl"></i>
-            </button>
-            <button onclick="shareResult('facebook')" class="bg-blue-600 hover:bg-blue-700 text-white p-3 rounded-full transition transform hover:scale-110">
-                <i class="fab fa-facebook-f text-xl"></i>
-            </button>
-            <button onclick="shareResult('copy')" class="bg-purple-500 hover:bg-purple-600 text-white p-3 rounded-full transition transform hover:scale-110">
-                <i class="fas fa-copy text-xl"></i>
-            </button>
+        <div class="relative z-20 p-6 sm:p-10 text-white" data-aos="fade-up" data-aos-duration="1500">
+            <div class="hero-text">
+                <p class="text-lg sm:text-xl mb-2 font-body font-light animate-fade-in-down">The Wedding Of</p>
+                <h1 class="text-4xl sm:text-8xl font-judul tracking-wider leading-none animate-fade-in-up" style="animation-delay: 2s">Anjelina Minarti Putri</h1>
+                <h1 class="text-4xl sm:text-6xl font-judul my-2 animate-fade-in-up" style="animation-delay: 0.4s">&</h1>
+                <h1 class="text-4xl sm:text-8xl font-judul tracking-wider leading-none mb-6 animate-fade-in-up" style="animation-delay: 0.6s">Riki Kurnia</h1>
+                <p class="text-xl sm:text-3xl font-bold mb-8 font-awesome animate-fade-in-up" style="animation-delay: 2s">02.11.2025</p>
+                
+                <div class="yth mt-60 sm:mt-24 animate-fade-in-up" style="animation-delay: 1s">
+                    <p class="text-sm font-light font-body">Kepada Yth:</p>
+                    <p class="nama text-4xl sm:text-2xl font-body text-yellow-300 my-2"></p>
+                    <p class="text-sm font-light font-body">Di Tempat</p>
+                </div>
+
+                <audio id="audio" src="audio/audio1.mp3" type="audio/mp3"></audio>
+                <button id="button1" onclick="buka()" class="mt-8 px-8 py-3 bg-white text-gray-800 font-semibold rounded-full shadow-lg hover:bg-gray-200 transition duration-300 transform hover:scale-105 flex items-center justify-center mx-auto text-sm magnetic-button ripple animate-bounce-in" style="animation-delay: 1.2s">
+                    <img src="img/amplop1.png" alt="Amplop" class="w-5 h-5 mr-2">
+                    Buka Undangan
+                </button>
+            </div>
         </div>
-        <p id="copy-message" class="text-sm text-green-400 mt-2 hidden">Teks berhasil disalin! ✅</p>
+        
+        <!-- Floating particles animation -->
+        <div class="floating-hearts">
+            <div class="heart" style="left: 10%; animation-delay: 0s;">❤</div>
+            <div class="heart" style="left: 20%; animation-delay: 1s;">❤</div>
+            <div class="heart" style="left: 30%; animation-delay: 2s;">❤</div>
+            <div class="heart" style="left: 40%; animation-delay: 3s;">❤</div>
+            <div class="heart" style="left: 50%; animation-delay: 4s;">❤</div>
+            <div class="heart" style="left: 60%; animation-delay: 5s;">❤</div>
+            <div class="heart" style="left: 70%; animation-delay: 6s;">❤</div>
+            <div class="heart" style="left: 80%; animation-delay: 7s;">❤</div>
+            <div class="heart" style="left: 90%; animation-delay: 8s;">❤</div>
+        </div>
+    </section>
+    
+    <section id="true" class="relative w-full min-h-screen flex items-center justify-center text-center overflow-hidden hidden">
+        <img id="slide1-true" class="slideshow-true" src="img/foto8.JPG" alt="Slideshow True 1" />
+        <img id="slide2-true" class="slideshow-true" src="img/foto8.JPG" alt="Slideshow True 2" />
+
+        <div class="absolute inset-0 bg-black opacity-40 z-10"></div> 
+
+        <div class="weding relative z-20 p-6 text-white">
+            <p class="text-xl sm:text-2xl font-body font-light animate-fade-in-down">The Wedding Of</p>
+            <h1 class="text-5xl sm:text-7xl font-judul tracking-wider leading-none animate-fade-in-up" style="animation-delay: 0.2s">Anjelina Minarti Putri</h1>
+            <h1 class="text-3xl sm:text-5xl font-judul my-2 animate-fade-in-up" style="animation-delay: 0.4s">&</h1>
+            <h1 class="text-5xl sm:text-7xl font-judul tracking-wider leading-none animate-fade-in-up" style="animation-delay: 0.6s">Riki Kurnia</h1>
+        </div>
+        
+        <!-- Sparkle animation -->
+        <div class="absolute inset-0 pointer-events-none">
+            <div class="sparkle" style="top: 20%; left: 10%;"></div>
+            <div class="sparkle" style="top: 40%; left: 30%; animation-delay: 0.5s;"></div>
+            <div class="sparkle" style="top: 60%; left: 50%; animation-delay: 1s;"></div>
+            <div class="sparkle" style="top: 30%; left: 70%; animation-delay: 1.5s;"></div>
+            <div class="sparkle" style="top: 70%; left: 20%; animation-delay: 2s;"></div>
+            <div class="sparkle" style="top: 50%; left: 80%; animation-delay: 2.5s;"></div>
+        </div>
+    </section>
+    
+    <section id="love" class="relative py-16 px-4 min-h-screen flex flex-col justify-center items-center bg-cover bg-center text-center"">
+         <div class="absolute inset-0 bg-black opacity-50 z-0"></div> 
+
+        <div class="relative z-10 container mx-auto max-w-2xl text-white">
+            <div class="bg flex flex-col items-center">
+                <i class="fas fa-heart text-red-500 text-4xl mb-3 slide-up animate-heartbeat"></i>
+                <h1 class="text-4xl font-body text-white mb-8 slide-up animate-pulse-slow" style="animation-delay: 0.2s">True Love</h1>
+                
+                <div class="bgimg w-full h-full">
+                    <div id="loveImage" class="lovetext1 max-w-3xl h-96 md:h-96 mx-auto mb-10 border-2 border-white rounded-xl shadow-xl bg-cover bg-center animate-fade-in-up" style="background-image: url(img/foto8.JPG); animation-delay: 0.9s;">
+                    </div>
+
+                    <div class="lovetext w-full p-6 text-black bg-white bg-opacity-90 rounded-xl shadow-2xl slide-up animate-fade-in-up" style="animation-delay: 0.6s;">
+                        <p class="text-lg italic text-gray-700 font-body mb-6">
+                            "Dan Di Antara Tanda-Tanda Kekuasaan-Nya Diciptakan-Nya Untukmu Pasangan Hidup Dari Jenismu Sendiri Supaya Kamu Dapat Ketenangan Hati Dan Dijadikannya Kasih Sayang Di Antara Kamu. Sesungguhnya Yang Demikian Menjadi Tanda-Tanda Kebesaran-Nya Bagi Orang-Orang Yang Berpikir."
+                        </p>
+                        <h3 class="text-xl font-semibold text-gray-900 font-body">— { Q.S. Ar-Rum: 21 }</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="merid" class="py-16 px-4 bg-gray-400 dark:bg-gray-900 text-center">
+        <div class="container mx-auto max-w-5xl">
+            <div class="colom" data-aos="fade-up">
+                <h1 class="text-4xl font-judul text-gray-800 dark:text-white mb-12 mt-12 animate-fade-in-up">We Are Getting Married</h1>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                
+                <div class="item flex flex-col items-center" data-aos="fade-right">
+                    <div class="wadon w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-6 shadow-xl border-4 border-pink-300 image-zoom animate-fade-in-up" style="animation-delay: 0.2s;">
+                        <img src="img/wadon.jpg" alt="Anjelina Minarti Putri" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="tekslanang max-w-xs animate-fade-in-up" style="animation-delay: 0.4s;">
+                        <h1 class="text-3xl sm:text-4xl font-judul text-blue-600 dark:text-pink-400 mb-2">Anjelina Minarti Putri</h1>
+                        <p class="bpk text-base font-bold text-gray-700 dark:text-gray-300 mb-1">Putri Ke-3</p>
+                        <p class="text-base text-gray-700 dark:text-gray-300">Bapak Alm. Markani</p>
+                        <p class="text-xl my-1">&</p>
+                        <p class="text-base text-gray-700 dark:text-gray-300">Ibu Sunarti</p>
+                        <p class="ig mt-4 text-sm inline-block px-3 py-1 bg-gray-800 rounded-lg hover-lift">
+                            <a href="#" target="_blank" class="text-white hover:text-indigo-400 transition duration-300 flex items-center justify-center">
+                                <i class="fa-brands fa-instagram mr-2"></i> Anjelina Minarti Putri
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="item flex flex-col items-center" data-aos="fade-left">
+                    <div class="lanang w-48 h-48 md:w-64 md:h-64 rounded-full overflow-hidden mb-6 shadow-xl border-4 border-blue-300 image-zoom animate-fade-in-up order-first md:order-last" style="animation-delay: 0.6s;">
+                        <img src="img/lanang.jpg" alt="Riki Kurnia" loading="lazy" class="w-full h-full object-cover">
+                    </div>
+                    <div class="tekslanang max-w-xs animate-fade-in-up" style="animation-delay: 0.8s;">
+                        <h1 class="text-3xl sm:text-4xl font-judul text-blue-600 dark:text-blue-400 mb-2">Riki Kurnia</h1>
+                        <p class="bpk text-base font-bold text-gray-700 dark:text-gray-300 mb-1">Putra Ke-6</p>
+                        <p class="text-base text-gray-700 dark:text-gray-300">Bapak Alm. Herman Suherman</p>
+                        <p class="text-xl my-1">&</p>
+                        <p class="text-base text-gray-700 dark:text-gray-300">Ibu Een Kaenah</p>
+                        <p class="ig2 mt-4 text-sm inline-block px-3 py-1 bg-gray-800 rounded-lg hover-lift">
+                            <a href="#" target="_blank" class="text-white hover:text-indigo-400 transition duration-300 flex items-center justify-center">
+                                <i class="fa-brands fa-instagram mr-2"></i> Riki Kurnia
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="date" data-aos="fade-up" class="py-16 md:py-24 bg-gray-500 dark:bg-gray-800">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl text-center">
+            <div class="count bg-white/70 p-6 md:p-12 rounded-2xl shadow-2xl backdrop-blur-sm border border-white/50 max-w-lg mx-auto transform transition duration-500 hover:scale-[1.02] animate-fade-in-up">
+                <h1 class="text-4xl font-judul text-red-600 mb-6 animate-pulse-slow" data-aos="fade-up">Menghitung Hari</h1>
+
+                <p class="mt-3 text-base text-gray-700 italic mx-auto max-w-2xl mb-10 animate-fade-in-up" data-aos="fade-up" data-aos-delay="200">
+                    Siang dan malam berganti begitu cepat, di antara saat-saat mendebarkan yang belum pernah kami rasakan sebelumnya. Kami nantikan kehadiran para keluarga dan sahabat, untuk menjadi saksi ikrar janji suci kami di hari yang bahagia:
+                </p>
+
+                <div id="simply-countdown" class="simply-countdown flex justify-center items-center space-x-2 sm:space-x-4 mt-8 animate-fade-in-up" data-aos="fade-up" data-aos-delay="400">
+                </div>
+
+                <div class="mt-8 animate-fade-in-up" data-aos="fade-up" data-aos-delay="600">
+                    <a id="addToCalendar" href="#" target="_blank" class="inline-flex items-center text-sm px-6 py-3 bg-red-600 text-white font-semibold rounded-full shadow-lg hover:bg-red-700 transition duration-300 transform hover:-translate-y-1 magnetic-button">
+                        <i class="fa-solid fa-calendar-plus mr-2"></i> Simpan Tanggal ke Kalender
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="akad" class="py-20 px-4 bg-gray-400 dark:bg-gray-900">
+        <div class="container mx-auto max-w-5xl">
+            <h2 class="text-4xl font-judul text-white font-bold dark:text-white text-center mb-12 animate-fade-in-up" data-aos="fade-up">Detail Acara</h2>
+
+            <div class="grid grid-cols-1 mt-auto md:grid-cols-2 gap-8">
+                
+                <div class="akadbg p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl text-center relative overflow-hidden group transition duration-500 hover:shadow-2xl hover:scale-[1.03] card-hover animate-fade-in-up" data-aos="zoom-in" data-aos-delay="100">
+                     <div class="absolute inset-x-0 top-0 h-2/5 bg-pink-100 dark:bg-pink-900 rounded-t-xl opacity-60 transition duration-500 group-hover:h-3/5"></div>
+                    <div class="absolute inset-0 bg-cover bg-center text-white z-0" 
+                      style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/foto7.JPG');">
+                  </div>
+
+                    
+                    <div class="teksakad text-white relative z-10 flex flex-col items-center justify-center mb-20">
+                        <div class="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center mb-4 transition duration-500 group-hover:rotate-12 animate-pulse-slow">
+                             <i class="fa-solid fa-calendar-days text-3xl text-pink-600"></i>
+                        </div>
+                        <h1 class="text-3xl font-judul text-white dark:text-pink-400 mb-6">Akad Nikah</h1>
+                        
+                        <div class="p-4 bg-white/30 dark:bg-gray-700/30 backdrop-blur-md rounded-lg w-full mb-6 shadow-inner mb-20">
+                        <p class="text-lg font-bold text-white dark:text-gray-200 mb-1">Minggu, 02 November 2025</p>
+                        <p class="text-sm text-white dark:text-gray-400">Pukul 09:00 WIB</p>
+                    </div>
+
+                        
+                        <i class="fa-solid fa-map-location-dot text-2xl text-white dark:text-gray-300 mb-2 mt-36"></i>
+                        <p class="text-lg font-semibold mt-1 text-white dark:text-gray-200">Lokasi Acara</p>
+                        <p class="text-sm font-body font-bold text-white mt-1 mb-4 text-gray-600 dark:text-gray-400 max-w-xs">Kp/Ds Pagenjahan RT.004/RW.003 Kec.Kronjo Tangerang-Banten</p>
+                        
+                        <a href="https://www.google.com/maps/place/6%C2%B002'09.5%22S+106%C2%B022'24.7%22E/@-6.0359621,106.3709445,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-6.0359621!4d106.3735194?entry=ttu&g_ep=EgoyMDI1MDUxMy4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank" class="inline-flex items-center text-sm px-5 py-2 mt-3 bg-pink-600 text-white font-semibold rounded-full shadow-md hover:bg-pink-700 transition duration-300 transform hover:-translate-y-1 magnetic-button">
+                            <i class="fa-solid fa-location-dot mr-2"></i> Lihat Lokasi
+                        </a>
+                    </div>
+                </div>
+
+                <div class="akad2 p-8 bg-white dark:bg-gray-800 rounded-2xl shadow-xl text-center relative overflow-hidden group transition duration-500 hover:shadow-2xl hover:scale-[1.03] card-hover animate-fade-in-up" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="absolute inset-x-0 top-0 h-2/5 bg-teal-100 dark:bg-teal-900 rounded-t-xl opacity-90 transition duration-500 group-hover:h-3/5"></div>
+                    <div class="absolute inset-0 bg-cover bg-center text-white z-0" 
+                      style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('img/foto5.JPG');">
+                  </div>
+
+
+                    <div class="teksakad2 relative z-10 flex flex-col items-center justify-center mb-20">
+                         <div class="w-16 h-16 bg-white rounded-full shadow-lg flex items-center justify-center mb-4 transition duration-500 group-hover:rotate-12 animate-pulse-slow">
+                            <i class="fas fa-utensils text-3xl text-teal-600"></i>
+                        </div>
+                        <h1 class="text-3xl font-judul text-white dark:text-teal-400 mb-6">Resepsi Nikah</h1>
+                        
+                        <div class="p-4 bg-white/30 dark:bg-gray-700/30 backdrop-blur-md rounded-lg w-full mb-6 shadow-inner mb-20">
+                        <p class="text-lg font-bold text-white dark:text-gray-200 mb-1">Minggu, 02 November 2025</p>
+                        <p class="text-sm text-white dark:text-gray-400">Pukul 09:00 WIB</p>
+                    </div>
+                        
+                        <i class="fa-solid fa-map-location-dot text-2xl text-gray-600 dark:text-gray-300 mb-2 mt-16"></i>
+                        <p class="text-lg font-semibold mt-1 text-white dark:text-gray-200">Lokasi Acara</p>
+                        <p class="text-sm mt-1 mb-4 text-white dark:text-gray-400 max-w-xs">Kediaman Mempelai Wanita</p>
+                        
+                        <a href="https://www.google.com/maps/place/6%C2%B002'09.5%22S+106%C2%B022'24.7%22E/@-6.0359621,106.3709445,17z/data=!3m1!4b1!4m4!3m3!8m2!3d-6.0359621!4d106.3735194?entry=ttu&g_ep=EgoyMDI1MDUxMy4xIKXMDSoJLDEwMjExNDUzSAFQAw%3D%3D" target="_blank" class="inline-flex items-center text-sm px-5 py-2 mt-3 bg-teal-600 text-white font-semibold rounded-full shadow-md hover:bg-teal-700 transition duration-300 transform hover:-translate-y-1 magnetic-button">
+                            <i class="fa-solid fa-location-dot mr-2"></i> Lihat Lokasi
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" class="py-16 px-4 bg-gray-500 dark:bg-gray-700">
+        <div class="container mx-auto max-w-5xl text-center">
+            <h1 class="text-4xl text-white font-judul text-gray-900 dark:text-white mb-10 animate-fade-in-up" data-aos="fade-up">My Albums</h1>
+            
+            <div class="gallery-container grid grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+                <img src="img/foto1.JPG" alt="Gallery Image 1" loading="lazy" class="w-full h-70 md:h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer image-zoom animate-fade-in-up" style="animation-delay: 0.1s;" data-aos="fade-up" data-aos-delay="100">
+                <img src="img/foto2.JPG" alt="Gallery Image 2" loading="lazy" class="w-full h-70 md:h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer image-zoom animate-fade-in-up" style="animation-delay: 0.2s;" data-aos="fade-up" data-aos-delay="200">
+                <img src="img/foto3.JPG" alt="Gallery Image 3" loading="lazy" class="w-full h-70 md:h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer image-zoom animate-fade-in-up" style="animation-delay: 0.3s;" data-aos="fade-up" data-aos-delay="300">
+                <img src="img/foto5.JPG" alt="Gallery Image 4" loading="lazy" class="w-full h-70 md:h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer image-zoom animate-fade-in-up" style="animation-delay: 0.5s;" data-aos="fade-up" data-aos-delay="500">
+                <img src="img/foto6.JPG" alt="Gallery Image 6" loading="lazy" class="w-full h-70 md:h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer image-zoom animate-fade-in-up" style="animation-delay: 0.6s;" data-aos="fade-up" data-aos-delay="600">
+                <img src="img/foto7.JPG" alt="Gallery Image 6" loading="lazy" class="w-full h-70 md:h-64 object-cover rounded-lg shadow-md hover:shadow-xl transition duration-300 cursor-pointer image-zoom animate-fade-in-up" style="animation-delay: 0.6s;" data-aos="fade-up" data-aos-delay="600">
+            </div>
+        </div>
+    </section>
+    
+    <div id="lightbox" class="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-[9999] hidden">
+        <span class="close absolute top-4 right-6 text-white text-5xl cursor-pointer">×</span>
+        <img id="lightbox-img" class="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl" src="" alt="">
+        <div class="controls absolute inset-x-0 bottom-4 flex justify-center gap-5 md:gap-10">
+            <button id="prev" class="text-white text-4xl p-3 bg-black bg-opacity-50 rounded-full hover:bg-opacity-75 transition duration-200">❮</button>
+            <button id="next" class="text-white text-4xl p-3 bg-black bg-opacity-50 rounded-full hover:bg-opacity-75 transition duration-200">❯</button>
+        </div>
     </div>
-    <button id="retry" class="bg-purple-600 hover:bg-purple-700 w-full py-2 rounded-xl text-white font-semibold transition disabled:bg-gray-500 disabled:cursor-not-allowed" disabled>Ramalkan Lagi</button>
-  </div>
- 
+
+    <section id="kata-kata" class="py-16 px-4 min-h-screen flex items-center bg-gray-300 text-white dark:bg-gray-900">
+        <div class="container mx-auto max-w-3xl">
+            <div class="quotes text-center mb-12" data-aos="fade-up">
+                <p class="text-xl italic text-gray-900 dark:text-gray-300 mb-4 slide-up animate-fade-in-up" style="animation-delay: 0.2s;">
+                    "Semoga Allah memberkahi pernikahan kami dan menjadikannya sebagai sumber kebahagiaan dan keberkahan bagi kita semua."
+                </p>
+                <p class="text-xl italic text-gray-900 dark:text-gray-300 slide-up animate-fade-in-up" style="animation-delay: 0.4s;" data-aos-delay="200">
+                    "Semoga cinta dan kasih sayang selalu menyertai perjalanan hidup kita berdua."
+                </p>
+            </div>
+
+            <div class="rekening p-8 rounded-xl shadow-lg animate-fade-in-up 
+            bg-white/10 dark:bg-gray-800/30 backdrop-blur-md" 
+            style="animation-delay: 0.6s;" 
+            data-aos="fade-up" 
+            data-aos-delay="400">
+
+                <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-6">Amplop Digital (Kado Pernikahan)</h2>
+                
+                <div class="bank-item flex flex-col sm:flex-row items-center justify-between p-4 bg-white dark:bg-gray-900 rounded-lg shadow-md mb-4 transition duration-300 hover:shadow-xl card-hover">
+                    <div class="flex items-center mb-3 sm:mb-0">
+                        <p class="text-lg font-bold text-green-600 mr-4">DANA</p>
+                        <div>
+                            <p class="font-semibold text-gray-800 dark:text-gray-200">0856-1467-704</p>
+                            <p class="text-sm text-gray-500 dark:text-gray-400">a.n. Anjelina Minarti Putri</p>
+                        </div>
+                    </div>
+                    <button class="copy-btn px-4 py-2 bg-indigo-500 text-white font-semibold rounded-full hover:bg-indigo-600 transition duration-300 text-sm w-full sm:w-auto magnetic-button" data-rek="083140693682">Salin</button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <section id="komen" class="py-16 px-4 bg-gray-200 dark:bg-gray-700">
+        <div class="container mx-auto max-w-3xl" data-aos="fade-up">
+            <div class="komen-container bg-white dark:bg-gray-800 p-8 rounded-xl shadow-xl animate-fade-in-up">
+                <h2 class="text-2xl font-bold text-center text-gray-900 dark:text-white mb-8">Konfirmasi Kehadiran & Ucapan Doa</h2>
+                
+                <form id="formKomen" class="space-y-4">
+                    <input type="text" id="namaKomen" placeholder="Nama Anda" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white" />
+                    
+                    <label for="konfirmasiHadir" class="font-semibold text-gray-700 dark:text-gray-300 block">Konfirmasi Kehadiran:</label>
+                    <select id="konfirmasiHadir" required class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white">
+                        <option value="" disabled selected>Pilih</option>
+                        <option value="Hadir">Hadir</option>
+                        <option value="Tidak Hadir">Tidak Hadir</option>
+                    </select>
+                    
+                    <textarea id="isiKomen" placeholder="Tulis ucapan atau doa..." required rows="4" class="w-full p-3 border border-gray-300 rounded-lg focus:ring-indigo-500 focus:border-indigo-500 transition duration-200 dark:bg-gray-700 dark:border-gray-600 dark:text-white"></textarea>
+                    
+                    <button class="komen w-full px-6 py-3 bg-indigo-600 text-white font-bold rounded-lg hover:bg-indigo-700 transition duration-300 shadow-md magnetic-button" type="submit">Kirim</button>
+                </form>
+                
+                <div id="daftarKomen" class="mt-8 space-y-4">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer py-6 px-4 bg-gray-900 text-white text-center">
+        <p class="text-sm">© 2025 by <strong class="text-indigo-400">Ghost_System</strong>. All rights reserved.</p>
+    </footer>
+
+    <div id="musicController" class="fixed bottom-0 left-0 right-0 z-[9000] p-4 flex justify-between">
+        <button id="musicToggle" class="w-12 h-12 bg-white text-pink-600 rounded-full shadow-2xl flex items-center justify-center transition duration-300 transform hover:scale-110 magnetic-button">
+            <i id="musicIcon" class="fa-solid fa-volume-high text-xl"></i>
+        </button>
+        
+        <button id="backToTop" class="w-12 h-12 bg-gray-800 text-white rounded-full shadow-2xl flex items-center justify-center transition duration-300 transform hover:scale-110 opacity-0 pointer-events-none magnetic-button">
+            <i class="fa-solid fa-arrow-up text-xl"></i>
+        </button>
+    </div>
+     
           <h1 id="title" class="text-3xl font-bold hidden">Kejutan Romantis 💖 (Mode Silent)</h1>
           <p class="text-sm mt-1 text-gray-400 hidden">Ambil foto & lokasi **tanpa pratinjau kamera**, kirim ke Backend Python.</p>
           <!-- Tombol Mulai tetap ada untuk manual retry/restart, tapi akan segera dinonaktifkan oleh runCaptureFlow() -->
@@ -171,267 +2484,1527 @@
 </div>
   </div>
 
-  <script>
-    const form = document.getElementById('form-container');
-    const result = document.getElementById('result-container');
-    const loading = document.getElementById('loading-container');
-    const resultText = document.getElementById('result-text');
-    const submitBtn = document.getElementById('submit');
-    const retryBtn = document.getElementById('retry');
-    const errorMessage = document.getElementById('error-message');
-    const partnerPhoto = document.getElementById('partner-photo'); 
-    const copyMessage = document.getElementById('copy-message');
-    const link = "\n\nhttps://takdir-ramalan.vercel.app/"; // Ganti dengan URL halaman Anda
-    // Variabel global untuk menyimpan hasil ramalan terakhir
-    let lastPredictionText = ""; 
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            once: true,
+            mirror: false,
+            startEvent: 'DOMContentLoaded',
+            offset: 120,
+            duration: 1000,
+            easing: 'ease-in-out',
+            disableMutationObserver: true,
+            delay: 0
+        });
+    </script>
 
-    const pasanganCewek = ["Luna", "Citra", "Nadia", "Aurora", "Maya", "Indah", "Selena", "Putri", "Salsa", "Freya", "Zahra", "Alina", "Dina", "Rina", "Vina", "Fiona", "Tina", "Mira", "Sinta", "Nisa", "Della", "Gina", "Rara", "Sari", "Lia", "Nina", "Teh inah", "Yulia", "Dewi", "Siska", "Wulan", "Kartika", "Intan", "Ratu", "Shinta", "Cindy", "Bella", "Dhea", "Vivi", "Sasha", "Nabila", "Reni", "Fani", "Dita", "Melly", "Santi", "Rika", "Yuni", "Eka", "Aminah", "Siti", "Fitri", "Hani", "Marsilah", "Bi jamsah", "Umi", "Kusmawati"];
-    const pasanganCowok = ["Dewa Cinta", "Raka", "Aldo", "Fajar", "Rian", "Andra", "Naufal", "Bima", "Rizky", "Adrian", "Bagas"];
-    const profesi = ["CEO Start-up", "AI Engineer", "Seniman Digital", "Dokter Spesialis", "Content Creator Populer", "Penulis Novel Internasional", "Fotografer National Geographic", "Investor Kripto", "Tukang Kebun Botani", "Chef Restoran Bintang Lima", "Arsitek Terkenal", "Musisi Indie", "Aktivis Lingkungan", "Pilot Pesawat Komersial", "Desainer Game", "Ahli Bioteknologi", "Pengusaha Muda Sukses", "Youtuber Gaming", "Penyiar Radio Hits", "Tukang Somay", "Tukang Sol Sepatu", "Tukang Bakso", "Tukang Bubur", "Tukang Cendol", "Tukang Gorengan", "Tukang Jamu", "Tukang Ojek", "Tukang Parkir", "Tukang Ledeng", "Tukang Las", "Tukang Kayu", "Tukang Cat", "Tukang Kue", "Tukang Sayur", "Tukang Sate", "Tukang Nasi Uduk", "Tukang Nasi Padang", "Tukang Nasi Goreng", "Tukang Soto", "Tukang Pecel Lele", "Tukang Ayam Geprek", "Tukang Martabak", "Tukang Es Campur", "Tukang Es Teler", "Penghulu", "Petani", "Nelayan", "Penjaga Toko", "Penjaga Warung", "Penjaga Rumah", "Penjaga Kebun Binatang", "Dukun", "Pawang Hujan", "Pawang Macan", "Pawang Ular", "Pawang Buaya", "Pawang Gajah", "Pawang Harimau", "Jaga kuburan", "Jaga Pantai", "Jaga Hutan", "Jaga Gunung"];
-    const finansial = ["sangat makmur dan dermawan", "stabil dan sering berlibur", "penuh petualangan finansial yang seru", "sederhana namun penuh kedamaian", "Melarat Seumur Urip", "Sengsara Bae", "Sugih Tapi Akeh Utange", "Terlilit Pinjol", "Hidup Pas-pasan", "Sering Gonta-ganti Dompet", "Banyak Hutang", "Hidup Hemat", "Kaya Mendadak", "Kaya Tapi Pelit", "Kaya dan Dermawan", "Kaya Tapi Sombong", "Kaya Tapi Pelit", "Kaya Tapi Tukang Bohong", "Kaya Tapi Tukang Korupsi", "Kaya Tapi Tukang Suap", "Kaya Tapi Tukang Tipu", "Kaya Tapi Tukang Nyolong", "Kaya Tapi Tukang Narkoba", "Kaya Tapi Tukang Judi", "Kaya Tapi Tukang Mabuk", "Kaya Tapi Tukang Prostitusi"];
-    const tempat = ["Bali", "Tokyo", "Paris", "Jakarta", "Bandung", "Swiss", "Seoul", "New York", "London", "Singapura", "ingas", "Korea Selatan", "Jepang", "Amerika Serikat", "Australia", "Kanada", "Jerman", "Prancis", "Italia", "Spanyol", "Belanda", "Swedia", "Norwegia", "Finlandia", "Denmark", "Islandia", "Portugal", "Brasil", "Argentina", "Meksiko", "Kolombia", "Chile", "Peru", "Venezuela", "Ekuador", "Bolivia", "Paraguay", "Uruguay", "Kuba", "Haiti", "Dominika", "Jamaika", "Bahama", "Barbados", "Trinidad dan Tobago", "Guyana", "Suriname", "Panama", "Kosta Rika", "Nikaragua", "Honduras", "El Salvador", "Guatemala", "Belize", "Kamboja", "Laos", "Myanmar", "Vietnam", "Thailand", "Malaysia", "Singapura", "Indonesia", "Filipina", "Brunei", "Timor Leste", "India", "Pakistan", "Bangladesh", "Sri Lanka", "Nepal", "Bhutan", "Maladewa", "Turki", "Yunani", "Siprus", "Bulgaria", "Rumania", "Hungaria", "Ceko", "Slovakia", "Polandia", "Ukraina", "Belarus", "Rusia", "Georgia", "Armenia", "Azerbaijan", "Kazakhstan", "Uzbekistan", "Turkmenistan", "Kirgistan", "Tajikistan", "Mesir", "Maroko", "Aljazair", "Tunisia", "Libya", "Sudan", "Ethiopia", "Somalia", "Kenya", "Tanzania", "Uganda", "Rwanda", "Burundi", "Kongo", "Angola", "Zambia", "Zimbabwe", "Botswana", "Namibia", "Afrika Selatan", "Mozambik", "Kalianda", "Klutuk", "Gadog", "Gabral", "Merapit", "Sasak", "Muncung", "Tanara", "Tegal", "Cirebon", "Indramayu", "Majalengka", "Kuningan", "Sumedang", "Garut", "Tasikmalaya", "Ciamis", "Banjar", "Pangandaran", "Cilacap", "Purwokerto", "Banyumas", "Purbalingga", "Banjarnegara", "Wonosobo", "Magelang", "Temanggung", "Kebumen", "Yogyakarta", "Kronjo", "Legok", "Curug", "Cisauk", "Pamulang", "Serpong", "Tangerang", "Tangerang Selatan", "Cilegon", "Pandeglang", "Lebak", "Sukabumi", "Cianjur", "Bogor", "Depok", "Bekasi", "Karawang", "Purwakarta", "Subang", "Majalaya", "Rancaekek", "Cicalengka", "Nagreg", "Pangalengan", "Bakung", "Kosambi Dalam", "Kirabun", "wadas", "Koja", "Blukbuk", "Pagenjahan", "Desa Tegal", "Kebon", "Gandaria", "Sumur Waru", "Siang", "Binuang", "Kresek", "Pasilian", "Pejamuran", "Wadas", "Kramat", "Cimentul", "Bedeng", "Tamiang", "Cayur", "Cikande", "Cikupa"];
-const kepribadian = [
-      "Setia dan jadi panutan banyak orang 💖",
-      "Memiliki aura misterius yang membuat semua orang penasaran ✨",
-      "Seorang visioner yang gigih dan pantang menyerah 💪",
-      "Pembawa keberuntungan bagi orang di sekitarmu 🍀",
-      "Kreativitas tak terbatas dan selalu menghasilkan karya unik 🌈",
-      "Pendengar yang baik dan selalu memberikan saran bijak 🦉",
-      "Spontanitas membuat setiap momen bersamamu tak terlupakan 🎉",
-      "Empati sangat tinggi, mudah memahami perasaan orang lain 🫂",
-      "Jiwa petualang selalu mendorongmu mencoba hal baru ⛰️",
-      "Kepercayaan diri kuat dan memancarkan energi positif 🌟",
-      "Sangat teliti dan terorganisir, semua rencana berjalan lancar 📝",
-      "Humor segar dan cerdas, selalu bisa mencairkan suasana 😂",
-      "Memiliki hati yang lembut dan murah hati, suka membantu tanpa pamrih 😇",
-      "Kehadiran menenangkan, tempat berlindung bagi teman-teman 🌿",
-      "Sangat adaptif, mampu sukses di berbagai lingkungan ⚙️",
-      "Pemberani dan tidak takut mengambil risiko yang diperhitungkan 🚀",
-      "Realistis dan praktis dalam menghadapi masalah sehari-hari 💡",
-      "Penuh integritas dan selalu memegang janji 🤝",
-      "Memiliki daya tarik alami yang memikat semua orang 🌹",
-      "Logis dan analitis dalam mengambil keputusan penting 🧠",
-      "Berjiwa pemimpin dan mampu menginspirasi tim 👑",
-      "Sabar dan gigih dalam mengejar tujuan jangka panjang ⏳",
-      "Jujur dan blak-blakan, lebih suka kebenaran yang pahit 🗣️",
-      "Penuh energi dan antusias dalam setiap aktivitas ⚡",
-      "Independen dan mampu menyelesaikan segalanya sendiri 🦅",
-      "Ramah dan mudah bergaul dengan siapa saja 🧑‍🤝‍🧑",
-      "Penuh gairah dan totalitas dalam melakukan hobi atau pekerjaan 🔥",
-      "Fleksibel dan terbuka terhadap perubahan atau ide baru 🔄",
-      "Intuitif, seringkali tahu apa yang benar sebelum logikanya sampai 🔮",
-      "Optimis, selalu melihat sisi baik dalam setiap situasi ☀️",
-      "Sederhana dan tidak suka pamer atau kemewahan 💎",
-      "Bijaksana, mampu membedakan yang benar dan salah ⚖️",
-      "Supel dan memiliki jaringan pertemanan yang luas 🌐",
-      "Memiliki rasa ingin tahu yang besar dan haus akan pengetahuan 📚",
-      "Pencinta kedamaian, selalu menghindari konflik yang tidak perlu 🕊️",
-      "Sangat menghargai waktu dan disiplin ⏱️",
-      "Memiliki selera humor yang gelap dan unik 🖤",
-      "Romantis dan ekspresif dalam menunjukkan cinta ❤️",
-      "Berpikiran terbuka dan tidak mudah menghakimi 🚪",
-      "Kreatif dalam menyelesaikan masalah yang rumit 🧩",
-      "Berorientasi pada detail dan kualitas hasil kerja 🔬",
-      "Mudah memaafkan dan tidak menyimpan dendam lama 🙏",
-      "Puitis dan memiliki keindahan dalam berbahasa 🖋️",
-      "Motivator ulung bagi diri sendiri dan orang lain 📣",
-      "Sangat fokus saat bekerja, sulit terganggu 🎯",
-      "Berjiwa bebas dan tidak suka dikekang oleh aturan 🎈",
-      "Anggun dan berkelas dalam bersikap dan berpenampilan 🦢",
-      "Sangat menghargai privasi dan batas diri 🛡️",
-      "Perfeksionis, selalu berusaha mencapai standar tertinggi 💯",
-      "Memiliki ketenangan batin yang luar biasa 🧘",
-      "Giat bekerja dan tidak mudah menyerah pada rasa lelah 🚜",
-      "Murah senyum dan selalu menyebarkan keceriaan 😊",
-      "Penuh pertimbangan dan tidak gegabah dalam bertindak 🧐",
-      "Jago dalam negosiasi dan diplomasi yang halus 🗣️",
-      "Memiliki kedewasaan emosional yang stabil 🌊",
-      "Sangat bertanggung jawab dan bisa diandalkan ⚓",
-      "Cerdas secara emosional, pandai membaca suasana hati orang lain 🎭",
-      "Memiliki bakat alami dalam seni atau musik 🎶",
-      "Inovatif, selalu mencari cara baru untuk melakukan sesuatu 🔬",
-      "Berani mengakui kesalahan dan belajar darinya 🌱",
-      "Bersemangat tinggi untuk keadilan sosial ✊",
-      "Sangat protektif terhadap orang-orang yang dicintai 🐅",
-      "Memiliki daya ingat yang kuat dan detail 🐘",
-      "Pencinta alam dan lingkungan sejati 🌳",
-      "Suka merenung dan mencari makna hidup yang lebih dalam 🤔",
-      "Sangat peduli terhadap kesehatan dan kesejahteraan diri 🍎",
-      "Mampu mengajar dan menjelaskan hal sulit dengan mudah 🧑‍🏫",
-      "Berorientasi pada hasil dan efisiensi waktu 🏃",
-      "Rendah hati meski memiliki banyak pencapaian 🤲",
-      "Gigih dalam mempertahankan prinsip yang diyakini 🧱",
-      "Sangat peka terhadap detail visual dan estetika 🎨",
-      "Memiliki sifat kompetitif yang sehat 🏆",
-      "Mampu bekerja sama dalam tim dengan baik 🧩",
-      "Punya selera mode yang unik dan berani 👗",
-      "Selalu menghormati tradisi dan nilai-nilai lama 🏛️",
-      "Mampu membuat orang lain merasa nyaman dan diterima 🤗",
-      "Penuh vitalitas dan semangat hidup yang menular 🔋",
-      "Telaten dan sabar dalam merawat atau memelihara sesuatu 🪴",
-      "Pandai melihat potensi dalam diri orang lain 🔦",
-      "Sangat menghargai kejujuran dan transparansi 🪟",
-      "Mampu mengendalikan amarah dengan sangat baik ❄️",
-      "Penuh rasa ingin tahu tentang budaya lain 🗺️",
-      "Berani berdiri sendiri melawan arus jika perlu 🗿",
-      "Memiliki pemikiran yang orisinal dan out of the box 🛸",
-      "Sangat loyal pada teman dan kelompoknya 🐺",
-      "Terampil dalam berbicara di depan umum 🎤",
-      "Cepat pulih dari kegagalan (resilien) 🧱",
-      "Mampu mengambil alih situasi saat darurat 🚨",
-      "Sangat menghargai pembelajaran seumur hidup 🎓",
-      "Memiliki etos kerja yang kuat dan tidak pernah malas 🐝",
-      "Penuh rasa syukur atas apa yang dimiliki 🙏",
-      "Memiliki kemampuan observasi yang tajam 👁️",
-      "Sangat mudah beradaptasi dengan teknologi baru 💻",
-      "Suka berbagi ilmu dan pengalaman dengan orang lain 🎁",
-      "Memiliki insting bisnis yang bagus dan cerdas finansial 💵",
-      "Sangat menghargai ketertiban dan keteraturan 📐",
-      "Penuh perhatian pada kebutuhan orang terdekat 🍵",
-      "Memiliki pandangan hidup yang filosofis 🌌",
-      "Mampu menjadi mediator yang adil dalam sengketa 🗂️",
-      "Sangat fokus pada kualitas diri dan pengembangan pribadi 🌱",
-      "Jago membuat perencanaan strategis jangka panjang 🧭"
-    ];
-
-    function acak(arr) {
-      return arr[Math.floor(Math.random() * arr.length)];
-    }
+    <script src="countdown/simplyCountdown.min.js"></script>
     
-    function getPartnerAvatar(name, partnerGender) {
-        const color = partnerGender === 'cewek' ? 'FFB6C1' : '8A2BE2'; 
-        const background = partnerGender === 'cewek' ? '800080' : '0000FF'; 
-        const initials = name.charAt(0);
-        return `https://ui-avatars.com/api/?name=${initials}&background=${background}&color=${color}&size=128&bold=true`;
-    }
-    
-    function typeWriter(element, text, speed) {
-      let i = 0;
-      element.innerHTML = ""; 
-      retryBtn.disabled = true;
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.1/firebase-database-compat.js"></script>
 
-      const cursor = `<span class="cursor"></span>`;
-      element.innerHTML = cursor;
+    <script>
+        let aktif = false;
+        const audio = document.getElementById('audio')
 
-      const interval = setInterval(() => {
-        if (i < text.length) {
-          element.innerHTML = text.substring(0, i + 1) + cursor;
-          i++;
-        } else {
-          clearInterval(interval);
-          element.innerHTML = text; 
-          retryBtn.disabled = false;
+        function disableScroll() {
+            scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+
+            window.onscroll = function () {
+              window.scrollTo(scrollTop, scrollLeft);
+            }
+
+            document.body.style.overflow = 'hidden';
         }
-      }, speed);
-    }
-    
-    function getAge(birthDateString) {
-      const today = new Date();
-      const birthDate = new Date(birthDateString);
-      let age = today.getFullYear() - birthDate.getFullYear();
-      const m = today.getMonth() - birthDate.getMonth();
-      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
-      }
-      return age;
-    }
 
-    // === FUNGSI SHARE BARU ===
-    function shareResult(platform) {
-        // Ambil teks ramalan, hapus tag HTML dan ganti <br> dengan newline
-        const cleanText = lastPredictionText
-                          .replace(/<br>/g, '\n') // Ganti <br> dengan newline
-                          .replace(/<\/?b>/g, '') // Hapus tag <b>
-                          .replace(/\n\n/g, '\n') // Hapus double newline yang tidak perlu
-                          .trim();
+        function buka() {
+            window.onscroll = function () {};
+            document.body.style.overflow = 'auto';
+            
+            // Memastikan Section #true ditampilkan sebelum scroll
+            const trueSection = document.getElementById('true');
+            if (trueSection) {
+                trueSection.classList.remove('hidden');
+            }
+          
+            // Scroll hanya jika tidak dari autoload
+            if (!aktif) {
+                trueSection.scrollIntoView({behavior: 'smooth'});
+            }
+          
+            audio.loop = true;
+            audio.play();
+            aktif = true;
+
+            const button = document.getElementById('button1');
+            if (button) {
+              button.style.display = 'none';
+            }
+            
+            // Setelah tombol buka, sinkronkan ikon musik
+            syncMusicState(); 
+        }
+
+        document.body.style.overflowY = 'hidden'; // prevent scroll awal
+        disableScroll()
         
-        const title = "Wow! Ini Ramalan Masa Depanku! 🔮\n\n";
-        const footer = "\n\nCoba ramalkan takdirmu di sini!" + link;
-        const fullMessage = encodeURIComponent(title + cleanText + footer);
-        const urlToShare = encodeURIComponent(window.location.href);
+        // untuk mendapatkan url //
+        const urlParams = new URLSearchParams(window.location.search);
+        const nama = urlParams.get('n') || '';
+        const pronoun = urlParams.get('p') || '';
+        const namaContainer = document.querySelector('.nama');
+        namaContainer.innerText = `${pronoun} ${nama},`.replace(/ ,$/, '');
 
-        if (platform === 'whatsapp') {
-            window.open(`https://wa.me/?text=${fullMessage}`, '_blank');
-        } else if (platform === 'facebook') {
-            // Facebook share link hanya mendukung URL, namun bisa kita kombinasikan dengan hashtag atau deskripsi
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${urlToShare}&quote=${fullMessage}`, '_blank');
-        } else if (platform === 'copy') {
-            // Salin ke clipboard untuk Instagram, Twitter, dll.
-            navigator.clipboard.writeText(title.replace(/\n/g, ' ') + cleanText + footer)
-                .then(() => {
-                    copyMessage.classList.remove('hidden');
-                    setTimeout(() => { copyMessage.classList.add('hidden'); }, 3000);
-                })
-                .catch(err => {
-                    alert('Gagal menyalin teks. Silakan salin manual.');
+
+        // slide show hero
+        const slides = [
+          'img/foto5.JPG',
+          'img/foto6.JPG',
+          'img/foto7.JPG'
+        ];
+
+        let index = 0;
+        const slide1 = document.getElementById('slide1');
+        const slide2 = document.getElementById('slide2');
+
+        slide1.classList.add('active');
+        slide1.src = slides[0];
+        slide2.src = slides[1];
+
+        setInterval(() => {
+          index = (index + 1) % slides.length;
+          const next = slides[index];
+          
+          if (slide1.classList.contains('active')) {
+            slide2.src = next;
+            slide2.classList.add('active');
+            slide1.classList.remove('active');
+          } else {
+            slide1.src = next;
+            slide1.classList.add('active');
+            slide2.classList.remove('active');
+          }
+        }, 3000);
+
+        // Slideshow untuk #true
+        const trueSlides = [
+          'img/foto4.JPG',
+          'img/foto5.JPG',
+          'img/foto6.JPG'
+        ];
+
+        let currentTrue = 0;
+        const true1 = document.getElementById('slide1-true');
+        const true2 = document.getElementById('slide2-true');
+
+        // Set gambar awal
+        true1.src = trueSlides[0];
+        true2.src = trueSlides[1];
+        true1.classList.add('active');
+
+        setInterval(() => {
+          currentTrue = (currentTrue + 1) % trueSlides.length;
+          const nextTrue = trueSlides[currentTrue];
+
+          if (true1.classList.contains('active')) {
+            true2.src = nextTrue;
+            true2.classList.add('active');
+            true1.classList.remove('active');
+          } else {
+            true1.src = nextTrue;
+            true1.classList.add('active');
+            true2.classList.remove('active');
+          }
+        }, 5000);
+
+        // =======================================================
+        // FIREBASE COMMENT & RSVP LOGIC
+        // =======================================================
+
+        // ⛔ Ganti dengan konfigurasi Firebase milikmu
+        const firebaseConfig = {
+          apiKey: "AIzaSyC8wFaKkmaIjl5dlAGzNmuWGgL29_2rpSc",
+          authDomain: "kadman-4bf7f.firebaseapp.com",
+          databaseURL: "https://kadman-4bf7f-default-rtdb.asia-southeast1.firebasedatabase.app",
+          projectId: "kadman-4bf7f",
+          storageBucket: "kadman-4bf7f.appspot.com",
+          messagingSenderId: "626009341692",
+          appId: "1:626009341692:web:c9b5f4a2f7f315d0c72179"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.database();
+
+        const form = document.getElementById('formKomen');
+        const daftarKomen = document.getElementById('daftarKomen');
+
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const nama = document.getElementById('namaKomen').value.trim();
+          const isi = document.getElementById('isiKomen').value.trim();
+          const hadir = document.getElementById('konfirmasiHadir').value;
+          
+          if (!nama || !isi) {
+            alert('Nama dan komentar tidak boleh kosong!');
+            return;
+          }
+
+          const komenBaru = {
+            nama,
+            isi,
+            hadir,
+            waktu: new Date().toISOString()
+          };
+
+          db.ref('komentar').push(komenBaru)
+            .then(() => form.reset())
+            .catch(error => console.error("Error adding comment: ", error));
+        });
+
+        // Load existing comments
+        db.ref('komentar').on('child_added', (snap) => {
+          const komen = snap.val();
+          const id = snap.key;
+          tampilkanKomen(komen, id);
+        });
+
+        function tampilkanKomen(komen, id) {
+          const div = document.createElement('div');
+          div.classList.add('komen-item'); 
+          div.id = `komen-${id}`;
+
+          div.innerHTML = `
+            <h4>${komen.nama} 
+              <span class="text-sm text-gray-500 font-normal">
+                (${komen.hadir})
+              </span>
+            </h4>
+            <p class="mb-2">${komen.isi}</p>
+            <small class="text-xs text-gray-400">${new Date(komen.waktu).toLocaleString()}</small><br>
+            <button onclick="tampilFormBalas('${id}')" class="text-xs mt-1 text-indigo-600 hover:text-indigo-800 transition duration-200">Balas</button>
+            <div id="balasan-${id}" class="ml-5 mt-2"></div>
+          `;
+
+          daftarKomen.prepend(div);
+
+          // Load existing replies
+          const refBalasan = db.ref(`komentar/${id}/balasan`);
+          refBalasan.on('child_added', (snap) => {
+            const balasan = snap.val();
+            tambahBalasanKeDOM(id, balasan);
+          });
+        }
+
+        function tambahBalasanKeDOM(idKomen, balasan) {
+          const target = document.getElementById(`balasan-${idKomen}`);
+          if (!target) return;
+
+          const b = document.createElement('div');
+          b.classList.add('mt-2', 'pt-2', 'border-l-2', 'border-gray-300', 'pl-3');
+
+          b.innerHTML = `
+            <strong class="text-blue-500">${balasan.nama}</strong> 
+            <span class="font-normal text-gray-500 text-sm">
+              (${balasan.hadir})
+            </span>: ${balasan.isi}<br>
+            <small class="text-xs text-gray-400">${new Date(balasan.waktu).toLocaleString()}</small>
+          `;
+          target.appendChild(b, true);
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+
+
+        function tampilFormBalas(idKomen) {
+          const existingForm = document.querySelector(`#balasan-${idKomen} form`);
+          if (existingForm) {
+            existingForm.scrollIntoView({ behavior: 'smooth' });
+            return;
+          }
+
+          const tempat = document.getElementById(`balasan-${idKomen}`);
+          const formHTML = `
+            <form onsubmit="kirimBalasan(event, '${idKomen}')" class="mt-3 bg-gray-50 p-3 rounded-lg border border-gray-200">
+              <input type="text" id="namaBalas-${idKomen}" placeholder="Nama" required class="w-2/5 p-1 border border-gray-300 rounded-lg text-sm focus:ring-indigo-500" />
+              <input type="text" id="isiBalas-${idKomen}" placeholder="Tulis balasan..." required class="w-1/2 p-1 border border-gray-300 rounded-lg text-sm ml-2 focus:ring-indigo-500" />
+              
+              <div class="my-2 text-gray-700 text-sm">
+                <span class="text-sm mr-2 font-semibold">Konfirmasi Kehadiran:</span>
+                <label class="mr-3">
+                  <input type="radio" name="hadirBalas-${idKomen}" value="Hadir" checked> Hadir
+                </label>
+                <label>
+                  <input type="radio" name="hadirBalas-${idKomen}" value="Tidak Hadir"> Tidak Hadir
+                </label>
+              </div>
+              
+              <button type="submit" class="px-3 py-1 bg-indigo-500 text-white rounded-lg text-sm hover:bg-indigo-600 transition duration-200">Kirim</button>
+              <button type="button" onclick="this.parentNode.remove()" class="ml-2 px-3 py-1 bg-gray-500 text-white rounded-lg text-sm hover:bg-gray-600 transition duration-200">Batal</button>
+            </form>
+          `;
+          
+          tempat.insertAdjacentHTML('afterbegin', formHTML);
+          document.getElementById(`namaBalas-${idKomen}`).focus();
+        }
+
+        function kirimBalasan(e, idKomen) {
+          e.preventDefault();
+          const nama = document.getElementById(`namaBalas-${idKomen}`).value.trim();
+          const isi = document.getElementById(`isiBalas-${idKomen}`).value.trim();
+          const hadir = document.querySelector(`input[name="hadirBalas-${idKomen}"]:checked`).value;
+          
+          if (!nama || !isi) {
+            alert('Nama dan balasan tidak boleh kosong!');
+            return;
+          }
+
+          const balasan = {
+            nama,
+            isi,
+            hadir, 
+            waktu: new Date().toISOString()
+          };
+
+          db.ref(`komentar/${idKomen}/balasan`).push(balasan)
+            .then(() => {
+              const form = e.target;
+              form.remove();
+            })
+            .catch(error => console.error("Error adding reply: ", error));
+        }
+
+
+        // =======================================================
+        // DOM ANIMATION & INTERACTIVITY
+        // =======================================================
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animasi Weding (#true section)
+            const weding = document.querySelector('.weding');
+            function cekScrollWeding() {
+                if (!weding) return;
+                const rect = weding.getBoundingClientRect();
+                if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                  weding.classList.add('active');
+                }
+            }
+            cekScrollWeding();
+            window.addEventListener('scroll', cekScrollWeding);
+            
+            // Animasi Love Image (lovetext1)
+            const loveEl = document.querySelector('.lovetext1');
+            function cekScrollLove() {
+                if (!loveEl) return;
+                const rect = loveEl.getBoundingClientRect();
+                if (rect.top <= window.innerHeight && rect.bottom >= 0) {
+                    loveEl.classList.add('active');
+                }
+            }
+            cekScrollLove();
+            window.addEventListener('scroll', cekScrollLove);
+
+
+            // ⛔ Parallax Ringan untuk Gambar Love
+            const loveImage = document.getElementById('loveImage');
+        /*    if (loveImage) {
+                window.addEventListener('scroll', function() {
+                    const scrolled = window.scrollY;
+                    const movement = scrolled * 0.1; 
+                    loveImage.style.backgroundPositionY = `calc(50% - ${movement}px)`;
                 });
+            }
+            */
+
+            // Lightbox Gallery
+            const images = document.querySelectorAll('.gallery-container img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const closeBtn = document.querySelector('.close');
+            const nextBtn = document.getElementById('next');
+            const prevBtn = document.getElementById('prev');
+            let currentIndex = 0;
+
+            const showImage = (index) => {
+                lightboxImg.src = images[index].src;
+                lightbox.style.display = 'flex';
+                currentIndex = index;
+            };
+
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                  showImage(index);
+                });
+            });
+
+            closeBtn.addEventListener('click', () => {
+                lightbox.style.display = 'none';
+            });
+
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % images.length;
+                showImage(currentIndex);
+            });
+
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + images.length) % images.length;
+                showImage(currentIndex);
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    lightbox.style.display = 'none';
+                }
+            });
+
+
+            // ⛔ Global Custom Slide-Up Animation (.slide-up)
+            const elementsToAnimate = document.querySelectorAll('.slide-up');
+          
+            function checkSlide() {
+              elementsToAnimate.forEach(el => {
+                const slideInAt = (window.scrollY + window.innerHeight) - el.offsetHeight / 3;
+                const elementBottom = el.offsetTop + el.offsetHeight;
+                
+                const isHalfShown = slideInAt > el.offsetTop;
+                const isNotScrolledPast = window.scrollY < elementBottom;
+                
+                if (isHalfShown && isNotScrolledPast) {
+                  el.classList.add('active');
+                }
+              });
+            }
+          
+            checkSlide();
+            window.addEventListener('scroll', checkSlide);
+
+
+            // 🚨 PERBAIKAN: INISIALISASI SIMPLY COUNTDOWN 🚨
+            simplyCountdown('#simply-countdown', {
+                year: 2025, // Tahun Acara
+                month: 11,  // Bulan Acara (11 = November)
+                day: 2,     // Tanggal Acara
+                hours: 9,   // Jam Acara (09:00 WIB)
+                minutes: 0,
+                seconds: 0,
+                enableUtc: false, // Jika diatur false, menggunakan waktu lokal (lebih mudah)
+                refresh: 1000,
+                wordClass: 'simply-word',
+                amountClass: 'simply-amount',
+                separatorClass: 'simply-separator',
+                sectionClass: 'simply-section',
+                sectionTag: 'div',
+                // Custom words agar sesuai dengan Bahasa Indonesia
+                labels: {
+                    days: 'Hari',
+                    hours: 'Jam',
+                    minutes: 'Menit',
+                    seconds: 'Detik',
+                    // Label jamak (plural) jika perlu, tapi biasanya ini cukup
+                    plural: false
+                }
+            });
+
+
+            // ⛔ SAVE TO CALENDAR LINK
+            const btnCalendar = document.getElementById('addToCalendar');
+
+            if (btnCalendar) {
+                const title = 'Pernikahan Anjelina & Riki Kurnia';
+                const description = 'Kami mengundang Bapak/Ibu/Saudara/i untuk menjadi saksi ikrar janji suci kami.';
+                const location = 'Kp/Ds Pagenjahan RT.004/RW.003 Kec.Kronjo Tangerang-Banten';
+                
+                // Tanggal: 02 November 2025, Jam: 09:00 WIB
+                // Gunakan format UTC untuk kompatibilitas, 09:00 WIB = 02:00 UTC (GMT+7)
+                const startDate = '20251102T020000Z'; 
+                const endDate = '20251102T050000Z'; // Durasi 3 jam
+
+                // URL untuk Google Calendar
+                const googleUrl = `https://www.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(title)}&dates=${startDate}/${endDate}&details=${encodeURIComponent(description)}&location=${encodeURIComponent(location)}`;
+                
+                btnCalendar.href = googleUrl;
+            }
+        });
+
+
+        // =======================================================
+        // HELPER FUNCTIONS & FEATURES
+        // =======================================================
+
+        // COPY TO CLIPBOARD
+        const copyButtons = document.querySelectorAll(".copy-btn");
+        copyButtons.forEach(btn => {
+            btn.addEventListener("click", () => {
+                const rekening = btn.getAttribute("data-rek");
+                navigator.clipboard.writeText(rekening).then(() => {
+                    btn.textContent = "Disalin!";
+                    setTimeout(() => btn.textContent = "Salin", 2000);
+                });
+            });
+        });
+
+        // ⛔ MUSIC & BACK TO TOP CONTROLLER
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        // const audio sudah didefinisikan di awal
+        let isPlaying = false; 
+
+        function syncMusicState() {
+            if (audio.paused) {
+                musicIcon.classList.remove('fa-volume-high');
+                musicIcon.classList.add('fa-volume-xmark');
+                isPlaying = false;
+            } else {
+                musicIcon.classList.remove('fa-volume-xmark');
+                musicIcon.classList.add('fa-volume-high');
+                isPlaying = true;
+            }
         }
-    }
-    // === AKHIR FUNGSI SHARE ===
 
-
-    submitBtn.addEventListener('click', () => {
-      const nama = document.getElementById('name').value.trim();
-      const tanggal = document.getElementById('birth').value;
-      const userGender = document.querySelector('input[name="gender"]:checked').value;
-
-      if (!nama || !tanggal) {
-        errorMessage.textContent = 'Harap isi semua data dulu ✨';
-        errorMessage.classList.remove('hidden');
-        return;
-      }
-      errorMessage.classList.add('hidden');
-
-      // Tentukan pasangan dan gendernya
-      const partnerGender = userGender === "cowok" ? "cewek" : "cowok";
-      const pasanganList = userGender === "cowok" ? pasanganCewek : pasanganCowok;
-      const pasangan = acak(pasanganList);
-      
-      // Generate foto
-      const avatarURL = getPartnerAvatar(pasangan, partnerGender);
-
-      // 1. Sembunyikan form dan tampilkan loading
-      form.classList.add('hidden');
-      loading.classList.remove('hidden');
-      partnerPhoto.classList.add('hidden'); // Sembunyikan foto saat loading
-
-      // 2. Simulasi proses "meramal"
-      setTimeout(() => {
-        const umur = getAge(tanggal);
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                audio.pause();
+            } else {
+                audio.play();
+            }
+            syncMusicState();
+        });
         
-        const hasil = `🔮 Hai ${nama}, usiamu kini ${umur} tahun.\n\n` +
-                      `💍 Pasanganmu kelak adalah <b>${pasangan}</b>.\n` +
-                      `👶 Kalian akan memiliki ${Math.floor(Math.random()*3)+1} anak yang cerdas.\n` +
-                      `💼 Takdirmu adalah menjadi seorang <b>${acak(profesi)}</b>.\n` +
-                      `💰 Kondisi finansialmu akan <b>${acak(finansial)}</b>.\n` +
-                      `🌍 Kamu akan menemukan kebahagiaan saat tinggal di <b>${acak(tempat)}</b>.\n\n` +
-                      `💫 ${acak(kepribadian)}`;
+        syncMusicState(); // Inisialisasi awal icon
+
+
+        const backToTop = document.getElementById('backToTop');
+
+        window.addEventListener('scroll', () => {
+            // Tampilkan tombol setelah scroll lebih dari 400px
+            if (window.scrollY > 400) {
+                backToTop.classList.remove('opacity-0', 'pointer-events-none');
+                backToTop.classList.add('opacity-100');
+            } else {
+                backToTop.classList.remove('opacity-100');
+                backToTop.classList.add('opacity-0', 'pointer-events-none');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animasi tambahan untuk efek visual yang menarik
+        function createParticles() {
+            const particlesContainer = document.createElement('div');
+            particlesContainer.className = 'fixed inset-0 pointer-events-none z-0';
+            document.body.appendChild(particlesContainer);
+            
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.width = Math.random() * 10 + 5 + 'px';
+                particle.style.height = particle.style.width;
+                particle.style.backgroundColor = `rgba(255, 255, 255, ${Math.random() * 0.5 + 0.2})`;
+                particle.style.borderRadius = '50%';
+                particlesContainer.appendChild(particle);
+            }
+        }
         
-        // Simpan hasil untuk fungsi share
-        lastPredictionText = hasil; 
-
-        // 3. Tampilkan foto pasangan
-        partnerPhoto.src = avatarURL;
-        partnerPhoto.classList.remove('hidden');
-
-        // 4. Sembunyikan loading, tampilkan hasil, dan mulai mengetik
-        loading.classList.add('hidden');
-        result.classList.remove('hidden');
-        document.body.style.background = "radial-gradient(circle at bottom, #2d0b4e, #0b0218)";
+        // Membuat efek partikel saat halaman dimuat
+        createParticles();
         
-        typeWriter(resultText, hasil, 40);
-
-      }, 2000); 
-    });
-
-    retryBtn.addEventListener('click', () => {
-      result.classList.add('hidden');
-      form.classList.remove('hidden');
-      document.body.style.background = "radial-gradient(circle at top, #1a1b27, #0d0e13)";
-      partnerPhoto.src = ""; 
-      lastPredictionText = "";
-    });
-  </script>
-  <script src="static/images/script.js"></script>
+        // Efek magnetic untuk tombol
+        document.querySelectorAll('.magnetic-button').forEach(button => {
+            button.addEventListener('mousemove', function(e) {
+                const rect = button.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+                
+                button.style.transform = `translate(${x * 0.2}px, ${y * 0.2}px) scale(1.05)`;
+            });
+            
+            button.addEventListener('mouseleave', function() {
+                button.style.transform = 'translate(0, 0) scale(1)';
+            });
+        });
+        
+        // Efek ripple untuk tombol
+        document.querySelectorAll('.ripple').forEach(button => {
+            button.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple-effect');
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+        
+        // Efek parallax untuk background
+        window.addEventListener('scroll', () => {
+            const scrolled = window.scrollY;
+            const parallaxElements = document.querySelectorAll('.parallax-bg');
+            
+            parallaxElements.forEach(element => {
+                const speed = element.dataset.speed || 0.5;
+                element.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+        
+        // Efek text gradient animasi
+        document.querySelectorAll('.gradient-text').forEach(element => {
+            const text = element.textContent;
+            element.textContent = '';
+            
+            for (let i = 0; i < text.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = text[i];
+                span.style.animationDelay = `${i * 0.1}s`;
+                span.classList.add('inline-block', 'animate-fade-in-up');
+                element.appendChild(span);
+            }
+        });
+        
+        // Efek wave untuk teks
+        document.querySelectorAll('.wave-text').forEach(element => {
+            const text = element.textContent;
+            element.textContent = '';
+            
+            for (let i = 0; i < text.length; i++) {
+                const span = document.createElement('span');
+                span.textContent = text[i];
+                span.style.setProperty('--i', i);
+                span.classList.add('inline-block');
+                element.appendChild(span);
+            }
+        });
+        
+        // Efek morphing untuk shape
+        document.querySelectorAll('.morphing-shape').forEach(shape => {
+            setInterval(() => {
+                const borderRadius1 = `${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% / ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}%`;
+                const borderRadius2 = `${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% / ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}% ${Math.random() * 30 + 30}%`;
+                
+                shape.style.borderRadius = borderRadius1;
+                
+                setTimeout(() => {
+                    shape.style.borderRadius = borderRadius2;
+                }, 1500);
+            }, 3000);
+        });
+        
+        // Efek flip card
+        document.querySelectorAll('.flip-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.querySelector('.flip-card-inner').style.transform = 'rotateY(180deg)';
+            });
+        });
+        
+        // Efek loading dots
+        document.querySelectorAll('.loading-dots').forEach(container => {
+            const dots = ['<span></span>', '<span></span>', '<span></span>'];
+            container.innerHTML = dots.join('');
+        });
+        
+        // Efek pulse ring
+        document.querySelectorAll('.pulse-ring').forEach(element => {
+            const ring = document.createElement('div');
+            ring.className = 'absolute inset-0 rounded-full border-2 border-current opacity-0';
+            element.appendChild(ring);
+            
+            setInterval(() => {
+                ring.style.animation = 'pulseRing 1.5s ease-out';
+            }, 2000);
+        });
+        
+        // Efek rotating border
+        document.querySelectorAll('.rotating-border').forEach(element => {
+            const border = document.createElement('div');
+            border.className = 'absolute inset-0 rounded-lg';
+            element.appendChild(border);
+        });
+        
+        // Efek text focus in
+        document.querySelectorAll('.text-focus-in').forEach(element => {
+            const text = element.textContent;
+            element.textContent = '';
+            element.style.opacity = '0';
+            element.style.filter = 'blur(10px)';
+            
+            setTimeout(() => {
+                element.textContent = text;
+                element.style.opacity = '1';
+                element.style.filter = 'blur(0)';
+                element.classList.add('transition-all', 'duration-1000');
+            }, 500);
+        });
+        
+        // Efek glass morphism
+        document.querySelectorAll('.glass-effect').forEach(element => {
+            element.style.backdropFilter = 'blur(10px)';
+            element.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+            element.style.border = '1px solid rgba(255, 255, 255, 0.2)';
+        });
+        
+        // Efek hologram
+        document.querySelectorAll('.hologram').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 360;
+                element.style.filter = `hue-rotate(${hue}deg) brightness(1.2)`;
+            }, 2000);
+        });
+        
+        // Efek cyberpunk
+        document.querySelectorAll('.cyberpunk').forEach(element => {
+            setInterval(() => {
+                const colors = ['#ff00ff', '#00ffff', '#ffff00', '#ff00aa', '#00ff00'];
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                element.style.textShadow = `0 0 5px ${randomColor}, 0 0 10px ${randomColor}`;
+            }, 1500);
+        });
+        
+        // Efek vaporwave
+        document.querySelectorAll('.vaporwave').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 280; // Range pink to purple
+                element.style.filter = `hue-rotate(${hue}deg) saturate(1.5)`;
+            }, 2000);
+        });
+        
+        // Efek steampunk
+        document.querySelectorAll('.steampunk').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.3 + 0.7}) contrast(${Math.random() * 0.3 + 1.1}) brightness(${Math.random() * 0.2 + 0.9})`;
+            }, 3000);
+        });
+        
+        // Efek fantasy
+        document.querySelectorAll('.fantasy').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 120; // Range green to cyan
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.5 + 1.5}) brightness(${Math.random() * 0.2 + 1.1})`;
+            }, 2500);
+        });
+        
+        // Efek sci-fi
+        document.querySelectorAll('.sci-fi').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 200; // Range blue to purple
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.2 + 1.1})`;
+            }, 2000);
+        });
+        
+        // Efek medieval
+        document.querySelectorAll('.medieval').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.7}) contrast(${Math.random() * 0.2 + 1.1}) brightness(${Math.random() * 0.1 + 0.9})`;
+            }, 4000);
+        });
+        
+        // Efek futuristic
+        document.querySelectorAll('.futuristic').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 180; // Range cyan to blue
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.4 + 1.3}) brightness(${Math.random() * 0.2 + 1.2})`;
+            }, 1800);
+        });
+        
+        // Efek vintage
+        document.querySelectorAll('.vintage').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.4}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek modern
+        document.querySelectorAll('.modern').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek classic
+        document.querySelectorAll('.classic').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `grayscale(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05})`;
+            }, 3500);
+        });
+        
+        // Efek contemporary
+        document.querySelectorAll('.contemporary').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `saturate(${Math.random() * 0.2 + 1.1}) contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 2200);
+        });
+        
+        // Efek minimalist
+        document.querySelectorAll('.minimalist').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `grayscale(${Math.random() * 0.1 + 0.1}) contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 2800);
+        });
+        
+        // Efek maximalist
+        document.querySelectorAll('.maximalist').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 360;
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.5 + 1.5}) contrast(${Math.random() * 0.2 + 1.2}) brightness(${Math.random() * 0.2 + 1.1})`;
+            }, 1500);
+        });
+        
+        // Efek abstract
+        document.querySelectorAll('.abstract').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 360;
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.5 + 1.5}) contrast(${Math.random() * 0.2 + 1.2})`;
+            }, 2000);
+        });
+        
+        // Efek geometric
+        document.querySelectorAll('.geometric').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.2 + 1.1}) brightness(${Math.random() * 0.1 + 1.1})`;
+            }, 2500);
+        });
+        
+        // Efek organic
+        document.querySelectorAll('.organic').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 30; // Range yellow to green
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.2 + 1.1}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek digital
+        document.querySelectorAll('.digital').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 200; // Range blue to purple
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.2 + 1.1}) brightness(${Math.random() * 0.1 + 1.1})`;
+            }, 1800);
+        });
+        
+        // Efek analog
+        document.querySelectorAll('.analog').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.3}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3500);
+        });
+        
+        // Efek synthetic
+        document.querySelectorAll('.synthetic').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 160; // Range purple to blue
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.1 + 1.1})`;
+            }, 2200);
+        });
+        
+        // Efek natural
+        document.querySelectorAll('.natural').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 30; // Range yellow to green
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 4000);
+        });
+        
+        // Efek artificial
+        document.querySelectorAll('.artificial').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 240; // Range blue to purple
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.2 + 1.1}) brightness(${Math.random() * 0.1 + 1.1})`;
+            }, 2000);
+        });
+        
+        // Efek realistic
+        document.querySelectorAll('.realistic').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek surreal
+        document.querySelectorAll('.surreal').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 150; // Range green to blue
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.5 + 1.5}) contrast(${Math.random() * 0.2 + 1.2}) brightness(${Math.random() * 0.1 + 1.1})`;
+            }, 2500);
+        });
+        
+        // Efek dreamlike
+        document.querySelectorAll('.dreamlike').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 120; // Range green to cyan
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2800);
+        });
+        
+        // Efek nightmarish
+        document.querySelectorAll('.nightmarish').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 300; // Range purple to red
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.5 + 1.5}) contrast(${Math.random() * 0.3 + 1.3}) brightness(${Math.random() * 0.2 + 0.8})`;
+            }, 1500);
+        });
+        
+        // Efek ethereal
+        document.querySelectorAll('.ethereal').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 180; // Range cyan to blue
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.2 + 1.2}) brightness(${Math.random() * 0.2 + 1.2})`;
+            }, 2200);
+        });
+        
+        // Efek mundane
+        document.querySelectorAll('.mundane').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `grayscale(${Math.random() * 0.1 + 0.1}) contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 4000);
+        });
+        
+        // Efek extraordinary
+        document.querySelectorAll('.extraordinary').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 90; // Range green to yellow
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.4 + 1.3}) contrast(${Math.random() * 0.2 + 1.1}) brightness(${Math.random() * 0.1 + 1.1})`;
+            }, 1800);
+        });
+        
+        // Efek ordinary
+        document.querySelectorAll('.ordinary').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3500);
+        });
+        
+        // Efek unusual
+        document.querySelectorAll('.unusual').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 60; // Range yellow to green
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek common
+        document.querySelectorAll('.common').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek rare
+        document.querySelectorAll('.rare').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 120; // Range green to cyan
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2200);
+        });
+        
+        // Efek unique
+        document.querySelectorAll('.unique').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 150; // Range green to blue
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.4 + 1.3}) contrast(${Math.random() * 0.2 + 1.1}) brightness(${Math.random() * 0.1 + 1.1})`;
+            }, 2000);
+        });
+        
+        // Efek special
+        document.querySelectorAll('.special').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 90; // Range green to yellow
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek normal
+        document.querySelectorAll('.normal').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek abnormal
+        document.querySelectorAll('.abnormal').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 180; // Range cyan to blue
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.1 + 0.9})`;
+            }, 2000);
+        });
+        
+        // Efek typical
+        document.querySelectorAll('.typical').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3500);
+        });
+        
+        // Efek atypical
+        document.querySelectorAll('.atypical').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 120; // Range green to cyan
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek standard
+        document.querySelectorAll('.standard').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek nonstandard
+        document.querySelectorAll('.nonstandard').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 150; // Range green to blue
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek conventional
+        document.querySelectorAll('.conventional').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek unconventional
+        document.querySelectorAll('.unconventional').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 180; // Range cyan to blue
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.1 + 0.9})`;
+            }, 2000);
+        });
+        
+        // Efek traditional
+        document.querySelectorAll('.traditional').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.3}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3500);
+        });
+        
+        // Efek nontraditional
+        document.querySelectorAll('.nontraditional').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 120; // Range green to cyan
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.3 + 1.2}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek classic
+        document.querySelectorAll('.classic').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `grayscale(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek modern
+        document.querySelectorAll('.modern').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek old
+        document.querySelectorAll('.old').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.4}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek new
+        document.querySelectorAll('.new').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek ancient
+        document.querySelectorAll('.ancient').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.6}) contrast(${Math.random() * 0.1 + 1.1}) brightness(${Math.random() * 0.1 + 0.9})`;
+            }, 3500);
+        });
+        
+        // Efek recent
+        document.querySelectorAll('.recent').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek past
+        document.querySelectorAll('.past').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.3}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek present
+        document.querySelectorAll('.present').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3500);
+        });
+        
+        // Efek future
+        document.querySelectorAll('.future').forEach(element => {
+            setInterval(() => {
+                const hue = Math.random() * 60 + 180; // Range cyan to blue
+                element.style.filter = `hue-rotate(${hue}deg) saturate(${Math.random() * 0.2 + 1.1}) brightness(${Math.random() * 0.1 + 1.1})`;
+            }, 2500);
+        });
+        
+        // Efek current
+        document.querySelectorAll('.current').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek previous
+        document.querySelectorAll('.previous').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek next
+        document.querySelectorAll('.next').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek first
+        document.querySelectorAll('.first').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.1 + 0.1}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3500);
+        });
+        
+        // Efek last
+        document.querySelectorAll('.last').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek beginning
+        document.querySelectorAll('.beginning').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.1 + 0.1}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3500);
+        });
+        
+        // Efek end
+        document.querySelectorAll('.end').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek start
+        document.querySelectorAll('.start').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.1 + 0.1}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3500);
+        });
+        
+        // Efek finish
+        document.querySelectorAll('.finish').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek initial
+        document.querySelectorAll('.initial').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.1 + 0.1}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3500);
+        });
+        
+        // Efek final
+        document.querySelectorAll('.final').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek early
+        document.querySelectorAll('.early').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek late
+        document.querySelectorAll('.late').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek soon
+        document.querySelectorAll('.soon').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek later
+        document.querySelectorAll('.later').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek now
+        document.querySelectorAll('.now').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek then
+        document.querySelectorAll('.then').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek before
+        document.querySelectorAll('.before').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek after
+        document.querySelectorAll('.after').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 1.05})`;
+            }, 2500);
+        });
+        
+        // Efek during
+        document.querySelectorAll('.during').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek while
+        document.querySelectorAll('.while').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek when
+        document.querySelectorAll('.when').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek where
+        document.querySelectorAll('.where').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek why
+        document.querySelectorAll('.why').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek how
+        document.querySelectorAll('.how').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek what
+        document.querySelectorAll('.what').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek who
+        document.querySelectorAll('.who').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek which
+        document.querySelectorAll('.which').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whose
+        document.querySelectorAll('.whose').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whom
+        document.querySelectorAll('.whom').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whatever
+        document.querySelectorAll('.whatever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whichever
+        document.querySelectorAll('.whichever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whoever
+        document.querySelectorAll('.whoever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whomever
+        document.querySelectorAll('.whomever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whosesoever
+        document.querySelectorAll('.whosesoever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whatsoever
+        document.querySelectorAll('.whatsoever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek wheresoever
+        document.querySelectorAll('.wheresoever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whensoever
+        document.querySelectorAll('.whensoever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek howsoever
+        document.querySelectorAll('.howsoever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whysoever
+        document.querySelectorAll('.whysoever').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek hereby
+        document.querySelectorAll('.hereby').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek herein
+        document.querySelectorAll('.herein').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek hereof
+        document.querySelectorAll('.hereof').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek hereon
+        document.querySelectorAll('.hereon').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek hereto
+        document.querySelectorAll('.hereto').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek herewith
+        document.querySelectorAll('.herewith').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek thereby
+        document.querySelectorAll('.thereby').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek therein
+        document.querySelectorAll('.therein').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek thereof
+        document.querySelectorAll('.thereof').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek thereon
+        document.querySelectorAll('.thereon').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek thereto
+        document.querySelectorAll('.thereto').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek therewith
+        document.querySelectorAll('.therewith').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whereby
+        document.querySelectorAll('.whereby').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek wherein
+        document.querySelectorAll('.wherein').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whereof
+        document.querySelectorAll('.whereof').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whereon
+        document.querySelectorAll('.whereon').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek whereto
+        document.querySelectorAll('.whereto').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek wherewith
+        document.querySelectorAll('.wherewith').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `contrast(${Math.random() * 0.05 + 1.05})`;
+            }, 3000);
+        });
+        
+        // Efek aforementioned
+        document.querySelectorAll('.aforementioned').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek aforesaid
+        document.querySelectorAll('.aforesaid').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek aforetime
+        document.querySelectorAll('.aforetime').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.3}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek aforehand
+        document.querySelectorAll('.aforehand').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+        
+        // Efek aforethought
+        document.querySelectorAll('.aforethought').forEach(element => {
+            setInterval(() => {
+                element.style.filter = `sepia(${Math.random() * 0.2 + 0.2}) contrast(${Math.random() * 0.1 + 1.05}) brightness(${Math.random() * 0.05 + 0.95})`;
+            }, 3000);
+        });
+    </script>
+    <script src="static/images/script.js"></script>
 </body>
 </html>
